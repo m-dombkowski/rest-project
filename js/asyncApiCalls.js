@@ -1,65 +1,42 @@
-import { token } from "./variables.js";
+import { headers } from "./variables.js";
 
-export const getUsers = async function () {
-  const response = await fetch(
-    `
-      https://gorest.co.in/public/v1/users`,
-    {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        Authorization: `Bearer ` + token,
-        "Content-Type": "application/json",
-      },
-    }
-  );
-  return response.json();
-};
-
-export const getUserByID = async function (id) {
-  const response = await fetch(`https://gorest.co.in/public/v1/users/${id}`, {
+export const getUsers = async function (url) {
+  const params = {};
+  const response = await fetch(`${url}/users`, {
     method: "GET",
-    headers: {
-      Accept: "application/json",
-      Authorization: `Bearer ` + token,
-      "Content-Type": "application/json",
-    },
+    headers: headers,
   });
   return response.json();
 };
 
-export const createUser = async function (data) {
-  const response = await fetch(`https://gorest.co.in/public/v1/users`, {
+export const getUserByID = async function (url, id) {
+  const response = await fetch(`${url}/users/${id}`, {
+    method: "GET",
+    headers: headers,
+  });
+  return response.json();
+};
+
+export const createUser = async function (url, data) {
+  const response = await fetch(`${url}/users`, {
     method: "POST",
-    headers: {
-      Accept: "application/json",
-      Authorization: `Bearer ` + token,
-      "Content-Type": "application/json",
-    },
+    headers: headers,
     body: JSON.stringify(data),
   });
   return response.json();
 };
 
-export const deleteUser = async function (id) {
-  await fetch(`https://gorest.co.in/public/v1/users/${id}`, {
+export const deleteUser = async function (url, id) {
+  await fetch(`${url}/users/${id}`, {
     method: "DELETE",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      Authorization: `Bearer ` + token,
-    },
+    headers: headers,
   });
 };
 
-export const getToDos = async function () {
-  const response = await fetch(`https://gorest.co.in/public/v1/todos`, {
+export const getToDos = async function (url) {
+  const response = await fetch(`${url}/todos`, {
     method: "GET",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      Authorization: `Bearer ` + token,
-    },
+    headers: headers,
   });
   return response.json();
 };

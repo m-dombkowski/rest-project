@@ -1,0 +1,26 @@
+.users-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  align-items: center;
+}
+
+.user {
+  text-align: center;
+  background-color: #999;
+  padding: 8px 16px;
+}
+
+.details-icon {
+  width: 30px;
+  height: 30px;
+  /* padding: 5px 0 0 0; */
+}
+
+.user-details {
+  /* width: 30px;
+  height: 30px; */
+  background: none;
+  border: none;
+}
