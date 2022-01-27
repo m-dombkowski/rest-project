@@ -14,6 +14,7 @@ export const btn2 = document.querySelector(".btn2");
 export const BASE_URL = `https://gorest.co.in/public/v1`;
 
 export const usersList = document.querySelector(".users-list");
+export const userDetails = document.querySelector(".user-details-container");
 
 export const testBody = {
   name: "Kamil Kowasalski",

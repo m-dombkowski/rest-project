@@ -1,28 +1,41 @@
-import { renderUser } from "./rendering.js";
+import { deleteUserREST, getUsers } from "./asyncApiCalls.js";
+import { renderUserData, printUsers } from "./rendering.js";
+import { BASE_URL, usersList } from "./variables.js";
 
-export const printUsers = function (data) {
-  const userArray = data.data;
-  console.log(userArray);
-  for (let i = 0; i < userArray.length; i++) {
-    renderUser(userArray[i]);
-  }
-};
-
-const getUserName = function (event) {
+const getUserName = function (event, className) {
   const target = event.target;
-  const grandParentxD = target.parentElement.parentElement;
-  const children = grandParentxD.children;
+  const grandParentElement = target.parentElement.parentElement;
+  const children = grandParentElement.children;
 
   for (let i = 0; i < children.length; i++) {
-    if (children[i].classList.contains("user-name")) {
+    if (children[i].classList.contains(`${className}`)) {
       return children[i].textContent;
     }
   }
 };
 
-export const getUserData = function (data, event) {
+export const showUserDetails = function (data, event) {
   const userArray = data.data;
   userArray.forEach((userObject) => {
-    if (userObject.name === getUserName(event)) console.log(userObject);
+    if (userObject.name === getUserName(event, "user-name")) {
+      renderUserData(userObject);
+    }
+  });
+};
+
+export const deleteUser = function (data, event) {
+  const userArray = data.data;
+
+  userArray.forEach((userObject) => {
+    if (getUserName(event, "active-user-name") === userObject.name) {
+      deleteUserREST(BASE_URL, userObject.id);
+    }
+  });
+};
+
+export const showUserList = function () {
+  getUsers(BASE_URL).then((data) => {
+    usersList.innerHTML = "";
+    printUsers(data);
   });
 };

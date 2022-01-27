@@ -1,24 +1,11 @@
-import { getUserData, printUsers } from "./users.js";
-import { btn1, btn, btn2, deleteU, testBody, BASE_URL } from "./variables.js";
-import {
-  getUsers,
-  getUserByID,
-  createUser,
-  deleteUser,
-} from "./asyncApiCalls.js";
+import { btn, btn2, testBody, BASE_URL } from "./variables.js";
+import { createUser } from "./asyncApiCalls.js";
 
-btn1.addEventListener("click", function () {
-  getUserByID(BASE_URL, 3934).then((data) => console.log(data));
-});
+import { windowHandler } from "./eventHandlers.js";
+import { showUserList } from "./users.js";
 
 btn.addEventListener("click", function () {
-  getUsers(BASE_URL).then((data) => {
-    printUsers(data);
-  });
-});
-
-deleteU.addEventListener("click", function () {
-  deleteUser(BASE_URL, 3931);
+  showUserList();
 });
 
 btn2.addEventListener("click", function () {
@@ -26,5 +13,5 @@ btn2.addEventListener("click", function () {
 });
 
 window.addEventListener("click", function (event) {
-  getUsers(BASE_URL).then((data) => getUserData(data, event));
+  windowHandler(event);
 });

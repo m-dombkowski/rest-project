@@ -1,6 +1,6 @@
-import { usersList } from "./variables.js";
+import { userDetails, usersList } from "./variables.js";
 
-export const renderUser = function (data) {
+const renderUser = function (data) {
   let html = `
     <li class="user">
         <h2 class="user-name">${data.name}</h2>
@@ -10,4 +10,27 @@ export const renderUser = function (data) {
     </li>`;
 
   usersList.insertAdjacentHTML("beforeend", html);
+};
+
+export const printUsers = function (data) {
+  const userArray = data.data;
+  for (let i = 0; i < userArray.length; i++) {
+    renderUser(userArray[i]);
+  }
+};
+
+export const renderUserData = function (data) {
+  let html = `<div class="detailed-user-info">
+  <div class="details-buttons">
+  <button class="go-back-to-main">Go Back</button>
+  <button class="delete-user">x</button>
+  </div>
+    <h2 class="active-user-name">${data.name}</h2>
+    <p class="active-user-email">E-mail: ${data.email}</p>
+    <p class="active-user-gender">Gender: ${data.gender}</p>
+    <p class="active-user-status">Status: ${data.status}</p>
+  </div>
+  `;
+
+  userDetails.insertAdjacentHTML("afterbegin", html);
 };

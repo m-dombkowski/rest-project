@@ -1,16 +1,7 @@
 import { headers } from "./variables.js";
 
 export const getUsers = async function (url) {
-  const params = {};
   const response = await fetch(`${url}/users`, {
-    method: "GET",
-    headers: headers,
-  });
-  return response.json();
-};
-
-export const getUserByID = async function (url, id) {
-  const response = await fetch(`${url}/users/${id}`, {
     method: "GET",
     headers: headers,
   });
@@ -26,7 +17,7 @@ export const createUser = async function (url, data) {
   return response.json();
 };
 
-export const deleteUser = async function (url, id) {
+export const deleteUserREST = async function (url, id) {
   await fetch(`${url}/users/${id}`, {
     method: "DELETE",
     headers: headers,
@@ -40,3 +31,11 @@ export const getToDos = async function (url) {
   });
   return response.json();
 };
+
+// export const getUserByID = async function (url, id) {
+//   const response = await fetch(`${url}/users/${id}`, {
+//     method: "GET",
+//     headers: headers,
+//   });
+//   return response.json();
+// };

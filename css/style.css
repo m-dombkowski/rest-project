@@ -24,3 +24,40 @@
   background: none;
   border: none;
 }
+
+.detailed-user-info {
+  border: 1px solid #000;
+  padding: 40px 30px;
+  display: inline-block;
+}
+
+.user-details-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.details-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.active-user-name {
+  font-size: 44px;
+}
+
+.active-user-email {
+  font-size: 30px;
+}
+
+.active-user-gender {
+  font-size: 30px;
+}
+
+.active-user-status {
+  font-size: 30px;
+}
+
+.hide {
+  display: none;
+}
