@@ -4,9 +4,12 @@ const renderUser = function (data) {
   let html = `
     <li class="user">
         <h2 class="user-name">${data.name}</h2>
+        <div class="user-buttons">
         <button class="user-details" title="Check user details">
           <img class="details-icon" src="../svg/search-svg.svg"/>
         </button>
+        <button class="delete-user">x</button>
+        </div>
     </li>`;
 
   usersList.insertAdjacentHTML("beforeend", html);
@@ -23,7 +26,6 @@ export const renderUserData = function (data) {
   let html = `<div class="detailed-user-info">
   <div class="details-buttons">
   <button class="go-back-to-main">Go Back</button>
-  <button class="delete-user">x</button>
   </div>
     <h2 class="active-user-name">${data.name}</h2>
     <p class="active-user-email">E-mail: ${data.email}</p>

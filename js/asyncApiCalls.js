@@ -32,10 +32,11 @@ export const getToDos = async function (url) {
   return response.json();
 };
 
-// export const getUserByID = async function (url, id) {
-//   const response = await fetch(`${url}/users/${id}`, {
-//     method: "GET",
-//     headers: headers,
-//   });
-//   return response.json();
-// };
+export const getUserByID = async function (url, id) {
+  const response = await fetch(`${url}/users/${id}`, {
+    method: "GET",
+    headers: headers,
+  });
+
+  return response.json();
+};

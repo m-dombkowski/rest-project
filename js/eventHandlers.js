@@ -1,5 +1,5 @@
 import { getUsers } from "./asyncApiCalls.js";
-
+import { printUsers } from "./rendering.js";
 import { addHide, removeHide, toggleHide } from "./styleChanges.js";
 import { deleteUser, showUserDetails, showUserList } from "./users.js";
 import { BASE_URL, userDetails, usersList } from "./variables.js";
@@ -18,9 +18,8 @@ export const windowHandler = function (event) {
     toggleHide(userDetails);
   }
   if (event.target.classList.contains("delete-user")) {
-    showUserList();
-    getUsers(BASE_URL).then((data) => deleteUser(data, event));
-    toggleHide(usersList);
-    userDetails.innerHTML = "";
+    getUsers(BASE_URL).then((data) => {
+      deleteUser(data, event);
+    });
   }
 };

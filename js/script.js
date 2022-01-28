@@ -1,5 +1,5 @@
 import { btn, btn2, testBody, BASE_URL } from "./variables.js";
-import { createUser } from "./asyncApiCalls.js";
+import { createUser, getUserByID } from "./asyncApiCalls.js";
 
 import { windowHandler } from "./eventHandlers.js";
 import { showUserList } from "./users.js";
