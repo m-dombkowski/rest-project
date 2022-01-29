@@ -1,5 +1,6 @@
 import { deleteUserREST, getUsers } from "./asyncApiCalls.js";
 import { renderUserData, printUsers } from "./rendering.js";
+import { capitalizeFirstLetters } from "./styleChanges.js";
 import { BASE_URL, usersList } from "./variables.js";
 
 const loopForGettingUserName = function (element, className) {
@@ -22,7 +23,35 @@ export const showUserDetails = function (data, event) {
   const userArray = data.data;
   userArray.forEach((userObject) => {
     if (userObject.name === getUserName(event)) {
+      console.log(userObject);
       renderUserData(userObject);
+    }
+  });
+};
+
+export const getUserNameForEdit = function (event) {
+  const target = event.target;
+  const parent = target.parentElement.parentElement;
+  const children = parent.children;
+  return loopForGettingUserName(children, "active-user-name");
+};
+
+export const getUserID = function (data, event) {
+  const userArray = data.data;
+  getUserNameForEdit(event);
+  userArray.forEach((userObject) => {
+    if (userObject.name === getUserNameForEdit(event)) {
+      return userObject.id;
+    }
+  });
+};
+
+export const getUserByID = function (data, event) {
+  const userArray = data.data;
+  console.log(getUserName(event));
+  userArray.forEach((userObject) => {
+    if (userObject.name === getUserName(event)) {
+      console.log(userObject);
     }
   });
 };
@@ -54,7 +83,7 @@ export const createUserObject = function () {
   const status = document.querySelector("#status").value;
 
   return {
-    name: name,
+    name: capitalizeFirstLetters(name),
     email: email,
     gender: gender,
     status: status,

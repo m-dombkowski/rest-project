@@ -1,3 +1,4 @@
+import { getUserNameForEdit } from "./users.js";
 import { userCreate, userDetails, usersList } from "./variables.js";
 
 const renderUser = function (data) {
@@ -25,15 +26,18 @@ export const printUsers = function (data) {
 };
 
 export const renderUserData = function (data) {
-  let html = `<div class="detailed-user-info">
-  <div class="details-buttons">
-  <button class="go-back-to-main">Go Back</button>
-  </div>
+  let html = `
+  <div class="detailed-user-info">
+    <div class="details-buttons">
+      <button class="edit-user">Edit user info</button>
+      <button class="go-back-to-main">Go Back</button>
+    </div>
     <h2 class="active-user-name">${data.name}</h2>
     <p class="active-user-email">E-mail: ${data.email}</p>
     <p class="active-user-gender">Gender: ${data.gender}</p>
     <p class="active-user-status">Status: ${data.status}</p>
   </div>
+      
   `;
 
   userDetails.insertAdjacentHTML("afterbegin", html);
@@ -41,7 +45,8 @@ export const renderUserData = function (data) {
 
 export const renderCreateUser = function () {
   let html = `
-    <form class="create-form">
+  <button class="go-back-to-main">Go Back</button>
+    <form class="create-form">  
       <div class="name-input">
         <label for="name">Name: </label></br>
         <input type="text" id="name" name="name" required size="10"> 
@@ -68,7 +73,40 @@ export const renderCreateUser = function () {
       </div>
       <input type="submit" class="submit" value="Submit">
     </form>
-  
+  `;
+
+  userCreate.insertAdjacentHTML("afterbegin", html);
+};
+
+export const renderEditUser = function (event) {
+  let html = `
+  <form class="create-form">
+    <div class="name-input">
+      <label for="name">Name: </label></br>
+      <p class="name-user">${getUserNameForEdit(event)}</p> 
+    </div>
+    <div class="email-input">
+      <label for="email">Email: </label></br>
+      <input type="email" id="email" required size="10"> 
+    </div>
+    <div class="gender-select">
+      <label for="gender">Gender: </label> </br>
+      <select name="gender" id="gender" required>
+        <option value="">--Please choose an option--</option>
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+      </select>
+    </div>
+    <div class="status-select">
+      <label for="status">Status: </label> </br>
+      <select name="status" id="status" required>
+        <option value="">--Please choose an option--</option>
+        <option value="active">Active</option>
+        <option value="inactive">Inactive</option>
+      </select>
+    </div>
+    <input type="submit" class="edit-submit" value="Edit Information">
+  </form>
   `;
 
   userCreate.insertAdjacentHTML("afterbegin", html);

@@ -8,12 +8,18 @@ export const getUsers = async function (url) {
   return response.json();
 };
 
-export const createUser = async function (url, data) {
+export const createUser = async function (url, userObject) {
   const response = await fetch(`${url}/users`, {
     method: "POST",
     headers: headers,
-    body: JSON.stringify(data),
+    body: JSON.stringify(userObject),
   });
+  if (response.status === 201) {
+    console.log(userObject);
+  }
+  if (response.status === 422) {
+    console.log("czegos brak albo cos zajete");
+  }
   return response.json();
 };
 
@@ -29,14 +35,24 @@ export const getToDos = async function (url) {
     method: "GET",
     headers: headers,
   });
+
   return response.json();
 };
 
-export const getUserByID = async function (url, id) {
+export const editUser = async function (url, id, userObject) {
   const response = await fetch(`${url}/users/${id}`, {
-    method: "GET",
+    method: "PUT",
     headers: headers,
+    body: JSON.stringify(userObject),
   });
-
   return response.json();
 };
+
+// export const getUserByID = async function (url, id) {
+//   const response = await fetch(`${url}/users/${id}`, {
+//     method: "GET",
+//     headers: headers,
+//   });
+
+//   return response.json();
+// };
