@@ -1,5 +1,5 @@
 .user-list-section {
-  margin: 0 40px;
+  margin: 0 20px;
 }
 
 .users-list {
@@ -7,6 +7,7 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 20px;
+  padding-left: 0;
   align-items: center;
 }
 
@@ -19,25 +20,16 @@
   flex-direction: column;
 }
 
-.details-icon {
-  width: 30px;
-  height: 30px;
-  /* padding: 5px 0 0 0; */
+.details-icon,
+.close-icon {
+  width: 28px;
+  height: 28px;
 }
 
-.user-details {
-  /* width: 30px;
-  height: 30px; */
+.user-details,
+.delete-user {
   background: none;
   border: none;
-  z-index: 9999;
-}
-
-.delete-user {
-  font-size: 24px;
-  border: 1px solid #000;
-  /* border-radius: 50%; */
-  background: none;
 }
 
 .detailed-user-info {
@@ -77,4 +69,14 @@
 
 .hide {
   display: none;
+}
+
+.create-form div {
+  margin-bottom: 10px;
+}
+
+.create-form {
+  padding: 20px 40px;
+  border: 1px solid #000;
+  display: inline-block;
 }

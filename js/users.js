@@ -1,6 +1,6 @@
 import { deleteUserREST, getUsers } from "./asyncApiCalls.js";
 import { renderUserData, printUsers } from "./rendering.js";
-import { BASE_URL, userDetails, usersList } from "./variables.js";
+import { BASE_URL, usersList } from "./variables.js";
 
 const loopForGettingUserName = function (element, className) {
   for (let i = 0; i < element.length; i++) {
@@ -10,15 +10,7 @@ const loopForGettingUserName = function (element, className) {
   }
 };
 
-const getUserNameForDelete = function (event) {
-  const target = event.target;
-  const parent = target.parentElement.parentElement;
-  const children = parent.children;
-
-  return loopForGettingUserName(children, "user-name");
-};
-
-const getUserNameForDetails = function (event) {
+const getUserName = function (event) {
   const target = event.target;
   const parent = target.parentElement.parentElement.parentElement;
   const children = parent.children;
@@ -29,7 +21,7 @@ const getUserNameForDetails = function (event) {
 export const showUserDetails = function (data, event) {
   const userArray = data.data;
   userArray.forEach((userObject) => {
-    if (userObject.name === getUserNameForDetails(event)) {
+    if (userObject.name === getUserName(event)) {
       renderUserData(userObject);
     }
   });
@@ -37,10 +29,11 @@ export const showUserDetails = function (data, event) {
 
 export const deleteUser = function (data, event) {
   const target = event.target;
-  const container = target.parentElement.parentElement;
+  const container = target.parentElement.parentElement.parentElement;
+  console.log(container);
   const userArray = data.data;
   userArray.forEach((userObject) => {
-    if (getUserNameForDelete(event) === userObject.name) {
+    if (getUserName(event) === userObject.name) {
       deleteUserREST(BASE_URL, userObject.id);
     }
   });
@@ -52,4 +45,18 @@ export const showUserList = function () {
     usersList.innerHTML = "";
     printUsers(data);
   });
+};
+
+export const createUserObject = function () {
+  const name = document.querySelector("#name").value;
+  const email = document.querySelector("#email").value;
+  const gender = document.querySelector("#gender").value;
+  const status = document.querySelector("#status").value;
+
+  return {
+    name: name,
+    email: email,
+    gender: gender,
+    status: status,
+  };
 };
