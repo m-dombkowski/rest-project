@@ -3,6 +3,13 @@ import { renderUserData, printUsers } from "./rendering.js";
 import { capitalizeFirstLetters } from "./styleChanges.js";
 import { BASE_URL, usersList } from "./variables.js";
 
+export const showUserList = function () {
+  getUsers(BASE_URL).then((data) => {
+    usersList.innerHTML = "";
+    printUsers(data);
+  });
+};
+
 const loopForGettingUserName = function (element, className) {
   for (let i = 0; i < element.length; i++) {
     if (element[i].classList.contains(className)) {
@@ -15,7 +22,6 @@ const getUserName = function (event) {
   const target = event.target;
   const parent = target.parentElement.parentElement.parentElement;
   const children = parent.children;
-
   return loopForGettingUserName(children, "user-name");
 };
 
@@ -23,43 +29,31 @@ export const showUserDetails = function (data, event) {
   const userArray = data.data;
   userArray.forEach((userObject) => {
     if (userObject.name === getUserName(event)) {
-      console.log(userObject);
       renderUserData(userObject);
     }
   });
 };
 
-export const getUserNameForEdit = function (event) {
+export const getUserNameForEdit = function (event, className) {
   const target = event.target;
   const parent = target.parentElement.parentElement;
   const children = parent.children;
-  return loopForGettingUserName(children, "active-user-name");
+
+  return loopForGettingUserName(children, className);
 };
 
-export const getUserID = function (data, event) {
+export const getUserIDForEdit = function (data, event) {
   const userArray = data.data;
-  getUserNameForEdit(event);
-  userArray.forEach((userObject) => {
-    if (userObject.name === getUserNameForEdit(event)) {
-      return userObject.id;
+  for (const user of userArray) {
+    if (user.name === getUserNameForEdit(event, "current-user-name")) {
+      return user.id;
     }
-  });
-};
-
-export const getUserByID = function (data, event) {
-  const userArray = data.data;
-  console.log(getUserName(event));
-  userArray.forEach((userObject) => {
-    if (userObject.name === getUserName(event)) {
-      console.log(userObject);
-    }
-  });
+  }
 };
 
 export const deleteUser = function (data, event) {
   const target = event.target;
   const container = target.parentElement.parentElement.parentElement;
-  console.log(container);
   const userArray = data.data;
   userArray.forEach((userObject) => {
     if (getUserName(event) === userObject.name) {
@@ -69,18 +63,11 @@ export const deleteUser = function (data, event) {
   container.parentNode.removeChild(container);
 };
 
-export const showUserList = function () {
-  getUsers(BASE_URL).then((data) => {
-    usersList.innerHTML = "";
-    printUsers(data);
-  });
-};
-
-export const createUserObject = function () {
-  const name = document.querySelector("#name").value;
-  const email = document.querySelector("#email").value;
-  const gender = document.querySelector("#gender").value;
-  const status = document.querySelector("#status").value;
+export const createUserObject = function (className) {
+  const name = document.querySelector(`#${className}-name`).value;
+  const email = document.querySelector(`#${className}-email`).value;
+  const gender = document.querySelector(`#${className}-gender`).value;
+  const status = document.querySelector(`#${className}-status`).value;
 
   return {
     name: capitalizeFirstLetters(name),

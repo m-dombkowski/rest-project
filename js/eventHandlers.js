@@ -7,7 +7,7 @@ import {
   deleteUser,
   showUserDetails,
   showUserList,
-  getUserID,
+  getUserIDForEdit,
 } from "./users.js";
 import { BASE_URL, userCreate, userDetails, usersList } from "./variables.js";
 
@@ -35,7 +35,7 @@ export const windowHandler = function (event) {
   }
   if (event.target.classList.contains("submit")) {
     event.preventDefault();
-    createUser(BASE_URL, createUserObject()).then(() => {
+    createUser(BASE_URL, createUserObject("create")).then(() => {
       showUserList();
       userCreate.innerHTML = "";
       addHide(userCreate);
@@ -48,6 +48,13 @@ export const windowHandler = function (event) {
     renderEditUser(event);
   }
   if (event.target.classList.contains("edit-submit")) {
-    get;
+    event.preventDefault();
+    getUsers(BASE_URL).then((data) => {
+      editUser(
+        BASE_URL,
+        getUserIDForEdit(data, event),
+        createUserObject("edit")
+      ).then((data) => console.log(data));
+    });
   }
 };

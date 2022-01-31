@@ -17,10 +17,3 @@ export const usersList = document.querySelector(".users-list");
 export const userDetails = document.querySelector(".user-details-container");
 export const userCreate = document.querySelector(".user-creation-container");
 export const form = document.querySelector(".create-form");
-
-export const testBody = {
-  name: "Kamil Kowasalski",
-  gender: "male",
-  email: "kamil1412da44124@mail.com",
-  status: "active",
-};

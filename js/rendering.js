@@ -49,15 +49,15 @@ export const renderCreateUser = function () {
     <form class="create-form">  
       <div class="name-input">
         <label for="name">Name: </label></br>
-        <input type="text" id="name" name="name" required size="10"> 
+        <input type="text" id="create-name" name="name" required size="10"> 
       </div>
       <div class="email-input">
         <label for="email">Email: </label></br>
-        <input type="email" id="email" required size="10"> 
+        <input type="email" id="create-email" required size="10"> 
       </div>
       <div class="gender-select">
         <label for="gender">Gender: </label> </br>
-        <select name="gender" id="gender" required>
+        <select name="gender" id="create-gender" required>
           <option value="">--Please choose an option--</option>
           <option value="female">Female</option>
           <option value="male">Male</option>
@@ -65,7 +65,7 @@ export const renderCreateUser = function () {
       </div>
       <div class="status-select">
         <label for="status">Status: </label> </br>
-        <select name="status" id="status" required>
+        <select name="status" id="create-status" required>
           <option value="">--Please choose an option--</option>
           <option value="active">Active</option>
           <option value="inactive">Inactive</option>
@@ -81,17 +81,24 @@ export const renderCreateUser = function () {
 export const renderEditUser = function (event) {
   let html = `
   <form class="create-form">
+    
+      <p class="edit-user-title">Current user: </p> 
+      <h2 class="current-user-name">${getUserNameForEdit(
+        event,
+        "active-user-name"
+      )}</h2>   
+     
     <div class="name-input">
       <label for="name">Name: </label></br>
-      <p class="name-user">${getUserNameForEdit(event)}</p> 
+      <input type="text" id="edit-name" name="name" required size="10"> 
     </div>
     <div class="email-input">
       <label for="email">Email: </label></br>
-      <input type="email" id="email" required size="10"> 
+      <input type="email" id="edit-email" required size="10"> 
     </div>
     <div class="gender-select">
       <label for="gender">Gender: </label> </br>
-      <select name="gender" id="gender" required>
+      <select name="gender" id="edit-gender" required>
         <option value="">--Please choose an option--</option>
         <option value="female">Female</option>
         <option value="male">Male</option>
@@ -99,13 +106,15 @@ export const renderEditUser = function (event) {
     </div>
     <div class="status-select">
       <label for="status">Status: </label> </br>
-      <select name="status" id="status" required>
+      <select name="status" id="edit-status" required>
         <option value="">--Please choose an option--</option>
         <option value="active">Active</option>
         <option value="inactive">Inactive</option>
       </select>
     </div>
-    <input type="submit" class="edit-submit" value="Edit Information">
+    <div class="submit-container">
+      <input type="submit" class="edit-submit" value="Edit Information">
+    </div>
   </form>
   `;
 
