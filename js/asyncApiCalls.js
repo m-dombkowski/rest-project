@@ -14,12 +14,7 @@ export const createUser = async function (url, userObject) {
     headers: headers,
     body: JSON.stringify(userObject),
   });
-  if (response.status === 201) {
-    console.log(userObject);
-  }
-  if (response.status === 422) {
-    console.log("czegos brak albo cos zajete");
-  }
+
   return response.json();
 };
 
@@ -44,6 +39,48 @@ export const editUser = async function (url, id, userObject) {
     method: "PUT",
     headers: headers,
     body: JSON.stringify(userObject),
+  });
+  return response.json();
+};
+
+export const getUserPosts = async function (url) {
+  const response = await fetch(`${url}/users/3566/posts`, {
+    method: "GET",
+    headers: headers,
+  });
+  return response.json();
+};
+
+export const getUserComments = async function (url) {
+  const response = await fetch(`${url}/posts/1236/comments`, {
+    method: "GET",
+    headers: headers,
+  });
+  return response.json();
+};
+
+export const createUserPost = async function (url) {
+  const response = await fetch(`${url}/users/3566/posts`, {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify({
+      name: "hevra",
+      title: "Post title",
+      body: "Post body",
+    }),
+  });
+  return response.json();
+};
+
+export const createUserComment = async function (url) {
+  const response = await fetch(`${url}/posts/1236/comments`, {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify({
+      name: "hevra",
+      email: "asd@kapusniak.cc",
+      body: "kapusta",
+    }),
   });
   return response.json();
 };

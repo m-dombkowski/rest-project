@@ -1,7 +1,7 @@
 import { deleteUserREST, getUsers } from "./asyncApiCalls.js";
 import { renderUserData, printUsers } from "./rendering.js";
 import { capitalizeFirstLetters } from "./styleChanges.js";
-import { BASE_URL, usersList } from "./variables.js";
+import { BASE_URL, createForm, usersList } from "./variables.js";
 
 export const showUserList = function () {
   getUsers(BASE_URL).then((data) => {
@@ -26,8 +26,8 @@ const getUserName = function (event) {
 };
 
 export const showUserDetails = function (data, event) {
-  const userArray = data.data;
-  userArray.forEach((userObject) => {
+  const usersArray = data.data;
+  usersArray.forEach((userObject) => {
     if (userObject.name === getUserName(event)) {
       renderUserData(userObject);
     }
@@ -43,8 +43,8 @@ export const getUserNameForEdit = function (event, className) {
 };
 
 export const getUserIDForEdit = function (data, event) {
-  const userArray = data.data;
-  for (const user of userArray) {
+  const usersArray = data.data;
+  for (const user of usersArray) {
     if (user.name === getUserNameForEdit(event, "current-user-name")) {
       return user.id;
     }
@@ -54,8 +54,8 @@ export const getUserIDForEdit = function (data, event) {
 export const deleteUser = function (data, event) {
   const target = event.target;
   const container = target.parentElement.parentElement.parentElement;
-  const userArray = data.data;
-  userArray.forEach((userObject) => {
+  const usersArray = data.data;
+  usersArray.forEach((userObject) => {
     if (getUserName(event) === userObject.name) {
       deleteUserREST(BASE_URL, userObject.id);
     }

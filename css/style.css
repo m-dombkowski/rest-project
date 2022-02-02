@@ -32,7 +32,8 @@
   border: none;
 }
 
-.details-buttons {
+.details-buttons,
+.posts {
   display: flex;
   justify-content: space-between;
 }
@@ -80,11 +81,13 @@
   display: none;
 }
 
-.create-form div {
+.create-form div,
+.edit-form div {
   margin-bottom: 10px;
 }
 
-.create-form {
+.create-form,
+.edit-form {
   padding: 20px 40px;
   border: 1px solid #000;
   display: inline-block;

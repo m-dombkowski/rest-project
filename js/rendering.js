@@ -1,12 +1,12 @@
 import { getUserNameForEdit } from "./users.js";
-import { userCreate, userDetails, usersList } from "./variables.js";
+import { userForms, userDetails, usersList } from "./variables.js";
 
-const renderUser = function (data) {
+const renderUser = function (userObject) {
   let html = `
     <li class="user">
-        <h2 class="user-name">${data.name}</h2>
+        <h2 class="user-name">${userObject.name}</h2>
         <div class="user-buttons">
-          <button class="user-details" title="Check user details">
+          <button class="user-details id=${userObject.id}" title="Check user details">
             <img class="details-icon" src="../svg/search-svg.svg"/>
           </button>
           <button class="delete-user" title="Delete user">
@@ -36,9 +36,11 @@ export const renderUserData = function (data) {
     <p class="active-user-email">E-mail: ${data.email}</p>
     <p class="active-user-gender">Gender: ${data.gender}</p>
     <p class="active-user-status">Status: ${data.status}</p>
-  </div>
-      
-  `;
+    <div class="posts">
+      <button class="add-post">Add Post</button>
+      <button class="get-user-posts">Get User Posts</button>
+    </div>
+  </div>  `;
 
   userDetails.insertAdjacentHTML("afterbegin", html);
 };
@@ -75,19 +77,17 @@ export const renderCreateUser = function () {
     </form>
   `;
 
-  userCreate.insertAdjacentHTML("afterbegin", html);
+  userForms.insertAdjacentHTML("afterbegin", html);
 };
 
 export const renderEditUser = function (event) {
   let html = `
-  <form class="create-form">
-    
+  <form class="edit-form">
       <p class="edit-user-title">Current user: </p> 
       <h2 class="current-user-name">${getUserNameForEdit(
         event,
         "active-user-name"
-      )}</h2>   
-     
+      )}</h2>    
     <div class="name-input">
       <label for="name">Name: </label></br>
       <input type="text" id="edit-name" name="name" required size="10"> 
@@ -118,5 +118,5 @@ export const renderEditUser = function (event) {
   </form>
   `;
 
-  userCreate.insertAdjacentHTML("afterbegin", html);
+  userForms.insertAdjacentHTML("afterbegin", html);
 };

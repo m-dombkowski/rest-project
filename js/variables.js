@@ -11,9 +11,13 @@ export const btn = document.querySelector(".btn");
 export const deleteU = document.querySelector(".btn-deleteU");
 export const btn1 = document.querySelector(".btn1");
 export const btn2 = document.querySelector(".btn2");
+export const btn3 = document.querySelector(".btn3");
 export const BASE_URL = `https://gorest.co.in/public/v1`;
 
 export const usersList = document.querySelector(".users-list");
 export const userDetails = document.querySelector(".user-details-container");
-export const userCreate = document.querySelector(".user-creation-container");
-export const form = document.querySelector(".create-form");
+export const userForms = document.querySelector(".user-forms-container");
+export const createForm = document.querySelector(".create-form");
+export const editForm = document.querySelector(".edit-form");
+export const main = document.querySelector(".main");
+export const close = document.getElementsByClassName("close-icon");
