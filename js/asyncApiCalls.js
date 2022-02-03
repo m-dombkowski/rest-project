@@ -43,8 +43,8 @@ export const editUser = async function (url, id, userObject) {
   return response.json();
 };
 
-export const getUserPosts = async function (url) {
-  const response = await fetch(`${url}/users/3566/posts`, {
+export const getUserPosts = async function (url, userID) {
+  const response = await fetch(`${url}/users/${userID}/posts`, {
     method: "GET",
     headers: headers,
   });
@@ -59,15 +59,11 @@ export const getUserComments = async function (url) {
   return response.json();
 };
 
-export const createUserPost = async function (url) {
-  const response = await fetch(`${url}/users/3566/posts`, {
+export const createUserPost = async function (url, userID, userPostObject) {
+  const response = await fetch(`${url}/users/${userID}/posts`, {
     method: "POST",
     headers: headers,
-    body: JSON.stringify({
-      name: "hevra",
-      title: "Post title",
-      body: "Post body",
-    }),
+    body: JSON.stringify(userPostObject),
   });
   return response.json();
 };

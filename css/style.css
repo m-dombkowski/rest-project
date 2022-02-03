@@ -84,7 +84,8 @@
 /*  -------------------- FORMS MUTUAL ------------------- */
 
 .create-form div,
-.edit-form div {
+.edit-form div,
+.add-post-form div {
   margin-bottom: 10px;
 }
 
@@ -107,7 +108,8 @@
   display: none;
 }
 
-.go-back {
+.go-back,
+.go-back-to-details {
   font-size: 18px;
   padding: 9px 18px;
   border: none;
@@ -120,11 +122,13 @@
   transition: all 0.5s ease;
 }
 
-.go-back:hover {
+.go-back:hover,
+.go-back-to-details:hover {
   padding-left: 36px;
 }
 
-.go-back::before {
+.go-back::before,
+.go-back-to-details::before {
   content: "←";
   position: absolute;
   left: -30%;
@@ -133,7 +137,8 @@
   transition: all 0.5s ease;
 }
 
-.go-back:hover::before {
+.go-back:hover::before,
+.go-back-to-details:hover::before {
   left: 8%;
   top: 20%;
   opacity: 1;

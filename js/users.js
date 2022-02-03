@@ -1,4 +1,4 @@
-import { deleteUserREST, getUsers } from "./asyncApiCalls.js";
+import { createUserPost, deleteUserREST, getUsers } from "./asyncApiCalls.js";
 import { renderUserData, printUsers } from "./rendering.js";
 import { capitalizeFirstLetters } from "./styleChanges.js";
 import { BASE_URL, createForm, usersList } from "./variables.js";
@@ -42,10 +42,23 @@ export const getUserNameForEdit = function (event, className) {
   return loopForGettingUserName(children, className);
 };
 
-export const getUserIDForEdit = function (data, event) {
+export const getUserIDForEdit = function (data, event, className) {
   const usersArray = data.data;
   for (const user of usersArray) {
-    if (user.name === getUserNameForEdit(event, "current-user-name")) {
+    if (user.name === getUserNameForEdit(event, className)) {
+      return user.id;
+    }
+  }
+};
+
+export const getUserIDForAddPost = function (data) {
+  const titleString = document.querySelector(".form-title").textContent;
+  const userName = titleString.split(" ").slice(3).join(" ");
+  const usersArray = data.data;
+  console.log(usersArray);
+  for (const user of usersArray) {
+    if (user.name === userName) {
+      // console.log(user.id);
       return user.id;
     }
   }
@@ -74,5 +87,17 @@ export const createUserObject = function (className) {
     email: email,
     gender: gender,
     status: status,
+  };
+};
+
+export const createUserPostObject = function () {
+  const titleString = document.querySelector(".form-title").textContent;
+  const userName = titleString.split(" ").slice(3).join(" ");
+  const title = document.querySelector(".add-post-title-input").value;
+  const message = document.querySelector(".add-post-message-input").value;
+  return {
+    name: userName,
+    title: title,
+    body: message,
   };
 };

@@ -1,5 +1,11 @@
-import { getUserNameForEdit } from "./users.js";
-import { createForm, userForms } from "./variables.js";
+import { createUserPost, getUsers } from "./asyncApiCalls.js";
+import { addHide, removeHide } from "./styleChanges.js";
+import {
+  createUserPostObject,
+  getUserIDForAddPost,
+  getUserNameForEdit,
+} from "./users.js";
+import { BASE_URL, userDetails, userForms } from "./variables.js";
 
 const createFormElement = function (
   type,
@@ -20,11 +26,11 @@ const createFormElement = function (
   return element;
 };
 
-export const buildAddPostContainer = function (event) {
+export const buildAddPostContainer = function (event, data) {
   const mainContainer = createFormElement("div", ["add-post-form-container"]);
 
   const formHeader = buildFormHeader(event);
-  const form = buildForm();
+  const form = buildForm(data);
 
   mainContainer.appendChild(formHeader);
   mainContainer.appendChild(form);
@@ -33,7 +39,18 @@ export const buildAddPostContainer = function (event) {
 };
 
 const buildFormHeader = function (event) {
-  const goBackButton = createFormElement("button", ["go-back"]);
+  const goBackButton = createFormElement(
+    "button",
+    ["go-back-to-details"],
+    {},
+    "Go Back"
+  );
+
+  goBackButton.addEventListener("click", function () {
+    userForms.innerHTML = "";
+    addHide(userForms);
+    removeHide(userDetails);
+  });
 
   const title = createFormElement(
     "h1",
@@ -70,6 +87,7 @@ const buildTitleInput = function () {
     {
       placeholder: "Your post title",
       type: "text",
+      required: true,
     },
     ""
   );
@@ -87,6 +105,7 @@ const buildMessageInput = function () {
     {
       placeholder: "Place for your message",
       type: "text",
+      required: true,
     },
     ""
   );
@@ -108,7 +127,17 @@ const formButtons = function () {
 
   sendButton.addEventListener("click", function (event) {
     event.preventDefault();
-    console.log("test");
+    getUsers(BASE_URL).then((data) => {
+      createUserPost(
+        BASE_URL,
+        getUserIDForAddPost(data),
+        createUserPostObject()
+      ).then(() => {
+        userForms.textContent = "";
+        removeHide(userDetails);
+        addHide(userForms);
+      });
+    });
   });
 
   const clearButton = createFormElement("input", ["clear-form-button"], {

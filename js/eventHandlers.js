@@ -1,4 +1,9 @@
-import { createUser, editUser, getUsers } from "./asyncApiCalls.js";
+import {
+  createUser,
+  editUser,
+  getUserPosts,
+  getUsers,
+} from "./asyncApiCalls.js";
 import { buildAddPostContainer } from "./createPostForm.js";
 import { renderEditUser } from "./rendering.js";
 
@@ -53,6 +58,18 @@ export const userDetailsHandler = function (event) {
     addHide(userDetails);
     buildAddPostContainer(event);
   }
+
+  if (selectingTarget(event).contains("get-user-posts")) {
+    console.log("test");
+    getUsers(BASE_URL).then((data) => {
+      getUserPosts(
+        BASE_URL,
+        getUserIDForEdit(data, event, "active-user-name")
+      ).then((data) => {
+        console.log(data);
+      });
+    });
+  }
 };
 
 export const userFormsHandler = function (event) {
@@ -63,7 +80,6 @@ export const userFormsHandler = function (event) {
       userForms.innerHTML = "";
       addHide(userForms);
       removeHide(usersList);
-      addHide(createForm);
     });
   }
 
@@ -72,13 +88,12 @@ export const userFormsHandler = function (event) {
     getUsers(BASE_URL).then((data) => {
       editUser(
         BASE_URL,
-        getUserIDForEdit(data, event),
+        getUserIDForEdit(data, event, "current-user-name"),
         createUserObject("edit")
-      ).then((data) => {
-        createForm.textContent = "";
+      ).then(() => {
+        userForms.textContent = "";
         showUserList();
         removeHide(usersList);
-        console.log(data);
       });
     });
   }
