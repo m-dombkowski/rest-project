@@ -1,7 +1,3 @@
-export const toggleHide = function (parentElement) {
-  parentElement.classList.toggle("hide");
-};
-
 export const addHide = function (parentElement) {
   parentElement.classList.add("hide");
 };

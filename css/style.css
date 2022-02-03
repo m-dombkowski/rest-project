@@ -1,3 +1,5 @@
+/*  ------------------ MAIN USERS LIST ----------------- */
+
 .user-list-section {
   margin: 0 20px;
 }
@@ -31,6 +33,8 @@
   background: none;
   border: none;
 }
+
+/*  ---------------------- DETAILS --------------------- */
 
 .details-buttons,
 .posts {
@@ -77,9 +81,7 @@
   font-size: 30px;
 }
 
-.hide {
-  display: none;
-}
+/*  -------------------- FORMS MUTUAL ------------------- */
 
 .create-form div,
 .edit-form div {
@@ -87,13 +89,25 @@
 }
 
 .create-form,
-.edit-form {
+.edit-form,
+.add-post-form-container {
   padding: 20px 40px;
   border: 1px solid #000;
   display: inline-block;
 }
+/*  --------------------- EDIT FORM -------------------- */
 
-.go-back-to-main {
+/*  -------------------- CREATE FORM --------------------*/
+
+/*  ---------------------- ADD POST ---------------------*/
+
+/*  ---------------------- GENERAL --------------------- */
+
+.hide {
+  display: none;
+}
+
+.go-back {
   font-size: 18px;
   padding: 9px 18px;
   border: none;
@@ -106,11 +120,11 @@
   transition: all 0.5s ease;
 }
 
-.go-back-to-main:hover {
+.go-back:hover {
   padding-left: 36px;
 }
 
-.go-back-to-main::before {
+.go-back::before {
   content: "←";
   position: absolute;
   left: -30%;
@@ -119,7 +133,7 @@
   transition: all 0.5s ease;
 }
 
-.go-back-to-main:hover::before {
+.go-back:hover::before {
   left: 8%;
   top: 20%;
   opacity: 1;

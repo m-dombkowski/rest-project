@@ -30,7 +30,7 @@ export const renderUserData = function (data) {
   <div class="detailed-user-info">
     <div class="details-buttons">
       <button class="edit-user">Edit user info</button>
-      <button class="go-back-to-main">Go Back</button>
+      <button class="go-back">Go Back</button>
     </div>
     <h2 class="active-user-name">${data.name}</h2>
     <p class="active-user-email">E-mail: ${data.email}</p>
@@ -47,7 +47,7 @@ export const renderUserData = function (data) {
 
 export const renderCreateUser = function () {
   let html = `
-  <button class="go-back-to-main">Go Back</button>
+  <button class="go-back">Go Back</button>
     <form class="create-form">  
       <div class="name-input">
         <label for="name">Name: </label></br>

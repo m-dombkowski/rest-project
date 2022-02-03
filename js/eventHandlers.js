@@ -1,4 +1,5 @@
 import { createUser, editUser, getUsers } from "./asyncApiCalls.js";
+import { buildAddPostContainer } from "./createPostForm.js";
 import { renderEditUser } from "./rendering.js";
 
 import { addHide, removeHide } from "./styleChanges.js";
@@ -48,6 +49,9 @@ export const userDetailsHandler = function (event) {
 
   if (selectingTarget(event).contains("add-post")) {
     event.preventDefault();
+    removeHide(userForms);
+    addHide(userDetails);
+    buildAddPostContainer(event);
   }
 };
 
@@ -81,7 +85,7 @@ export const userFormsHandler = function (event) {
 };
 
 export const mutualHandler = function (event) {
-  if (selectingTarget(event).contains("go-back-to-main")) {
+  if (selectingTarget(event).contains("go-back")) {
     userDetails.innerHTML = "";
     userForms.innerHTML = "";
     showUserList();

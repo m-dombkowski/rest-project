@@ -9,6 +9,7 @@ import {
   usersList,
 } from "./variables.js";
 import {
+  mutualHandler,
   userDetailsHandler,
   userFormsHandler,
   userListHandler,
@@ -43,4 +44,8 @@ usersList.addEventListener("click", function (event) {
 
 userDetails.addEventListener("click", function (event) {
   userDetailsHandler(event);
+});
+
+window.addEventListener("click", function (event) {
+  mutualHandler(event);
 });
