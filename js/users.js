@@ -4,7 +4,9 @@ import { capitalizeFirstLetters } from "./styleChanges.js";
 import { BASE_URL, createForm, usersList } from "./variables.js";
 
 export const showUserList = function () {
+  spinner.removeAttribute("hidden");
   getUsers(BASE_URL).then((data) => {
+    spinner.setAttribute("hidden", "");
     usersList.innerHTML = "";
     printUsers(data);
   });

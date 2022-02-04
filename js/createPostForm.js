@@ -1,4 +1,5 @@
 import { createUserPost, getUsers } from "./asyncApiCalls.js";
+import { hideSpinner, showSpinner } from "./script.js";
 import { addHide, removeHide } from "./styleChanges.js";
 import {
   createUserPostObject,
@@ -7,7 +8,7 @@ import {
 } from "./users.js";
 import { BASE_URL, userDetails, userForms } from "./variables.js";
 
-const createFormElement = function (
+export const createHtmlElement = function (
   type,
   classList = [],
   attributes = {},
@@ -27,7 +28,7 @@ const createFormElement = function (
 };
 
 export const buildAddPostContainer = function (event, data) {
-  const mainContainer = createFormElement("div", ["add-post-form-container"]);
+  const mainContainer = createHtmlElement("div", ["add-post-form-container"]);
 
   const formHeader = buildFormHeader(event);
   const form = buildForm(data);
@@ -39,7 +40,7 @@ export const buildAddPostContainer = function (event, data) {
 };
 
 const buildFormHeader = function (event) {
-  const goBackButton = createFormElement(
+  const goBackButton = createHtmlElement(
     "button",
     ["go-back-to-details"],
     {},
@@ -52,14 +53,14 @@ const buildFormHeader = function (event) {
     removeHide(userDetails);
   });
 
-  const title = createFormElement(
+  const title = createHtmlElement(
     "h1",
     ["form-title"],
     {},
     `Add post as ${getUserNameForEdit(event, "active-user-name")}`
   );
 
-  const titleContainer = createFormElement("div", ["form-title-container"]);
+  const titleContainer = createHtmlElement("div", ["form-title-container"]);
 
   titleContainer.appendChild(goBackButton);
   titleContainer.appendChild(title);
@@ -68,7 +69,7 @@ const buildFormHeader = function (event) {
 };
 
 const buildForm = function () {
-  const form = createFormElement("form", ["add-post-form"]);
+  const form = createHtmlElement("form", ["add-post-form"]);
   const title = buildTitleInput();
   const message = buildMessageInput();
   const buttons = formButtons();
@@ -81,7 +82,7 @@ const buildForm = function () {
 };
 
 const buildTitleInput = function () {
-  const titleInput = createFormElement(
+  const titleInput = createHtmlElement(
     "input",
     ["add-post-title-input"],
     {
@@ -91,7 +92,7 @@ const buildTitleInput = function () {
     },
     ""
   );
-  const titleContainer = createFormElement("div", ["add-post-title-container"]);
+  const titleContainer = createHtmlElement("div", ["add-post-title-container"]);
 
   titleContainer.appendChild(titleInput);
 
@@ -99,7 +100,7 @@ const buildTitleInput = function () {
 };
 
 const buildMessageInput = function () {
-  const messageInput = createFormElement(
+  const messageInput = createHtmlElement(
     "input",
     ["add-post-message-input"],
     {
@@ -110,7 +111,7 @@ const buildMessageInput = function () {
     ""
   );
 
-  const messageContainer = createFormElement("div", [
+  const messageContainer = createHtmlElement("div", [
     "add-post-message-container",
   ]);
 
@@ -120,19 +121,21 @@ const buildMessageInput = function () {
 };
 
 const formButtons = function () {
-  const sendButton = createFormElement("input", ["submit-post-button"], {
+  const sendButton = createHtmlElement("input", ["submit-post-button"], {
     type: "submit",
     value: "Submit",
   });
 
   sendButton.addEventListener("click", function (event) {
     event.preventDefault();
+    showSpinner();
     getUsers(BASE_URL).then((data) => {
       createUserPost(
         BASE_URL,
         getUserIDForAddPost(data),
         createUserPostObject()
       ).then(() => {
+        hideSpinner();
         userForms.textContent = "";
         removeHide(userDetails);
         addHide(userForms);
@@ -140,12 +143,12 @@ const formButtons = function () {
     });
   });
 
-  const clearButton = createFormElement("input", ["clear-form-button"], {
+  const clearButton = createHtmlElement("input", ["clear-form-button"], {
     type: "reset",
     value: "Clear Form",
   });
 
-  const buttonsContainer = createFormElement("div", ["form-buttons-container"]);
+  const buttonsContainer = createHtmlElement("div", ["form-buttons-container"]);
 
   buttonsContainer.appendChild(sendButton);
   buttonsContainer.appendChild(clearButton);

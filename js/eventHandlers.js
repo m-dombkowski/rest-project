@@ -6,6 +6,7 @@ import {
 } from "./asyncApiCalls.js";
 import { buildAddPostContainer } from "./createPostForm.js";
 import { renderEditUser } from "./rendering.js";
+import { hideSpinner, showSpinner } from "./script.js";
 
 import { addHide, removeHide } from "./styleChanges.js";
 import {
@@ -17,7 +18,7 @@ import {
 } from "./users.js";
 import {
   BASE_URL,
-  createForm,
+  spinner,
   userForms,
   userDetails,
   usersList,
@@ -30,9 +31,12 @@ const selectingTarget = function (event) {
 
 export const userListHandler = function (event) {
   if (selectingTarget(event).contains("details-icon")) {
+    addHide(usersList);
+    showSpinner();
     getUsers(BASE_URL).then((data) => {
+      spinner.setAttribute("hidden", "");
       showUserDetails(data, event);
-      addHide(usersList);
+      hideSpinner();
       addHide(userForms);
       removeHide(userDetails);
     });
@@ -75,7 +79,9 @@ export const userDetailsHandler = function (event) {
 export const userFormsHandler = function (event) {
   if (selectingTarget(event).contains("submit")) {
     event.preventDefault();
+    showSpinner();
     createUser(BASE_URL, createUserObject("create")).then(() => {
+      hideSpinner();
       showUserList();
       userForms.innerHTML = "";
       addHide(userForms);
@@ -85,12 +91,14 @@ export const userFormsHandler = function (event) {
 
   if (selectingTarget(event).contains("edit-submit")) {
     event.preventDefault();
+    showSpinner();
     getUsers(BASE_URL).then((data) => {
       editUser(
         BASE_URL,
         getUserIDForEdit(data, event, "current-user-name"),
         createUserObject("edit")
       ).then(() => {
+        hideSpinner();
         userForms.textContent = "";
         showUserList();
         removeHide(usersList);

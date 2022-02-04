@@ -5,6 +5,7 @@ export const getUsers = async function (url) {
     method: "GET",
     headers: headers,
   });
+  // resolvingResponseStatus(response);
   return response.json();
 };
 
@@ -15,6 +16,7 @@ export const createUser = async function (url, userObject) {
     body: JSON.stringify(userObject),
   });
 
+  resolvingCreateUserResponseStatus(response);
   return response.json();
 };
 
@@ -31,7 +33,7 @@ export const getToDos = async function (url) {
     headers: headers,
   });
 
-  return response.json();
+  resolvingResponseStatus(response);
 };
 
 export const editUser = async function (url, id, userObject) {
@@ -40,7 +42,7 @@ export const editUser = async function (url, id, userObject) {
     headers: headers,
     body: JSON.stringify(userObject),
   });
-  return response.json();
+  resolvingResponseStatus(response);
 };
 
 export const getUserPosts = async function (url, userID) {
@@ -48,7 +50,7 @@ export const getUserPosts = async function (url, userID) {
     method: "GET",
     headers: headers,
   });
-  return response.json();
+  resolvingResponseStatus(response);
 };
 
 export const getUserComments = async function (url) {
@@ -56,7 +58,7 @@ export const getUserComments = async function (url) {
     method: "GET",
     headers: headers,
   });
-  return response.json();
+  resolvingResponseStatus(response);
 };
 
 export const createUserPost = async function (url, userID, userPostObject) {
@@ -65,7 +67,7 @@ export const createUserPost = async function (url, userID, userPostObject) {
     headers: headers,
     body: JSON.stringify(userPostObject),
   });
-  return response.json();
+  resolvingResponseStatus(response);
 };
 
 export const createUserComment = async function (url) {
@@ -78,8 +80,14 @@ export const createUserComment = async function (url) {
       body: "kapusta",
     }),
   });
-  return response.json();
+  resolvingResponseStatus(response);
 };
+
+// const resolveCreateUserResponseStatus = function (response) {
+//   if (response.status === 200) {
+//     console.log("nice");
+//   }
+// };
 
 // export const getUserByID = async function (url, id) {
 //   const response = await fetch(`${url}/users/${id}`, {

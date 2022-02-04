@@ -1,5 +1,6 @@
+import { createHtmlElement } from "./createPostForm.js";
 import { getUserNameForEdit } from "./users.js";
-import { userForms, userDetails, usersList } from "./variables.js";
+import { userForms, userDetails, usersList, createForm } from "./variables.js";
 
 const renderUser = function (userObject) {
   let html = `

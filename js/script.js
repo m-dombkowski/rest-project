@@ -49,3 +49,11 @@ userDetails.addEventListener("click", function (event) {
 window.addEventListener("click", function (event) {
   mutualHandler(event);
 });
+
+export const showSpinner = function () {
+  spinner.removeAttribute("hidden");
+};
+
+export const hideSpinner = function () {
+  spinner.setAttribute("hidden", "");
+};

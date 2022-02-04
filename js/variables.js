@@ -13,6 +13,7 @@ export const btn1 = document.querySelector(".btn1");
 export const btn2 = document.querySelector(".btn2");
 export const btn3 = document.querySelector(".btn3");
 export const BASE_URL = `https://gorest.co.in/public/v1`;
+export const spinner = document.querySelector("#spinner");
 
 export const usersList = document.querySelector(".users-list");
 export const userDetails = document.querySelector(".user-details-container");
