@@ -1,23 +1,21 @@
-import { createUserPost, deleteUserREST, getUsers } from "./asyncApiCalls.js";
-import { renderUserData, printUsers } from "./rendering.js";
+import { deleteUserREST, getUsers } from "./async/asyncApiCalls.js";
+import {
+  loopForGettingUserName,
+  loopForGettingUserID,
+  tripleParent,
+} from "./generalFunctions/general.js";
+import { printUsers, renderUserDetails } from "./rendering.js";
 import { capitalizeFirstLetters } from "./styleChanges.js";
-import { BASE_URL, createForm, usersList } from "./variables.js";
+import { BASE_URL, usersList } from "./variables.js";
 
 export const showUserList = function () {
   spinner.removeAttribute("hidden");
   getUsers(BASE_URL).then((data) => {
+    console.log(data);
     spinner.setAttribute("hidden", "");
     usersList.innerHTML = "";
     printUsers(data);
   });
-};
-
-const loopForGettingUserName = function (element, className) {
-  for (let i = 0; i < element.length; i++) {
-    if (element[i].classList.contains(className)) {
-      return element[i].textContent;
-    }
-  }
 };
 
 const getUserName = function (event) {
@@ -29,11 +27,16 @@ const getUserName = function (event) {
 
 export const showUserDetails = function (data, event) {
   const usersArray = data.data;
+
   usersArray.forEach((userObject) => {
-    if (userObject.name === getUserName(event)) {
-      renderUserData(userObject);
+    if (userObject.id == getUserIDForDetails(event)) {
+      renderUserDetails(userObject);
     }
   });
+};
+
+export const getUserIDForDetails = function (event) {
+  return loopForGettingUserID(tripleParent(event), "user-id");
 };
 
 export const getUserNameForEdit = function (event, className) {
@@ -47,6 +50,7 @@ export const getUserNameForEdit = function (event, className) {
 export const getUserIDForEdit = function (data, event, className) {
   const usersArray = data.data;
   for (const user of usersArray) {
+    console.log(user.id);
     if (user.name === getUserNameForEdit(event, className)) {
       return user.id;
     }
@@ -60,7 +64,6 @@ export const getUserIDForAddPost = function (data) {
   console.log(usersArray);
   for (const user of usersArray) {
     if (user.name === userName) {
-      // console.log(user.id);
       return user.id;
     }
   }

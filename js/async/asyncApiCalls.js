@@ -1,11 +1,11 @@
-import { headers } from "./variables.js";
+import { headers } from "../variables.js";
+import { resolveResponse } from "./resolvingResponse.js";
 
 export const getUsers = async function (url) {
   const response = await fetch(`${url}/users`, {
     method: "GET",
     headers: headers,
   });
-  // resolvingResponseStatus(response);
   return response.json();
 };
 
@@ -16,24 +16,24 @@ export const createUser = async function (url, userObject) {
     body: JSON.stringify(userObject),
   });
 
-  resolvingCreateUserResponseStatus(response);
+  resolveResponse(
+    response,
+    "User Created Successfully!",
+    "Couldn't create user, please check information provided and try again (Remember, there can't be more than 1 user with the same email address, and all informations must be provided!)"
+  );
   return response.json();
 };
 
 export const deleteUserREST = async function (url, id) {
-  await fetch(`${url}/users/${id}`, {
+  const response = await fetch(`${url}/users/${id}`, {
     method: "DELETE",
     headers: headers,
   });
-};
-
-export const getToDos = async function (url) {
-  const response = await fetch(`${url}/todos`, {
-    method: "GET",
-    headers: headers,
-  });
-
-  resolvingResponseStatus(response);
+  resolveResponse(
+    response,
+    "User deleted successfully",
+    "Couldn't delete user, please try again"
+  );
 };
 
 export const editUser = async function (url, id, userObject) {
@@ -42,23 +42,27 @@ export const editUser = async function (url, id, userObject) {
     headers: headers,
     body: JSON.stringify(userObject),
   });
-  resolvingResponseStatus(response);
+  resolveResponse(
+    response,
+    "User details edited successfully!",
+    "There was an error, please check information provided and try again (Remember, there can't be more than 1 user with the same email address!)"
+  );
+  return response.json();
 };
-
 export const getUserPosts = async function (url, userID) {
   const response = await fetch(`${url}/users/${userID}/posts`, {
     method: "GET",
     headers: headers,
   });
-  resolvingResponseStatus(response);
+  return response.json();
 };
 
-export const getUserComments = async function (url) {
-  const response = await fetch(`${url}/posts/1236/comments`, {
+export const getUserComments = async function (url, userID) {
+  const response = await fetch(`${url}/posts/${userID}/comments`, {
     method: "GET",
     headers: headers,
   });
-  resolvingResponseStatus(response);
+  return response.json();
 };
 
 export const createUserPost = async function (url, userID, userPostObject) {
@@ -67,11 +71,16 @@ export const createUserPost = async function (url, userID, userPostObject) {
     headers: headers,
     body: JSON.stringify(userPostObject),
   });
-  resolvingResponseStatus(response);
+  resolveResponse(
+    response,
+    "Post created!",
+    "There was an error, please try again."
+  );
+  return response.json();
 };
 
-export const createUserComment = async function (url) {
-  const response = await fetch(`${url}/posts/1236/comments`, {
+export const createUserComment = async function (url, userID) {
+  const response = await fetch(`${url}/posts/${userID}/comments`, {
     method: "POST",
     headers: headers,
     body: JSON.stringify({
@@ -80,14 +89,13 @@ export const createUserComment = async function (url) {
       body: "kapusta",
     }),
   });
-  resolvingResponseStatus(response);
+  resolveResponse(
+    response,
+    "Comment added!",
+    "There was an error, please try again."
+  );
+  return response.json();
 };
-
-// const resolveCreateUserResponseStatus = function (response) {
-//   if (response.status === 200) {
-//     console.log("nice");
-//   }
-// };
 
 // export const getUserByID = async function (url, id) {
 //   const response = await fetch(`${url}/users/${id}`, {

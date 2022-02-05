@@ -1,22 +1,11 @@
-import {
-  BASE_URL,
-  btn,
-  btn1,
-  btn2,
-  btn3,
-  userForms,
-  userDetails,
-  usersList,
-} from "./variables.js";
-import {
-  mutualHandler,
-  userDetailsHandler,
-  userFormsHandler,
-  userListHandler,
-} from "./eventHandlers.js";
+import { btn, btn2, userForms, userDetails, usersList } from "./variables.js";
 import { showUserList } from "./users.js";
 import { renderCreateUser } from "./rendering.js";
 import { addHide, removeHide } from "./styleChanges.js";
+import { userFormsHandler } from "./eventHandlers/userFormsHandlers.js";
+import { userListHandler } from "./eventHandlers/userListHandlers.js";
+import { userDetailsHandler } from "./eventHandlers/userDetailsHandlers.js";
+import { mutualHandler } from "./eventHandlers/mutualAndGeneralHandlers.js";
 
 btn.addEventListener("click", function () {
   usersList.innerHTML = " ";
@@ -49,11 +38,3 @@ userDetails.addEventListener("click", function (event) {
 window.addEventListener("click", function (event) {
   mutualHandler(event);
 });
-
-export const showSpinner = function () {
-  spinner.removeAttribute("hidden");
-};
-
-export const hideSpinner = function () {
-  spinner.setAttribute("hidden", "");
-};

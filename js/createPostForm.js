@@ -1,6 +1,11 @@
-import { createUserPost, getUsers } from "./asyncApiCalls.js";
-import { hideSpinner, showSpinner } from "./script.js";
-import { addHide, removeHide } from "./styleChanges.js";
+import { createUserPost, getUsers } from "./async/asyncApiCalls.js";
+
+import {
+  addHide,
+  removeHide,
+  hideSpinner,
+  showSpinner,
+} from "./styleChanges.js";
 import {
   createUserPostObject,
   getUserIDForAddPost,

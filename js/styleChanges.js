@@ -13,3 +13,11 @@ export const capitalizeFirstLetters = function (string) {
   }
   return array.join(" ");
 };
+
+export const showSpinner = function () {
+  spinner.removeAttribute("hidden");
+};
+
+export const hideSpinner = function () {
+  spinner.setAttribute("hidden", "");
+};

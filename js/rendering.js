@@ -1,11 +1,11 @@
-import { createHtmlElement } from "./createPostForm.js";
 import { getUserNameForEdit } from "./users.js";
-import { userForms, userDetails, usersList, createForm } from "./variables.js";
+import { userForms, userDetails, usersList } from "./variables.js";
 
 const renderUser = function (userObject) {
   let html = `
     <li class="user">
         <h2 class="user-name">${userObject.name}</h2>
+        <div class=user-id id=${userObject.id}></div>
         <div class="user-buttons">
           <button class="user-details id=${userObject.id}" title="Check user details">
             <img class="details-icon" src="../svg/search-svg.svg"/>
@@ -26,7 +26,7 @@ export const printUsers = function (data) {
   }
 };
 
-export const renderUserData = function (data) {
+export const renderUserDetails = function (data) {
   let html = `
   <div class="detailed-user-info">
     <div class="details-buttons">
