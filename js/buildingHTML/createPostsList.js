@@ -1,5 +1,6 @@
 import { postList } from "../generalFunctions/variables.js";
 import { getPostTitle } from "../users/gettingUserData.js";
+import { buildAddCommentForm } from "./creteAddCommentForm.js";
 import { createHtmlElement } from "./rendering.js";
 
 export const buildPostList = function (data) {
@@ -48,6 +49,7 @@ const buildAddCommentButton = function (data) {
   button.addEventListener("click", function (event) {
     if (getPostTitle(event) === data.title) {
       console.log(data);
+      buildAddCommentForm();
     }
   });
 
