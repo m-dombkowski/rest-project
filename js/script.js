@@ -1,11 +1,18 @@
-import { btn, btn2, userForms, userDetails, usersList } from "./variables.js";
-import { showUserList } from "./users.js";
+import {
+  btn,
+  btn2,
+  userForms,
+  userDetails,
+  usersList,
+} from "./generalFunctions/variables.js";
+
 import { renderCreateUser } from "./building/rendering.js";
-import { addHide, removeHide } from "./styleChanges.js";
+import { addHide, removeHide } from "./generalFunctions/styleChanges.js";
 import { userFormsHandler } from "./eventHandlers/userFormsHandlers.js";
 import { userListHandler } from "./eventHandlers/userListHandlers.js";
 import { userDetailsHandler } from "./eventHandlers/userDetailsHandlers.js";
 import { mutualHandler } from "./eventHandlers/mutualAndGeneralHandlers.js";
+import { showUserList } from "./users/showingUserData.js";
 
 btn.addEventListener("click", function () {
   usersList.innerHTML = " ";

@@ -5,13 +5,17 @@ import {
   removeHide,
   hideSpinner,
   showSpinner,
-} from "../styleChanges.js";
+} from "../generalFunctions/styleChanges.js";
+import { createUserPostObject } from "../users/creatingUser.js";
 import {
-  createUserPostObject,
   getUserIDForAddPost,
   getUserNameForEdit,
-} from "../users.js";
-import { BASE_URL, userDetails, userForms } from "../variables.js";
+} from "../users/gettingUserData.js";
+import {
+  BASE_URL,
+  userDetails,
+  userForms,
+} from "../generalFunctions/variables.js";
 
 export const createHtmlElement = function (
   type,

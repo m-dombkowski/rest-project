@@ -5,9 +5,16 @@ import {
   hideSpinner,
   removeHide,
   showSpinner,
-} from "../styleChanges.js";
-import { deleteUser, showUserDetails } from "../users.js";
-import { BASE_URL, usersList, userForms, userDetails } from "../variables.js";
+} from "../generalFunctions/styleChanges.js";
+import { showUserDetails } from "../users/showingUserData.js";
+import { deleteUser } from "../users/deletingUser.js";
+
+import {
+  BASE_URL,
+  usersList,
+  userForms,
+  userDetails,
+} from "../generalFunctions/variables.js";
 
 export const userListHandler = function (event) {
   if (selectingTarget(event).contains("details-icon")) {

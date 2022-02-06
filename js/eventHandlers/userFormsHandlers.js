@@ -5,9 +5,16 @@ import {
   hideSpinner,
   removeHide,
   showSpinner,
-} from "../styleChanges.js";
-import { createUserObject, getUserIDForEdit, showUserList } from "../users.js";
-import { BASE_URL, userForms, usersList } from "../variables.js";
+} from "../generalFunctions/styleChanges.js";
+import { createUserObject } from "../users/creatingUser.js";
+import { getUserIDForEdit } from "../users/gettingUserData.js";
+import { showUserList } from "../users/showingUserData.js";
+
+import {
+  BASE_URL,
+  userForms,
+  usersList,
+} from "../generalFunctions/variables.js";
 
 export const userFormsHandler = function (event) {
   if (selectingTarget(event).contains("submit")) {

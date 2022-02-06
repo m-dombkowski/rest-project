@@ -1,5 +1,9 @@
-import { getUserNameForEdit } from "../users.js";
-import { userForms, userDetails, usersList } from "../variables.js";
+import { getUserNameForEdit } from "../users/gettingUserData.js";
+import {
+  userForms,
+  userDetails,
+  usersList,
+} from "../generalFunctions/variables.js";
 
 const renderUser = function (userObject) {
   let html = `

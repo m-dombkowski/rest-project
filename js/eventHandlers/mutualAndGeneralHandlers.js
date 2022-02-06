@@ -1,7 +1,16 @@
 import { selectingTarget } from "../generalFunctions/general.js";
-import { addHide, hideSpinner, removeHide } from "../styleChanges.js";
-import { showUserList } from "../users.js";
-import { userDetails, userForms, usersList } from "../variables.js";
+import {
+  addHide,
+  hideSpinner,
+  removeHide,
+} from "../generalFunctions/styleChanges.js";
+import { showUserList } from "../users/showingUserData.js";
+
+import {
+  userDetails,
+  userForms,
+  usersList,
+} from "../generalFunctions/variables.js";
 
 export const mutualHandler = function (event) {
   if (selectingTarget(event).contains("go-back")) {

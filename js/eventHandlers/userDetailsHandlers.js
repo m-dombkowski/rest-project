@@ -2,9 +2,14 @@ import { getUserPosts, getUsers } from "../async/asyncApiCalls.js";
 import { buildAddPostContainer } from "../building/createPostForm.js";
 import { renderEditUser } from "../building/rendering.js";
 import { selectingTarget } from "../generalFunctions/general.js";
-import { addHide, removeHide } from "../styleChanges.js";
-import { getUserIDForEdit } from "../users.js";
-import { BASE_URL, userDetails, userForms } from "../variables.js";
+import { addHide, removeHide } from "../generalFunctions/styleChanges.js";
+import { getUserIDForEdit } from "../users/gettingUserData.js";
+
+import {
+  BASE_URL,
+  userDetails,
+  userForms,
+} from "../generalFunctions/variables.js";
 
 export const userDetailsHandler = function (event) {
   if (selectingTarget(event).contains("edit-user")) {

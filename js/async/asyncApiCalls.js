@@ -1,4 +1,4 @@
-import { headers } from "../variables.js";
+import { headers } from "../generalFunctions/variables.js";
 import { resolveResponse } from "./resolvingResponse.js";
 
 export const getUsers = async function (url) {
