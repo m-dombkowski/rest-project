@@ -16,25 +16,7 @@ import {
   userDetails,
   userForms,
 } from "../generalFunctions/variables.js";
-
-export const createHtmlElement = function (
-  type,
-  classList = [],
-  attributes = {},
-  textContent = ""
-) {
-  const element = document.createElement(type);
-  if (classList.length > 0) {
-    element.classList.add(...classList);
-  }
-  for (const [key, value] of Object.entries(attributes)) {
-    element.setAttribute(key, value);
-  }
-  if (typeof textContent === "string" && textContent !== "") {
-    element.textContent = textContent;
-  }
-  return element;
-};
+import { createHtmlElement } from "./rendering.js";
 
 export const buildAddPostContainer = function (event, data) {
   const mainContainer = createHtmlElement("div", ["add-post-form-container"]);

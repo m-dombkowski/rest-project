@@ -6,7 +6,7 @@ import {
   usersList,
 } from "./generalFunctions/variables.js";
 
-import { renderCreateUser } from "./building/rendering.js";
+import { renderCreateUser } from "./buildingHTML/rendering.js";
 import { addHide, removeHide } from "./generalFunctions/styleChanges.js";
 import { userFormsHandler } from "./eventHandlers/userFormsHandlers.js";
 import { userListHandler } from "./eventHandlers/userListHandlers.js";

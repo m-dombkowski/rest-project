@@ -1,9 +1,33 @@
-import { getUserNameForEdit } from "../users/gettingUserData.js";
+import {
+  getUserNameForEdit,
+  getUserPostObjects,
+} from "../users/gettingUserData.js";
 import {
   userForms,
   userDetails,
   usersList,
 } from "../generalFunctions/variables.js";
+import { buildPostList } from "./createPostsList.js";
+import { buildCommentContainer } from "./createPostComment.js";
+
+export const createHtmlElement = function (
+  type,
+  classList = [],
+  attributes = {},
+  textContent = ""
+) {
+  const element = document.createElement(type);
+  if (classList.length > 0) {
+    element.classList.add(...classList);
+  }
+  for (const [key, value] of Object.entries(attributes)) {
+    element.setAttribute(key, value);
+  }
+  if (typeof textContent === "string" && textContent !== "") {
+    element.textContent = textContent;
+  }
+  return element;
+};
 
 const renderUser = function (userObject) {
   let html = `
@@ -124,4 +148,10 @@ export const renderEditUser = function (event) {
   `;
 
   userForms.insertAdjacentHTML("afterbegin", html);
+};
+
+export const renderUserPosts = function (data) {
+  getUserPostObjects(data).forEach((userObject) => {
+    buildPostList(userObject);
+  });
 };

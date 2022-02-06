@@ -57,8 +57,8 @@ export const getUserPosts = async function (url, userID) {
   return response.json();
 };
 
-export const getUserComments = async function (url, userID) {
-  const response = await fetch(`${url}/posts/${userID}/comments`, {
+export const getUserComments = async function (url, postID) {
+  const response = await fetch(`${url}/posts/${postID}/comments`, {
     method: "GET",
     headers: headers,
   });
@@ -79,8 +79,8 @@ export const createUserPost = async function (url, userID, userPostObject) {
   return response.json();
 };
 
-export const createUserComment = async function (url, userID) {
-  const response = await fetch(`${url}/posts/${userID}/comments`, {
+export const createUserComment = async function (url, postID) {
+  const response = await fetch(`${url}/posts/${postID}/comments`, {
     method: "POST",
     headers: headers,
     body: JSON.stringify({

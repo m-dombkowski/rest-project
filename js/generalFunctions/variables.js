@@ -22,3 +22,4 @@ export const createForm = document.querySelector(".create-form");
 export const editForm = document.querySelector(".edit-form");
 export const main = document.querySelector(".main");
 export const close = document.getElementsByClassName("close-icon");
+export const postList = document.querySelector(".user-posts-list");

@@ -29,7 +29,6 @@ export const loopForGettingUserName = function (element, className) {
 };
 
 export const loopForGettingUserID = function (element, className) {
-  let elementValue;
   for (let i = 0; i < element.length; i++) {
     if (element[i].classList.contains(className)) {
       return element[i].id;

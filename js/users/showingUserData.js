@@ -1,5 +1,5 @@
 import { getUsers } from "../async/asyncApiCalls.js";
-import { printUsers, renderUserDetails } from "../building/rendering.js";
+import { printUsers, renderUserDetails } from "../buildingHTML/rendering.js";
 import { spinner, usersList, BASE_URL } from "../generalFunctions/variables.js";
 import { getUserIDForDetailsAndDelete } from "./gettingUserData.js";
 

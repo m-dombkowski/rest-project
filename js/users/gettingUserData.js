@@ -31,10 +31,31 @@ export const getUserNameForEdit = function (event, className) {
   return loopForGettingUserName(doubleParentChildren(event), className);
 };
 
+export const getPostTitle = function (event) {
+  return loopForGettingUserName(doubleParentChildren(event), "post-title");
+};
+
 const getUserName = function (event) {
   return loopForGettingUserName(tripleParentChildren(event), "user-name");
 };
 
 export const getUserIDForDetailsAndDelete = function (event) {
   return loopForGettingUserID(tripleParentChildren(event), "user-id");
+};
+
+export const getUserPostObjects = function (data) {
+  const postObjectsArray = data.data;
+  let postsArray = [];
+
+  for (let i = 0; i < postObjectsArray.length; i++) {
+    postsArray.push(postObjectsArray[i]);
+  }
+  console.log(postsArray);
+  return postsArray;
+};
+
+export const getPostID = function (data) {
+  getUserPostObjects(data).forEach((userObject) => {
+    return userObject.id;
+  });
 };
