@@ -1,4 +1,5 @@
 import { createUser, editUser, getUsers } from "../async/asyncApiCalls.js";
+import { selectingTarget } from "../generalFunctions/general.js";
 import {
   addHide,
   hideSpinner,
@@ -7,7 +8,6 @@ import {
 } from "../styleChanges.js";
 import { createUserObject, getUserIDForEdit, showUserList } from "../users.js";
 import { BASE_URL, userForms, usersList } from "../variables.js";
-import { selectingTarget } from "./mutualAndGeneralHandlers.js";
 
 export const userFormsHandler = function (event) {
   if (selectingTarget(event).contains("submit")) {

@@ -1,17 +1,17 @@
-import { createUserPost, getUsers } from "./async/asyncApiCalls.js";
+import { createUserPost, getUsers } from "../async/asyncApiCalls.js";
 
 import {
   addHide,
   removeHide,
   hideSpinner,
   showSpinner,
-} from "./styleChanges.js";
+} from "../styleChanges.js";
 import {
   createUserPostObject,
   getUserIDForAddPost,
   getUserNameForEdit,
-} from "./users.js";
-import { BASE_URL, userDetails, userForms } from "./variables.js";
+} from "../users.js";
+import { BASE_URL, userDetails, userForms } from "../variables.js";
 
 export const createHtmlElement = function (
   type,

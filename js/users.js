@@ -2,9 +2,11 @@ import { deleteUserREST, getUsers } from "./async/asyncApiCalls.js";
 import {
   loopForGettingUserName,
   loopForGettingUserID,
+  tripleParentChildren,
+  doubleParentChildren,
   tripleParent,
 } from "./generalFunctions/general.js";
-import { printUsers, renderUserDetails } from "./rendering.js";
+import { printUsers, renderUserDetails } from "./building/rendering.js";
 import { capitalizeFirstLetters } from "./styleChanges.js";
 import { BASE_URL, usersList } from "./variables.js";
 
@@ -18,33 +20,26 @@ export const showUserList = function () {
   });
 };
 
-const getUserName = function (event) {
-  const target = event.target;
-  const parent = target.parentElement.parentElement.parentElement;
-  const children = parent.children;
-  return loopForGettingUserName(children, "user-name");
-};
-
 export const showUserDetails = function (data, event) {
   const usersArray = data.data;
 
   usersArray.forEach((userObject) => {
-    if (userObject.id == getUserIDForDetails(event)) {
+    if (userObject.id == getUserIDForDetailsAndDelete(event)) {
       renderUserDetails(userObject);
     }
   });
 };
 
-export const getUserIDForDetails = function (event) {
-  return loopForGettingUserID(tripleParent(event), "user-id");
+export const getUserNameForEdit = function (event, className) {
+  return loopForGettingUserName(doubleParentChildren(event), className);
 };
 
-export const getUserNameForEdit = function (event, className) {
-  const target = event.target;
-  const parent = target.parentElement.parentElement;
-  const children = parent.children;
+const getUserName = function (event) {
+  return loopForGettingUserName(tripleParentChildren(event), "user-name");
+};
 
-  return loopForGettingUserName(children, className);
+export const getUserIDForDetailsAndDelete = function (event) {
+  return loopForGettingUserID(tripleParentChildren(event), "user-id");
 };
 
 export const getUserIDForEdit = function (data, event, className) {
@@ -70,11 +65,10 @@ export const getUserIDForAddPost = function (data) {
 };
 
 export const deleteUser = function (data, event) {
-  const target = event.target;
-  const container = target.parentElement.parentElement.parentElement;
+  const container = tripleParent(event);
   const usersArray = data.data;
   usersArray.forEach((userObject) => {
-    if (getUserName(event) === userObject.name) {
+    if (getUserIDForDetailsAndDelete(event) == userObject.id) {
       deleteUserREST(BASE_URL, userObject.id);
     }
   });

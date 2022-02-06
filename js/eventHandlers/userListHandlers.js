@@ -1,4 +1,5 @@
 import { getUsers } from "../async/asyncApiCalls.js";
+import { selectingTarget } from "../generalFunctions/general.js";
 import {
   addHide,
   hideSpinner,
@@ -7,7 +8,6 @@ import {
 } from "../styleChanges.js";
 import { deleteUser, showUserDetails } from "../users.js";
 import { BASE_URL, usersList, userForms, userDetails } from "../variables.js";
-import { selectingTarget } from "./mutualAndGeneralHandlers.js";
 
 export const userListHandler = function (event) {
   if (selectingTarget(event).contains("details-icon")) {

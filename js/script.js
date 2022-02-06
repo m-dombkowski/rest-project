@@ -1,6 +1,6 @@
 import { btn, btn2, userForms, userDetails, usersList } from "./variables.js";
 import { showUserList } from "./users.js";
-import { renderCreateUser } from "./rendering.js";
+import { renderCreateUser } from "./building/rendering.js";
 import { addHide, removeHide } from "./styleChanges.js";
 import { userFormsHandler } from "./eventHandlers/userFormsHandlers.js";
 import { userListHandler } from "./eventHandlers/userListHandlers.js";
