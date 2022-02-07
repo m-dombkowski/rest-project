@@ -1,5 +1,5 @@
 import { createUser, editUser, getUsers } from "../async/asyncApiCalls.js";
-import { selectingTarget } from "../generalFunctions/general.js";
+import { selectingTarget, clearElement } from "../generalFunctions/general.js";
 import {
   addHide,
   hideSpinner,
@@ -23,7 +23,7 @@ export const userFormsHandler = function (event) {
     createUser(BASE_URL, createUserObject("create")).then(() => {
       hideSpinner();
       showUserList();
-      userForms.innerHTML = "";
+      clearElement(userForms);
       addHide(userForms);
       removeHide(usersList);
     });
@@ -39,7 +39,7 @@ export const userFormsHandler = function (event) {
         createUserObject("edit")
       ).then(() => {
         hideSpinner();
-        userForms.textContent = "";
+        clearElement(userForms);
         showUserList();
         removeHide(usersList);
       });

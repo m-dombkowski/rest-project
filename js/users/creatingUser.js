@@ -25,3 +25,15 @@ export const createUserPostObject = function () {
     body: message,
   };
 };
+
+export const createUserCommentObject = function () {
+  const name = document.querySelector(".add-comment-name-input").value;
+  const email = document.querySelector(".add-comment-email-input").value;
+  const message = document.querySelector(".add-comment-message-input").value;
+
+  return {
+    name: name,
+    email: email,
+    body: message,
+  };
+};

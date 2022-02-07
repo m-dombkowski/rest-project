@@ -85,7 +85,8 @@
 
 .create-form div,
 .edit-form div,
-.add-post-form div {
+.add-post-form div,
+.add-comment-form div {
   margin-bottom: 10px;
 }
 
@@ -108,6 +109,12 @@
 /*  -------------------- CREATE FORM --------------------*/
 
 /*  ---------------------- ADD POST ---------------------*/
+
+/*  -------------------- ADD COMMENT --------------------*/
+
+.add-comment-form {
+  margin-top: 20px;
+}
 
 /*  ---------------------- GENERAL --------------------- */
 

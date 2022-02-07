@@ -9,6 +9,11 @@ export const doubleParentChildren = function (event) {
   return parent.children;
 };
 
+export const doubleParent = function (event) {
+  const target = event.target;
+  return target.parentElement.parentElement;
+};
+
 export const tripleParentChildren = function (event) {
   const target = event.target;
   const parent = target.parentElement.parentElement.parentElement;
@@ -18,6 +23,19 @@ export const tripleParentChildren = function (event) {
 export const tripleParent = function (event) {
   const target = event.target;
   return target.parentElement.parentElement.parentElement;
+};
+
+export const commentsContainer = function (event) {
+  const target = event.target;
+  const parent = target.parentElement.parentElement;
+  const children = parent.children;
+  console.log(children);
+
+  for (let i = 0; i < children.length; i++) {
+    if (children[i].classList.contains("all-comments-container")) {
+      return children[i];
+    }
+  }
 };
 
 export const loopForGettingUserName = function (element, className) {
@@ -34,4 +52,8 @@ export const loopForGettingUserID = function (element, className) {
       return element[i].id;
     }
   }
+};
+
+export const clearElement = function (parentElement) {
+  parentElement.innerHTML = "";
 };

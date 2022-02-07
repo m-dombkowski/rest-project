@@ -1,5 +1,5 @@
 import {
-  getUserComments,
+  getPostComments,
   getUserPosts,
   getUsers,
 } from "../async/asyncApiCalls.js";
@@ -13,6 +13,7 @@ import {
   showSpinner,
 } from "../generalFunctions/styleChanges.js";
 import {
+  getComments,
   getPostID,
   getUserIDForEdit,
   getUserPostObjects,
@@ -20,9 +21,11 @@ import {
 
 import {
   BASE_URL,
+  postList,
   userDetails,
   userForms,
 } from "../generalFunctions/variables.js";
+import { showPostComments } from "../users/showingUserData.js";
 
 export const userDetailsHandler = function (event) {
   if (selectingTarget(event).contains("edit-user")) {
@@ -47,11 +50,9 @@ export const userDetailsHandler = function (event) {
         getUserIDForEdit(data, event, "active-user-name")
       ).then((data) => {
         removeHide(userForms);
+        removeHide(postList);
         renderUserPosts(data);
         hideSpinner();
-        getUserComments(BASE_URL, getPostID(data)).then((data) => {
-          console.log(data);
-        });
       });
     });
   }

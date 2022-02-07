@@ -14,6 +14,7 @@ import {
   usersList,
   userForms,
   userDetails,
+  postList,
 } from "../generalFunctions/variables.js";
 
 export const userListHandler = function (event) {
@@ -26,6 +27,7 @@ export const userListHandler = function (event) {
       hideSpinner();
       addHide(userForms);
       removeHide(userDetails);
+      addHide(postList);
     });
   }
 

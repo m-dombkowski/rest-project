@@ -1,12 +1,19 @@
-import { userForms } from "../generalFunctions/variables.js";
+import { createUserComment } from "../async/asyncApiCalls.js";
+import { addHide, removeHide } from "../generalFunctions/styleChanges.js";
+import {
+  BASE_URL,
+  postList,
+  userForms,
+} from "../generalFunctions/variables.js";
+import { createUserCommentObject } from "../users/creatingUser.js";
 import { createHtmlElement } from "./rendering.js";
 
-export const buildAddCommentForm = function () {
+export const buildAddCommentForm = function (data) {
   const goBackButton = createButton();
   const nameInput = createCommentNameInput();
   const emailInput = createCommentEmailInput();
   const messageInput = createCommentMessageInput();
-  const submitButton = createCommentSubmitButton();
+  const submitButton = createCommentSubmitButton(data);
 
   const addCommentForm = createHtmlElement("form", ["add-comment-form"]);
 
@@ -20,7 +27,19 @@ export const buildAddCommentForm = function () {
 };
 
 const createButton = function () {
-  const goBackButton = createHtmlElement("button", ["go-back"], {}, "Go Back");
+  const goBackButton = createHtmlElement(
+    "button",
+    ["go-back-comment"],
+    {},
+    "Go Back"
+  );
+
+  goBackButton.addEventListener("click", function (event) {
+    userForms.innerHTML = "";
+    event.preventDefault();
+    removeHide(postList);
+    addHide(userForms);
+  });
 
   const btnContainer = createHtmlElement("div", ["go-back-btn-container"]);
 
@@ -55,7 +74,7 @@ const createCommentEmailInput = function () {
 
   userEmailInputContainer.appendChild(userEmailInput);
 
-  return userEmailInput;
+  return userEmailInputContainer;
 };
 
 const createCommentMessageInput = function () {
@@ -73,10 +92,18 @@ const createCommentMessageInput = function () {
   return userMessageInputContainer;
 };
 
-const createCommentSubmitButton = function () {
+const createCommentSubmitButton = function (data) {
   const submitButton = createHtmlElement("input", ["add-comment-submit"], {
     type: "submit",
     value: "Submit",
+  });
+
+  submitButton.addEventListener("click", function (event) {
+    event.preventDefault();
+    console.log(data.id);
+    createUserComment(BASE_URL, data.id, createUserCommentObject()).then(
+      (data) => console.log(data)
+    );
   });
 
   return submitButton;

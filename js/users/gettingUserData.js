@@ -1,3 +1,4 @@
+import { buildCommentContainer } from "../buildingHTML/createPostComment.js";
 import {
   doubleParentChildren,
   loopForGettingUserID,
@@ -45,17 +46,32 @@ export const getUserIDForDetailsAndDelete = function (event) {
 
 export const getUserPostObjects = function (data) {
   const postObjectsArray = data.data;
+  console.log(data);
   let postsArray = [];
-
+  if (postObjectsArray.length === 0) {
+    console.log("nie dziala");
+    return postObjectsArray;
+  }
   for (let i = 0; i < postObjectsArray.length; i++) {
     postsArray.push(postObjectsArray[i]);
   }
-  console.log(postsArray);
   return postsArray;
 };
 
 export const getPostID = function (data) {
-  getUserPostObjects(data).forEach((userObject) => {
-    return userObject.id;
+  const objectArray = getUserPostObjects(data);
+  let idArray = [];
+  objectArray.forEach((postObject) => {
+    idArray.push(postObject.id);
   });
+
+  return idArray;
+};
+
+export const getComments = function (data) {
+  const commentsArray = data.data;
+  for (const commentObject of commentsArray) {
+    console.log(commentObject);
+    return commentObject;
+  }
 };

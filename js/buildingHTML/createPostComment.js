@@ -1,6 +1,11 @@
+import {
+  commentsContainer,
+  doubleParent,
+} from "../generalFunctions/general.js";
+import { capitalizeFirstLetters } from "../generalFunctions/styleChanges.js";
 import { createHtmlElement } from "./rendering.js";
 
-export const buildCommentContainer = function (data) {
+export const buildCommentContainer = function (data, event) {
   const commentName = buildCommentName(data);
   const commentText = buildCommentText(data);
 
@@ -9,13 +14,17 @@ export const buildCommentContainer = function (data) {
   commentContainer.appendChild(commentName);
   commentContainer.appendChild(commentText);
 
-  const postContainer = document.querySelector(".post-container");
-
-  postContainer.appendChild(commentContainer);
+  const allCommentsContainer = commentsContainer(event);
+  allCommentsContainer.appendChild(commentContainer);
 };
 
 const buildCommentName = function (data) {
-  const name = createHtmlElement("h2", ["comment-name"], {}, `${data.name}`);
+  const name = createHtmlElement(
+    "h2",
+    ["comment-name"],
+    {},
+    `${capitalizeFirstLetters(data.name)}`
+  );
 
   const nameContainer = createHtmlElement("div", ["comment-name-container"]);
 

@@ -1,4 +1,4 @@
-import { selectingTarget } from "../generalFunctions/general.js";
+import { selectingTarget, clearElement } from "../generalFunctions/general.js";
 import {
   addHide,
   hideSpinner,
@@ -14,8 +14,8 @@ import {
 
 export const mutualHandler = function (event) {
   if (selectingTarget(event).contains("go-back")) {
-    userDetails.innerHTML = "";
-    userForms.innerHTML = "";
+    clearElement(userDetails);
+    clearElement(userForms);
     showUserList();
     removeHide(usersList);
     addHide(userDetails);

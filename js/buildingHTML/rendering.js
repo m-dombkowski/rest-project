@@ -1,4 +1,5 @@
 import {
+  getComments,
   getUserNameForEdit,
   getUserPostObjects,
 } from "../users/gettingUserData.js";
@@ -151,7 +152,8 @@ export const renderEditUser = function (event) {
 };
 
 export const renderUserPosts = function (data) {
-  getUserPostObjects(data).forEach((userObject) => {
-    buildPostList(userObject);
+  getUserPostObjects(data).forEach((postObject) => {
+    console.log(postObject);
+    buildPostList(postObject);
   });
 };
