@@ -7,6 +7,7 @@ import {
 import { showUserList } from "../users/showingUserData.js";
 
 import {
+  responseMessageModal,
   userDetails,
   userForms,
   usersList,
@@ -21,5 +22,13 @@ export const mutualHandler = function (event) {
     addHide(userDetails);
     addHide(userForms);
     hideSpinner();
+  }
+};
+
+export const responseModalHandler = function (event) {
+  const responseMessage = document.querySelector(".response-message");
+  if (event.target == responseMessageModal) {
+    responseMessage.parentNode.removeChild(responseMessage);
+    responseMessageModal.style.display = "none";
   }
 };

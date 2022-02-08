@@ -23,3 +23,6 @@ export const editForm = document.querySelector(".edit-form");
 export const main = document.querySelector(".main");
 export const close = document.getElementsByClassName("close-icon");
 export const postList = document.querySelector(".user-posts-list");
+export const responseMessageModal = document.querySelector(
+  ".response-message-modal"
+);

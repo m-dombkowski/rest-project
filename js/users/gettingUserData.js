@@ -1,3 +1,4 @@
+import { displayResponseMessage } from "../buildingHTML/rendering.js";
 import {
   singleParentChildren,
   doubleParentChildren,
@@ -49,7 +50,7 @@ export const getUserPostObjects = function (data) {
   console.log(data);
   let postsArray = [];
   if (postObjectsArray.length === 0) {
-    console.log("nie dziala");
+    displayResponseMessage("User haven't created any posts yet!");
     return postObjectsArray;
   }
   for (let i = 0; i < postObjectsArray.length; i++) {

@@ -12,7 +12,10 @@ import { addHide, removeHide } from "./generalFunctions/styleChanges.js";
 import { userFormsHandler } from "./eventHandlers/userFormsHandlers.js";
 import { userListHandler } from "./eventHandlers/userListHandlers.js";
 import { userDetailsHandler } from "./eventHandlers/userDetailsHandlers.js";
-import { mutualHandler } from "./eventHandlers/mutualAndGeneralHandlers.js";
+import {
+  mutualHandler,
+  responseModalHandler,
+} from "./eventHandlers/mutualAndGeneralHandlers.js";
 import { showUserList } from "./users/showingUserData.js";
 import { clearElement } from "./generalFunctions/general.js";
 
@@ -48,4 +51,5 @@ userDetails.addEventListener("click", function (event) {
 
 window.addEventListener("click", function (event) {
   mutualHandler(event);
+  responseModalHandler(event);
 });

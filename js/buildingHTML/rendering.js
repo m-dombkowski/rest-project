@@ -7,6 +7,7 @@ import {
   userForms,
   userDetails,
   usersList,
+  responseMessageModal,
 } from "../generalFunctions/variables.js";
 import { buildPostList } from "./createPostsList.js";
 import { buildCommentContainer } from "./createPostComment.js";
@@ -156,4 +157,16 @@ export const renderUserPosts = function (data) {
     console.log(postObject);
     buildPostList(postObject);
   });
+};
+
+export const displayResponseMessage = function (message) {
+  const responseMessage = createHtmlElement(
+    "p",
+    ["response-message"],
+    {},
+    `${message}`
+  );
+
+  responseMessageModal.style.display = "block";
+  responseMessageModal.appendChild(responseMessage);
 };

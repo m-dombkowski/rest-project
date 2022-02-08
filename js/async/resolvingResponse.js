@@ -1,3 +1,5 @@
+import { displayResponseMessage } from "../buildingHTML/rendering.js";
+
 export const resolveResponse = function (
   response,
   successMessage,
@@ -9,8 +11,8 @@ export const resolveResponse = function (
     response.status === 201 ||
     response.status === 204
   ) {
-    console.log(successMessage);
+    displayResponseMessage(successMessage);
   } else {
-    console.log(failMessage);
+    displayResponseMessage(failMessage);
   }
 };
