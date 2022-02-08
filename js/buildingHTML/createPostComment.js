@@ -5,7 +5,7 @@ import {
 import { capitalizeFirstLetters } from "../generalFunctions/styleChanges.js";
 import { createHtmlElement } from "./rendering.js";
 
-export const buildCommentContainer = function (data, event) {
+export const buildCommentContainer = function (data, event, container) {
   const commentName = buildCommentName(data);
   const commentText = buildCommentText(data);
 
@@ -14,7 +14,7 @@ export const buildCommentContainer = function (data, event) {
   commentContainer.appendChild(commentName);
   commentContainer.appendChild(commentText);
 
-  const allCommentsContainer = commentsContainer(event);
+  const allCommentsContainer = container;
   allCommentsContainer.appendChild(commentContainer);
 };
 

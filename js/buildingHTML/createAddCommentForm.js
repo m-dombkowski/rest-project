@@ -1,15 +1,27 @@
-import { createUserComment } from "../async/asyncApiCalls.js";
-import { addHide, removeHide } from "../generalFunctions/styleChanges.js";
+import { createUserComment, getPostComments } from "../async/asyncApiCalls.js";
+import {
+  addHide,
+  hideSpinner,
+  removeHide,
+  showSpinner,
+} from "../generalFunctions/styleChanges.js";
 import {
   BASE_URL,
   postList,
   userForms,
 } from "../generalFunctions/variables.js";
 import { createUserCommentObject } from "../users/creatingUser.js";
+import { showPostComments } from "../users/showingUserData.js";
+
+import { buildCommentContainer } from "./createPostComment.js";
 import { createHtmlElement } from "./rendering.js";
 
+const goBackToPosts = document.querySelector(".go-back-to-posts");
+const addCommentButton = document.querySelector(".add-comment-button");
+const allCommentsContainer = document.querySelector(".all-comments-container");
+
 export const buildAddCommentForm = function (data) {
-  const goBackButton = createButton();
+  const goBackButton = createButton(data);
   const nameInput = createCommentNameInput();
   const emailInput = createCommentEmailInput();
   const messageInput = createCommentMessageInput();
@@ -26,7 +38,12 @@ export const buildAddCommentForm = function (data) {
   userForms.appendChild(addCommentForm);
 };
 
-const createButton = function () {
+const createButton = function (data) {
+  const goBackToPosts = document.querySelector(".go-back-to-posts");
+  const allCommentsContainer = document.querySelector(
+    ".all-comments-container"
+  );
+  const addCommentButton = document.querySelector(".add-comment-button");
   const goBackButton = createHtmlElement(
     "button",
     ["go-back-comment"],
@@ -35,10 +52,14 @@ const createButton = function () {
   );
 
   goBackButton.addEventListener("click", function (event) {
+    showSpinner();
     userForms.innerHTML = "";
     event.preventDefault();
     removeHide(postList);
     addHide(userForms);
+    removeHide(goBackToPosts);
+    removeHide(addCommentButton);
+    showPostComments(data, event, allCommentsContainer);
   });
 
   const btnContainer = createHtmlElement("div", ["go-back-btn-container"]);
@@ -93,17 +114,35 @@ const createCommentMessageInput = function () {
 };
 
 const createCommentSubmitButton = function (data) {
+  const goBackToPosts = document.querySelector(".go-back-to-posts");
+  const addCommentButton = document.querySelector(".add-comment-button");
+  const allCommentsContainer = document.querySelector(
+    ".all-comments-container"
+  );
   const submitButton = createHtmlElement("input", ["add-comment-submit"], {
     type: "submit",
     value: "Submit",
   });
 
   submitButton.addEventListener("click", function (event) {
+    showSpinner();
     event.preventDefault();
     console.log(data.id);
-    createUserComment(BASE_URL, data.id, createUserCommentObject()).then(
-      (data) => console.log(data)
-    );
+    createUserComment(BASE_URL, data.id, createUserCommentObject()).then(() => {
+      userForms.innerHTML = "";
+      removeHide(postList);
+      addHide(userForms);
+      removeHide(goBackToPosts);
+      removeHide(addCommentButton);
+      showPostComments(data, event, allCommentsContainer);
+      // getPostComments(BASE_URL, data.id).then((data) => {
+      //   const commentObjectArray = data.data;
+      //   commentObjectArray.forEach((commentObject) => {
+      //     buildCommentContainer(commentObject, event, allCommentsContainer);
+      //   });
+      //   hideSpinner();
+      // });
+    });
   });
 
   return submitButton;

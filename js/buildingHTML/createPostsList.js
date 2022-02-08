@@ -2,13 +2,13 @@ import {
   commentsContainer,
   doubleParent,
 } from "../generalFunctions/general.js";
-import { addHide, removeHide } from "../generalFunctions/styleChanges.js";
-import { postList, userForms } from "../generalFunctions/variables.js";
 import {
-  getPostID,
-  getPostTitle,
-  getUserPostObjects,
-} from "../users/gettingUserData.js";
+  addHide,
+  removeHide,
+  showSpinner,
+} from "../generalFunctions/styleChanges.js";
+import { postList, userForms } from "../generalFunctions/variables.js";
+import { getPostTitle } from "../users/gettingUserData.js";
 import { showPostComments } from "../users/showingUserData.js";
 import { buildAddCommentForm } from "./createAddCommentForm.js";
 import { createHtmlElement } from "./rendering.js";
@@ -16,7 +16,7 @@ import { createHtmlElement } from "./rendering.js";
 export const buildPostList = function (data) {
   const postTitle = buildPostTitle(data);
   const postBody = buildPostBody(data);
-  const postButton = buildAddCommentButton(data);
+  const postButton = buildCommentsButtons(data);
   const comments = buildCommentContainer();
 
   const postContainer = createHtmlElement("div", ["post-container"]);
@@ -50,23 +50,7 @@ const buildPostBody = function (data) {
   return bodyContainer;
 };
 
-const buildAddCommentButton = function (data) {
-  const addCommentButton = createHtmlElement(
-    "button",
-    ["add-comment-button"],
-    {},
-    "Add Comment"
-  );
-
-  addCommentButton.addEventListener("click", function (event) {
-    if (getPostTitle(event) === data.title) {
-      console.log(data);
-      buildAddCommentForm(data);
-      addHide(postList);
-      removeHide(userForms);
-    }
-  });
-
+export const buildCommentsButtons = function (data) {
   const showCommentsButton = createHtmlElement(
     "button",
     ["show-comments-button"],
@@ -76,17 +60,72 @@ const buildAddCommentButton = function (data) {
 
   showCommentsButton.addEventListener("click", function (event) {
     const postContainers = document.querySelectorAll(".post-container");
+    showSpinner();
+
     postContainers.forEach((postContainer) => {
       addHide(postContainer);
       removeHide(doubleParent(event));
+      addHide(showCommentsButton);
     });
-    showPostComments(data, event);
+
+    const goBackButton = createHtmlElement(
+      "button",
+      ["go-back-to-posts"],
+      {},
+      "Go Back"
+    );
+
+    goBackButton.addEventListener("click", function (event) {
+      const commentsContainers =
+        document.querySelectorAll(".comment-container");
+      event.preventDefault();
+      addHide(goBackButton);
+      removeHide(showCommentsButton);
+      addHide(addCommentButton);
+
+      commentsContainers.forEach((commentContainer) => {
+        commentContainer.parentNode.removeChild(commentContainer);
+      });
+
+      postContainers.forEach((postContainer) => {
+        removeHide(postContainer);
+      });
+
+      goBackButton.parentNode.removeChild(goBackButton);
+      addCommentButton.parentNode.removeChild(addCommentButton);
+    });
+
+    const addCommentButton = createHtmlElement(
+      "button",
+      ["add-comment-button"],
+      {},
+      "Add Comment"
+    );
+
+    addCommentButton.addEventListener("click", function (event) {
+      const commentsContainers =
+        document.querySelectorAll(".comment-container");
+      if (getPostTitle(event) === data.title) {
+        commentsContainers.forEach((commentContainer) => {
+          addHide(commentContainer);
+        });
+        console.log(data);
+        buildAddCommentForm(data);
+        addHide(postList);
+        removeHide(userForms);
+        addHide(addCommentButton);
+        addHide(goBackButton);
+      }
+    });
+
+    showPostComments(data, event, commentsContainer(event));
+    doubleParent(event).appendChild(goBackButton);
+    doubleParent(event).appendChild(addCommentButton);
   });
 
   const buttonContainer = createHtmlElement("div", ["button-container"]);
 
   buttonContainer.appendChild(showCommentsButton);
-  buttonContainer.appendChild(addCommentButton);
 
   return buttonContainer;
 };

@@ -1,5 +1,5 @@
-import { buildCommentContainer } from "../buildingHTML/createPostComment.js";
 import {
+  singleParentChildren,
   doubleParentChildren,
   loopForGettingUserID,
   loopForGettingUserName,
@@ -33,7 +33,7 @@ export const getUserNameForEdit = function (event, className) {
 };
 
 export const getPostTitle = function (event) {
-  return loopForGettingUserName(doubleParentChildren(event), "post-title");
+  return loopForGettingUserName(singleParentChildren(event), "post-title");
 };
 
 const getUserName = function (event) {

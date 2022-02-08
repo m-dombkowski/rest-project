@@ -3,6 +3,12 @@ export const selectingTarget = function (event) {
   return target.classList;
 };
 
+export const singleParentChildren = function (event) {
+  const target = event.target;
+  const parent = target.parentElement;
+  return parent.children;
+};
+
 export const doubleParentChildren = function (event) {
   const target = event.target;
   const parent = target.parentElement.parentElement;
