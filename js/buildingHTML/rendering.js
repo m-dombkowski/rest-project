@@ -81,36 +81,43 @@ export const renderUserDetails = function (data) {
 
 export const renderCreateUser = function () {
   let html = `
-  <button class="go-back">Go Back</button>
-    <form class="create-form">  
-      <div class="name-input">
-        <label for="name">Name: </label></br>
-        <input type="text" id="create-name" name="name" required size="10"> 
-      </div>
-      <div class="email-input">
-        <label for="email">Email: </label></br>
-        <input type="email" id="create-email" required size="10"> 
-      </div>
-      <div class="gender-select">
-        <label for="gender">Gender: </label> </br>
-        <select name="gender" id="create-gender" required>
-          <option value="">--Please choose an option--</option>
-          <option value="female">Female</option>
-          <option value="male">Male</option>
-        </select>
-      </div>
-      <div class="status-select">
-        <label for="status">Status: </label> </br>
-        <select name="status" id="create-status" required>
-          <option value="">--Please choose an option--</option>
-          <option value="active">Active</option>
-          <option value="inactive">Inactive</option>
-        </select>
-      </div>
-      <input type="submit" class="submit" value="Submit">
-    </form>
+      <button class="go-back-create" title="Go Back">&#129044</button>  
+      <div class="create-form-title-container">
+        <p class="create-form-title">Create User Form. </br> Please, fill all of the boxes</p>
+      </div> 
+      <form class="create-form"> 
+        <div class="name-input">        
+          <label for="name" class="create-name-label">Name: </label></br>  
+          <input type="text" id="create-name" name="name" placeholder="Your username" required size="10"> 
+        </div>
+        <div class="email-input">
+          <label for="email" class='create-email-label'>Email: </label></br>         
+          <input type="email" id="create-email" placeholder="Your email address" required size="10"> 
+        </div>
+        <div class="gender-select"> 
+          <label for="gender" class='create-gender-label'>Gender: </label> </br>       
+          <select name="gender" id="create-gender" required>
+            <option value="">--Please choose an option--</option>
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+          </select>
+        </div>
+        <div class="status-select"> 
+          <label for="status" class='create-status-label'>Status: </label>        
+          <select name="status" id="create-status" required>
+            <option value="">--Please choose an option--</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+          </select>
+        </div>
+        <input type="submit" class="submit" value="Create User">
+      </form>
+   
   `;
-
+  //
+  //
+  //
+  //  </br>
   userForms.insertAdjacentHTML("afterbegin", html);
 };
 

@@ -1,6 +1,6 @@
 import {
-  btn,
-  btn2,
+  showUsers,
+  createUser,
   userForms,
   userDetails,
   usersList,
@@ -19,7 +19,7 @@ import {
 import { showUserList } from "./users/showingUserData.js";
 import { clearElement } from "./generalFunctions/general.js";
 
-btn.addEventListener("click", function () {
+showUsers.addEventListener("click", function () {
   usersList.innerHTML = " ";
   showUserList();
   removeHide(usersList);
@@ -30,7 +30,8 @@ btn.addEventListener("click", function () {
   clearElement(postList);
 });
 
-btn2.addEventListener("click", function () {
+createUser.addEventListener("click", function () {
+  userForms.innerHTML = "";
   renderCreateUser();
   removeHide(userForms);
   addHide(usersList);

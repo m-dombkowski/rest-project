@@ -1,14 +1,55 @@
+html {
+  font-size: 62.5%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #ffe6e6;
+  font-family: sans-serif;
+}
+
+/* ---------------------- NAVIGATION ------------------- */
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 3rem;
+}
+
+.show-all-users,
+.create-user {
+  padding: 0.8rem 1.6rem;
+  font-size: 1.8rem;
+  border: 2px solid #000;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: all 0.5s ease;
+}
+
+.show-all-users:hover {
+  background-color: #f1c40f;
+}
+
+.create-user:hover {
+  background-color: #2ecc71;
+}
+
 /*  ------------------ MAIN USERS LIST ----------------- */
 
 .user-list-section {
-  margin: 0 20px;
+  margin: 0 2rem;
 }
 
 .users-list {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
+  gap: 2rem;
   padding-left: 0;
   align-items: center;
 }
@@ -16,9 +57,9 @@
 .user {
   text-align: center;
   background-color: #999;
-  padding: 8px 16px;
+  padding: 0.8rem 1.6rem;
   display: flex;
-  height: 150px;
+  height: 15rem;
   flex-direction: column;
 }
 
@@ -65,48 +106,98 @@
   margin-bottom: 15px;
 }
 
-.active-user-name {
-  font-size: 44px;
-}
-
-.active-user-email {
-  font-size: 30px;
-}
-
-.active-user-gender {
-  font-size: 30px;
-}
-
-.active-user-status {
-  font-size: 30px;
-}
-
 /*  -------------------- FORMS MUTUAL ------------------- */
 
 .create-form div,
 .edit-form div,
 .add-post-form div,
 .add-comment-form div {
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 }
 
-.create-form,
 .edit-form,
 .add-post-form-container {
-  padding: 20px 40px;
+  padding: 2rem 4rem;
   border: 1px solid #000;
   display: inline-block;
-}
-
-.user-posts-list {
-  display: flex;
-  gap: 100px;
-  flex-wrap: wrap;
 }
 
 /*  --------------------- EDIT FORM -------------------- */
 
 /*  -------------------- CREATE FORM --------------------*/
+
+.user-forms-container {
+  text-align: center;
+  position: relative;
+  margin-top: 10rem;
+}
+
+.create-form {
+  display: inline-block;
+  padding: 20rem 20rem 10rem 20rem;
+  border-radius: 10px;
+  background-image: url("../images/hills.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 1.4rem 1.4rem 2.4rem 0px rgba(66, 68, 90, 1);
+}
+
+.go-back-create {
+  position: absolute;
+  top: 5%;
+  left: 22%;
+  padding: 0 0.6rem;
+  font-size: 2.4rem;
+  background: none;
+  border: 1.5px solid #000;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.go-back-create:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.submit {
+  text-align: center;
+}
+
+.create-name-label,
+.create-email-label,
+.create-gender-label,
+.create-status-label {
+  text-align: left;
+  display: block;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  color: #000;
+}
+
+#create-name,
+#create-email,
+#create-gender,
+#create-status {
+  width: 100%;
+  margin-bottom: 2.4rem;
+  font-size: 1.6rem;
+  padding: 0.6rem 0.8rem;
+}
+
+.create-form-title-container {
+  position: absolute;
+  top: 15%;
+  left: 36%;
+}
+
+.create-form-title {
+  font-size: 2.4rem;
+  color: #000;
+}
+
+/* .submit {
+} */
 
 /*  ---------------------- ADD POST ---------------------*/
 
@@ -116,46 +207,18 @@
   margin-top: 20px;
 }
 
+/*  ----------------------- POSTS ---------------------- */
+
+.user-posts-list {
+  display: flex;
+  gap: 10rem;
+  flex-wrap: wrap;
+}
+
 /*  ---------------------- GENERAL --------------------- */
 
 .hide {
   display: none;
-}
-
-.go-back,
-.go-back-to-details {
-  font-size: 18px;
-  padding: 9px 18px;
-  border: none;
-  background: none;
-  background-color: #7c8086;
-  color: #fff;
-  border-radius: 10px;
-  margin-left: auto;
-  position: relative;
-  transition: all 0.5s ease;
-}
-
-.go-back:hover,
-.go-back-to-details:hover {
-  padding-left: 36px;
-}
-
-.go-back::before,
-.go-back-to-details::before {
-  content: "←";
-  position: absolute;
-  left: -30%;
-  top: 20%;
-  opacity: 0;
-  transition: all 0.5s ease;
-}
-
-.go-back:hover::before,
-.go-back-to-details:hover::before {
-  left: 8%;
-  top: 20%;
-  opacity: 1;
 }
 
 #spinner:not([hidden]) {
@@ -201,6 +264,7 @@
   height: 100%; /* Full height */
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  backdrop-filter: blur(3px);
 }
 .response-message {
   font-size: 30px;

@@ -7,11 +7,11 @@ export const headers = {
   Authorization: `Bearer ` + token,
 };
 
-export const btn = document.querySelector(".btn");
+export const showUsers = document.querySelector(".show-all-users");
 export const deleteU = document.querySelector(".btn-deleteU");
-export const btn1 = document.querySelector(".btn1");
-export const btn2 = document.querySelector(".btn2");
-export const btn3 = document.querySelector(".btn3");
+
+export const createUser = document.querySelector(".create-user");
+
 export const BASE_URL = `https://gorest.co.in/public/v1`;
 export const spinner = document.querySelector("#spinner");
 

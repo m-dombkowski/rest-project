@@ -23,6 +23,14 @@ export const mutualHandler = function (event) {
     addHide(userForms);
     hideSpinner();
   }
+
+  if (selectingTarget(event).contains("go-back-create")) {
+    clearElement(userForms);
+    // showUserList();
+    removeHide(usersList);
+    addHide(userForms);
+    hideSpinner();
+  }
 };
 
 export const responseModalHandler = function (event) {
