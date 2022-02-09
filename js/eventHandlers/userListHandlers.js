@@ -16,6 +16,10 @@ import {
   userDetails,
   postList,
 } from "../generalFunctions/variables.js";
+import {
+  createHtmlElement,
+  displayResponseMessage,
+} from "../buildingHTML/rendering.js";
 
 export const userListHandler = function (event) {
   if (selectingTarget(event).contains("details-icon")) {
@@ -36,4 +40,23 @@ export const userListHandler = function (event) {
       deleteUser(data, event);
     });
   }
+};
+
+export const handleNoPosts = function () {
+  displayResponseMessage(`User haven't posted anything yet!`);
+  const goBackToDetailsButton = createHtmlElement(
+    "button",
+    ["go-back-to-details"],
+    {},
+    "Go Back"
+  );
+
+  goBackToDetailsButton.addEventListener("click", function () {
+    removeHide(userDetails);
+    addHide(postList);
+    goBackToDetailsButton.parentNode.removeChild(goBackToDetailsButton);
+  });
+
+  // goBackToDetailsButton.append(userListSection);
+  postList.append(goBackToDetailsButton);
 };

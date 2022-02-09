@@ -6,7 +6,7 @@ import {
   hideSpinner,
   showSpinner,
 } from "../generalFunctions/styleChanges.js";
-import { createUserPostObject } from "../users/creatingUser.js";
+import { createUserPostObject } from "../users/creatingUserObjects.js";
 import {
   getUserIDForAddPost,
   getUserNameForEdit,

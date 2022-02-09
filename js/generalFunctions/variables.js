@@ -16,6 +16,7 @@ export const BASE_URL = `https://gorest.co.in/public/v1`;
 export const spinner = document.querySelector("#spinner");
 
 export const usersList = document.querySelector(".users-list");
+export const userListSection = document.querySelector(".user-list-section");
 export const userDetails = document.querySelector(".user-details-container");
 export const userForms = document.querySelector(".user-forms-container");
 export const createForm = document.querySelector(".create-form");

@@ -19,7 +19,7 @@ export const showUserDetails = function (data, event) {
 export const showUserList = function () {
   spinner.removeAttribute("hidden");
   getUsers(BASE_URL).then((data) => {
-    console.log(data);
+    
     spinner.setAttribute("hidden", "");
     clearElement(usersList);
     printUsers(data);

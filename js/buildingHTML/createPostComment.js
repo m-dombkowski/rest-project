@@ -1,7 +1,3 @@
-import {
-  commentsContainer,
-  doubleParent,
-} from "../generalFunctions/general.js";
 import { capitalizeFirstLetters } from "../generalFunctions/styleChanges.js";
 import { createHtmlElement } from "./rendering.js";
 

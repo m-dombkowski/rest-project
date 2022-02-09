@@ -6,12 +6,13 @@ import {
   removeHide,
   showSpinner,
 } from "../generalFunctions/styleChanges.js";
-import { createUserObject } from "../users/creatingUser.js";
+import { createUserObject } from "../users/creatingUserObjects.js";
 import { getUserIDForEdit } from "../users/gettingUserData.js";
 import { showUserList } from "../users/showingUserData.js";
 
 import {
   BASE_URL,
+  userDetails,
   userForms,
   usersList,
 } from "../generalFunctions/variables.js";
@@ -44,5 +45,11 @@ export const userFormsHandler = function (event) {
         removeHide(usersList);
       });
     });
+  }
+
+  if (selectingTarget(event).contains("go-back-to-details")) {
+    userForms.innerHTML = "";
+    addHide(userForms);
+    removeHide(userDetails);
   }
 };

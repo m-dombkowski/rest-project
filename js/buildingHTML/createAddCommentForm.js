@@ -1,7 +1,6 @@
-import { createUserComment, getPostComments } from "../async/asyncApiCalls.js";
+import { createUserComment } from "../async/asyncApiCalls.js";
 import {
   addHide,
-  hideSpinner,
   removeHide,
   showSpinner,
 } from "../generalFunctions/styleChanges.js";
@@ -10,15 +9,10 @@ import {
   postList,
   userForms,
 } from "../generalFunctions/variables.js";
-import { createUserCommentObject } from "../users/creatingUser.js";
+import { createUserCommentObject } from "../users/creatingUserObjects.js";
 import { showPostComments } from "../users/showingUserData.js";
 
-import { buildCommentContainer } from "./createPostComment.js";
 import { createHtmlElement } from "./rendering.js";
-
-const goBackToPosts = document.querySelector(".go-back-to-posts");
-const addCommentButton = document.querySelector(".add-comment-button");
-const allCommentsContainer = document.querySelector(".all-comments-container");
 
 export const buildAddCommentForm = function (data) {
   const goBackButton = createButton(data);
@@ -127,7 +121,7 @@ const createCommentSubmitButton = function (data) {
   submitButton.addEventListener("click", function (event) {
     showSpinner();
     event.preventDefault();
-    console.log(data.id);
+
     createUserComment(BASE_URL, data.id, createUserCommentObject()).then(() => {
       userForms.innerHTML = "";
       removeHide(postList);
@@ -135,13 +129,6 @@ const createCommentSubmitButton = function (data) {
       removeHide(goBackToPosts);
       removeHide(addCommentButton);
       showPostComments(data, event, allCommentsContainer);
-      // getPostComments(BASE_URL, data.id).then((data) => {
-      //   const commentObjectArray = data.data;
-      //   commentObjectArray.forEach((commentObject) => {
-      //     buildCommentContainer(commentObject, event, allCommentsContainer);
-      //   });
-      //   hideSpinner();
-      // });
     });
   });
 

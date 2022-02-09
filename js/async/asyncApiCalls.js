@@ -93,11 +93,3 @@ export const createUserComment = async function (url, postID, commentObject) {
   return response.json();
 };
 
-// export const getUserByID = async function (url, id) {
-//   const response = await fetch(`${url}/users/${id}`, {
-//     method: "GET",
-//     headers: headers,
-//   });
-
-//   return response.json();
-// };

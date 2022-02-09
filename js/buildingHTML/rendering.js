@@ -8,9 +8,12 @@ import {
   userDetails,
   usersList,
   responseMessageModal,
+  postList,
 } from "../generalFunctions/variables.js";
-import { buildPostList } from "./createPostsList.js";
-import { buildCommentContainer } from "./createPostComment.js";
+import {
+  buildGoBackToDetailsButton,
+  buildPostList,
+} from "./createPostsList.js";
 
 export const createHtmlElement = function (
   type,
@@ -113,7 +116,8 @@ export const renderCreateUser = function () {
 
 export const renderEditUser = function (event) {
   let html = `
-  <form class="edit-form">
+  <button class='go-back-to-details'>Go Back</button>
+  <form class="edit-form">  
       <p class="edit-user-title">Current user: </p> 
       <h2 class="current-user-name">${getUserNameForEdit(
         event,
@@ -154,9 +158,9 @@ export const renderEditUser = function (event) {
 
 export const renderUserPosts = function (data) {
   getUserPostObjects(data).forEach((postObject) => {
-    console.log(postObject);
     buildPostList(postObject);
   });
+  buildGoBackToDetailsButton();
 };
 
 export const displayResponseMessage = function (message) {

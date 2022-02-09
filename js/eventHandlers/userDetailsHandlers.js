@@ -1,8 +1,4 @@
-import {
-  getPostComments,
-  getUserPosts,
-  getUsers,
-} from "../async/asyncApiCalls.js";
+import { getUserPosts, getUsers } from "../async/asyncApiCalls.js";
 import { buildAddPostContainer } from "../buildingHTML/createPostForm.js";
 import { renderEditUser, renderUserPosts } from "../buildingHTML/rendering.js";
 import { selectingTarget } from "../generalFunctions/general.js";
@@ -12,12 +8,7 @@ import {
   removeHide,
   showSpinner,
 } from "../generalFunctions/styleChanges.js";
-import {
-  getComments,
-  getPostID,
-  getUserIDForEdit,
-  getUserPostObjects,
-} from "../users/gettingUserData.js";
+import { getUserIDForEdit } from "../users/gettingUserData.js";
 
 import {
   BASE_URL,
@@ -25,7 +16,6 @@ import {
   userDetails,
   userForms,
 } from "../generalFunctions/variables.js";
-import { showPostComments } from "../users/showingUserData.js";
 
 export const userDetailsHandler = function (event) {
   if (selectingTarget(event).contains("edit-user")) {

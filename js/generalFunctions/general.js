@@ -35,7 +35,6 @@ export const commentsContainer = function (event) {
   const target = event.target;
   const parent = target.parentElement.parentElement;
   const children = parent.children;
-  console.log(children);
 
   for (let i = 0; i < children.length; i++) {
     if (children[i].classList.contains("all-comments-container")) {

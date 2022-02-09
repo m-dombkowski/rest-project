@@ -7,13 +7,20 @@ import {
   removeHide,
   showSpinner,
 } from "../generalFunctions/styleChanges.js";
-import { postList, userForms } from "../generalFunctions/variables.js";
+import {
+  postList,
+  userDetails,
+  userForms,
+  userListSection,
+} from "../generalFunctions/variables.js";
 import { getPostTitle } from "../users/gettingUserData.js";
 import { showPostComments } from "../users/showingUserData.js";
 import { buildAddCommentForm } from "./createAddCommentForm.js";
 import { createHtmlElement } from "./rendering.js";
 
 export const buildPostList = function (data) {
+  // const goBackToDetailsButton = buildGoBackToDetailsButton();
+
   const postTitle = buildPostTitle(data);
   const postBody = buildPostBody(data);
   const postButton = buildCommentsButtons(data);
@@ -21,12 +28,30 @@ export const buildPostList = function (data) {
 
   const postContainer = createHtmlElement("div", ["post-container"]);
 
+  // userListSection.prepend(goBackToDetailsButton);
+  postList.appendChild(postContainer);
   postContainer.appendChild(postTitle);
   postContainer.appendChild(postBody);
   postContainer.appendChild(postButton);
   postContainer.appendChild(comments);
+};
 
-  postList.appendChild(postContainer);
+export const buildGoBackToDetailsButton = function () {
+  const goBackToDetailsButton = createHtmlElement(
+    "button",
+    ["go-back-to-details"],
+    {},
+    "Go Back"
+  );
+
+  goBackToDetailsButton.addEventListener("click", function () {
+    postList.innerHTML = "";
+    addHide(postList);
+    removeHide(userDetails);
+    goBackToDetailsButton.parentNode.removeChild(goBackToDetailsButton);
+  });
+
+  userListSection.prepend(goBackToDetailsButton);
 };
 
 const buildPostTitle = function (data) {
@@ -109,7 +134,7 @@ export const buildCommentsButtons = function (data) {
         commentsContainers.forEach((commentContainer) => {
           addHide(commentContainer);
         });
-        console.log(data);
+
         buildAddCommentForm(data);
         addHide(postList);
         removeHide(userForms);

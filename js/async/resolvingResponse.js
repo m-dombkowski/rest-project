@@ -1,11 +1,11 @@
 import { displayResponseMessage } from "../buildingHTML/rendering.js";
+import { responseMessageModal } from "../generalFunctions/variables.js";
 
 export const resolveResponse = function (
   response,
   successMessage,
   failMessage
 ) {
-  console.log(response.status);
   if (
     response.status === 200 ||
     response.status === 201 ||
@@ -14,5 +14,6 @@ export const resolveResponse = function (
     displayResponseMessage(successMessage);
   } else {
     displayResponseMessage(failMessage);
+    responseMessageModal.style.color = "red";
   }
 };
