@@ -61,19 +61,20 @@ export const printUsers = function (data) {
 
 export const renderUserDetails = function (data) {
   let html = `
-  <div class="detailed-user-info">
+  <div class="detailed-user-info">   
     <div class="details-buttons">
-      <button class="edit-user">Edit user info</button>
-      <button class="go-back">Go Back</button>
-    </div>
+     <button class="go-back" title="Go Back">&#129046</button>
+     <button class="edit-user" title="Edit User Information">&#x270E</button>
+     </div>
     <h2 class="active-user-name">${data.name}</h2>
     <p class="active-user-email">E-mail: ${data.email}</p>
     <p class="active-user-gender">Gender: ${data.gender}</p>
     <p class="active-user-status">Status: ${data.status}</p>
     <div class="posts">
-      <button class="add-post">Add Post</button>
-      <button class="get-user-posts">Get User Posts</button>
-    </div>
+      <button class="add-post">+</button>
+      <button class="get-user-posts">	
+      &#128366;</button>
+    </div>    
   </div>  `;
 
   userDetails.insertAdjacentHTML("afterbegin", html);
@@ -81,31 +82,33 @@ export const renderUserDetails = function (data) {
 
 export const renderCreateUser = function () {
   let html = `
-      <button class="go-back-create" title="Go Back">&#129044</button>  
-      <div class="create-form-title-container">
-        <p class="create-form-title">Create User Form. </br> Please, fill all of the boxes</p>
-      </div> 
+      
+     
       <form class="create-form"> 
+        <button class="go-back-create" title="Go Back">&#129046</button>  
+        <div class="create-form-title-container">
+          <p class="create-form-title">Create your own user! </br> Please, fill all of the boxes</p>
+        </div> 
         <div class="name-input">        
-          <label for="name" class="create-name-label">Name: </label></br>  
+          <label for="name" class="create-name-label">Name: </label>
           <input type="text" id="create-name" name="name" placeholder="Your username" required size="10"> 
         </div>
         <div class="email-input">
-          <label for="email" class='create-email-label'>Email: </label></br>         
+          <label for="email" class='create-email-label'>Email: </label>       
           <input type="email" id="create-email" placeholder="Your email address" required size="10"> 
         </div>
         <div class="gender-select"> 
-          <label for="gender" class='create-gender-label'>Gender: </label> </br>       
+          <label for="gender" class='create-gender-label'>Gender: </label>      
           <select name="gender" id="create-gender" required>
-            <option value="">--Please choose an option--</option>
-            <option value="female">Female</option>
-            <option value="male">Male</option>
+            <option value="">Please choose an option</option>
+            <option value="female">Female &#9792</option>
+            <option value="male">Male &#9794</option>
           </select>
         </div>
         <div class="status-select"> 
           <label for="status" class='create-status-label'>Status: </label>        
           <select name="status" id="create-status" required>
-            <option value="">--Please choose an option--</option>
+            <option value="">Please choose an option</option>
             <option value="active">Active</option>
             <option value="inactive">Inactive</option>
           </select>
@@ -142,8 +145,8 @@ export const renderEditUser = function (event) {
       <label for="gender">Gender: </label> </br>
       <select name="gender" id="edit-gender" required>
         <option value="">--Please choose an option--</option>
-        <option value="female">Female</option>
-        <option value="male">Male</option>
+        <option value="female">Female &#9792</option>
+        <option value="male">Male &#9794</option>
       </select>
     </div>
     <div class="status-select">

@@ -1,3 +1,10 @@
+/* COLORS
+
+#f1c40f , #2ecc71 , #ffe6e6, #999,
+
+
+*/
+
 html {
   font-size: 62.5%;
 }
@@ -29,14 +36,15 @@ body {
   border-radius: 10px;
   font-weight: bold;
   transition: all 0.5s ease;
+  cursor: pointer;
 }
 
 .show-all-users:hover {
-  background-color: #f1c40f;
+  background-color: #f9ca24;
 }
 
 .create-user:hover {
-  background-color: #2ecc71;
+  background-color: #badc58;
 }
 
 /*  ------------------ MAIN USERS LIST ----------------- */
@@ -75,35 +83,163 @@ body {
   border: none;
 }
 
-/*  ---------------------- DETAILS --------------------- */
+.user-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: auto;
+  margin-bottom: 1.5rem;
+}
 
-.details-buttons,
+/*  ---------------------- DETAILS --------------------- */
+.detailed-user-info {
+  border-radius: 8px;
+  padding: 6.5rem 10rem;
+  background-color: #ffd7d7;
+  background-image: linear-gradient(45deg, #ffe4e4 0%, #ffc9c9 100%);
+
+  box-shadow: 6px 8px 12px -2px rgba(255, 121, 121, 1);
+}
+
+.details-buttons {
+  /* margin-bottom: 4rem; */
+  margin: 0 -3rem 4rem -3rem;
+}
+
 .posts {
+  margin: 4rem -3rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.add-post,
+.get-user-posts {
+  padding: 0.4rem 0.8rem;
+  position: relative;
+  border: none;
+  background: none;
+  border-radius: 5px;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.add-post,
+.get-user-posts {
+  font-size: 3rem;
+}
+
+.add-post:hover {
+  background-color: #badc58;
+  padding-right: 9rem;
+  /* border: 2px solid #ffe6e6; */
+  /* transform: scale(120%); */
+}
+
+.add-post::after {
+  position: absolute;
+  font-size: 1.6rem;
+  right: -60px;
+  top: 12px;
+  opacity: 0;
+  content: "Add post";
+  transition: all 0.5s ease;
+}
+
+.add-post:hover::after {
+  opacity: 1;
+  top: 12px;
+  right: 18px;
+}
+
+.get-user-posts:hover {
+  background-color: #f9ca24;
+  padding-left: 14rem;
+}
+
+.get-user-posts::before {
+  position: absolute;
+  font-size: 1.6rem;
+  left: -119px;
+  top: 16px;
+  opacity: 0;
+  content: "Show user posts";
+  transition: all 0.5s ease;
+}
+
+.get-user-posts:hover::before {
+  opacity: 1;
+  top: 16px;
+  left: 10px;
 }
 
 .edit-user {
-  margin-right: auto;
+  position: relative;
+  background: none;
+  float: right;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  font-size: 3rem;
+  padding: 0 0.6rem;
+  transition: all 0.5s ease;
+  cursor: pointer;
 }
 
-.detailed-user-info {
-  border: 1px solid #000;
-  padding: 40px 30px;
-  display: inline-block;
+.edit-user:hover {
+  background-color: #71c5e9;
+  padding-left: 14rem;
+}
+
+.edit-user::before {
+  position: absolute;
+  opacity: 0;
+  top: 12px;
+  left: -110px;
+  content: "Edit user details";
+  transition: all 0.5s ease;
+  font-size: 1.6rem;
+}
+
+.edit-user:hover::before {
+  top: 12px;
+  left: 17px;
+  opacity: 1;
+}
+
+.go-back {
+  padding: 0 0.6rem;
+  font-size: 3rem;
+  background: none;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.go-back:hover {
+  background-color: #000;
+  color: #fff;
+  transform: rotate(180deg);
 }
 
 .user-details-container {
   display: flex;
   justify-content: center;
-  margin-top: 60px;
+  margin-top: 6rem;
 }
 
-.user-buttons {
-  display: flex;
-  justify-content: space-around;
-  margin-top: auto;
-  margin-bottom: 15px;
+.active-user-name {
+  font-size: 4rem;
+  margin-bottom: 3.2rem;
+  color: #333;
+}
+
+.active-user-email,
+.active-user-gender,
+.active-user-status {
+  font-size: 2.4rem;
+  margin-bottom: 2.4rem;
+  color: #333;
 }
 
 /*  -------------------- FORMS MUTUAL ------------------- */
@@ -134,7 +270,8 @@ body {
 
 .create-form {
   display: inline-block;
-  padding: 20rem 20rem 10rem 20rem;
+  position: relative;
+  padding: 27rem 20rem 3rem 20rem;
   border-radius: 10px;
   background-image: url("../images/hills.jpg");
   background-position: center;
@@ -145,19 +282,21 @@ body {
 
 .go-back-create {
   position: absolute;
-  top: 5%;
-  left: 22%;
+  top: 4%;
+  left: 5%;
   padding: 0 0.6rem;
   font-size: 2.4rem;
   background: none;
-  border: 1.5px solid #000;
+  border: 2px solid #000;
   border-radius: 50%;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .go-back-create:hover {
   background-color: #000;
   color: #fff;
+  transform: rotate(180deg);
 }
 
 .submit {
@@ -168,11 +307,12 @@ body {
 .create-email-label,
 .create-gender-label,
 .create-status-label {
-  text-align: left;
+  /* text-align: left; */
   display: block;
   font-size: 1.8rem;
   text-transform: uppercase;
-  color: #000;
+  color: #ffe6e6;
+  margin-bottom: 0.6rem;
 }
 
 #create-name,
@@ -180,15 +320,19 @@ body {
 #create-gender,
 #create-status {
   width: 100%;
-  margin-bottom: 2.4rem;
+  margin-bottom: 1.6rem;
   font-size: 1.6rem;
   padding: 0.6rem 0.8rem;
 }
 
+#create-status {
+  margin-bottom: 3rem;
+}
+
 .create-form-title-container {
   position: absolute;
-  top: 15%;
-  left: 36%;
+  top: 21%;
+  left: 27%;
 }
 
 .create-form-title {
@@ -196,8 +340,21 @@ body {
   color: #000;
 }
 
-/* .submit {
-} */
+.submit {
+  background: none;
+  padding: 1.2rem 2.4rem;
+  color: #ffe6e6;
+  font-size: 2.4rem;
+  border-radius: 100px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease-in;
+  position: relative;
+  cursor: pointer;
+}
+
+.submit:hover {
+  border: 2px solid #ffe6e6;
+}
 
 /*  ---------------------- ADD POST ---------------------*/
 
