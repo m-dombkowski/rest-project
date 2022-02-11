@@ -1,7 +1,14 @@
 /* COLORS
 
-#f1c40f , #2ecc71 , #ffe6e6, #999,
-
+1. SHOW USER/S INFO #f9ca24 
+2. CREATE #badc58 
+3. MAIN BACKGROUND #ffe6e6
+4. TEXT IN DETAILS #999
+5. DETAILS BACKGROUND: 
+ a. main: #ffd7d7 
+ b. gradient: #ffe4e4, #ffc9c9 
+ c. box-shadow:rgba(255, 121, 121, 1)
+6. EDIT #71c5e9
 
 */
 
@@ -39,12 +46,38 @@ body {
   cursor: pointer;
 }
 
+.create-user {
+  position: relative;
+}
+
+.create-user-icon {
+  height: 2rem;
+  width: 2rem;
+}
+
 .show-all-users:hover {
   background-color: #f9ca24;
 }
 
 .create-user:hover {
   background-color: #badc58;
+  padding-left: 16rem;
+}
+
+.create-user::before {
+  font-size: 1.6rem;
+  position: absolute;
+  top: 10px;
+  left: -130px;
+  opacity: 0;
+  content: "Create new user";
+  transition: 0.5s all ease;
+}
+
+.create-user:hover::before {
+  top: 10px;
+  left: 20px;
+  opacity: 1;
 }
 
 /*  ------------------ MAIN USERS LIST ----------------- */
@@ -58,36 +91,101 @@ body {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 2rem;
-  padding-left: 0;
+  /* padding-left: 0; */
   align-items: center;
 }
 
 .user {
   text-align: center;
-  background-color: #999;
+  background-color: #f8c291;
   padding: 0.8rem 1.6rem;
   display: flex;
   height: 15rem;
   flex-direction: column;
+  border-radius: 10px;
 }
 
-.details-icon,
-.close-icon {
-  width: 28px;
-  height: 28px;
-}
-
-.user-details,
-.delete-user {
-  background: none;
-  border: none;
+.user-name {
+  margin-top: 1.4rem;
+  font-size: 1.8rem;
 }
 
 .user-buttons {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
   margin-top: auto;
   margin-bottom: 1.5rem;
+}
+
+.user-details {
+  background: none;
+  border: none;
+  position: relative;
+  padding: 1rem;
+  transition: 0.5s all ease;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.user-details:hover {
+  background-color: #f9ca24;
+  padding-right: 16rem;
+}
+
+.user-details::after {
+  position: absolute;
+  top: 17px;
+  right: -140px;
+  font-size: 1.6rem;
+  content: "Check user details";
+  opacity: 0;
+  transition: 0.5s all ease;
+}
+
+.user-details:hover::after {
+  opacity: 1;
+  top: 17px;
+  right: 15px;
+}
+
+.details-icon {
+  height: 3rem;
+  width: 3rem;
+  /* border-radius: 50%; */
+  transition: 0.5s all ease;
+}
+
+.delete-user {
+  font-size: 3rem;
+  border: 2px solid transparent;
+  background: none;
+  padding: 0 0.6rem;
+  border-radius: 10px;
+  transition: all 0.5s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.delete-user:hover {
+  background-color: #eb2f06;
+  padding-left: 10rem;
+}
+
+.delete-user::before {
+  opacity: 0;
+  position: absolute;
+  top: 12px;
+  left: -90px;
+  content: "Delete user";
+  transition: all 0.5s ease;
+  font-size: 1.6rem;
+}
+
+.delete-user:hover::before {
+  opacity: 1;
+  top: 12px;
+  left: 10px;
 }
 
 /*  ---------------------- DETAILS --------------------- */

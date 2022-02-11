@@ -40,12 +40,10 @@ const renderUser = function (userObject) {
         <h2 class="user-name">${userObject.name}</h2>
         <div class=user-id id=${userObject.id}></div>
         <div class="user-buttons">
-          <button class="user-details id=${userObject.id}" title="Check user details">
+          <button class="user-details" id=${userObject.id}" title="Check user details">
             <img class="details-icon" src="../svg/search-svg.svg"/>
           </button>
-          <button class="delete-user" title="Delete user">
-            <img class="close-icon" src="../svg/close1-svg.svg"/>
-          </button>
+          <button class="delete-user" title="Delete user">&#10008;</button>
         </div>
     </li>`;
 
@@ -71,8 +69,8 @@ export const renderUserDetails = function (data) {
     <p class="active-user-gender">Gender: ${data.gender}</p>
     <p class="active-user-status">Status: ${data.status}</p>
     <div class="posts">
-      <button class="add-post">+</button>
-      <button class="get-user-posts">	
+      <button class="add-post" title="Add Post">+</button>
+      <button class="get-user-posts" title="Show user posts">	
       &#128366;</button>
     </div>    
   </div>  `;

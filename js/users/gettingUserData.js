@@ -40,6 +40,10 @@ export const getUserIDForDetailsAndDelete = function (event) {
   return loopForGettingUserID(tripleParentChildren(event), "user-id");
 };
 
+export const getUserIDForDelete = function (event) {
+  return loopForGettingUserID(doubleParentChildren(event), "user-id");
+};
+
 export const getUserPostObjects = function (data) {
   const postObjectsArray = data.data;
 

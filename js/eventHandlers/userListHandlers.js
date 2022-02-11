@@ -35,7 +35,7 @@ export const userListHandler = function (event) {
     });
   }
 
-  if (selectingTarget(event).contains("close-icon")) {
+  if (selectingTarget(event).contains("delete-user")) {
     getUsers(BASE_URL).then((data) => {
       deleteUser(data, event);
     });

@@ -26,8 +26,8 @@ export const mutualHandler = function (event) {
 
   if (selectingTarget(event).contains("go-back-create")) {
     clearElement(userForms);
-    // showUserList();
     removeHide(usersList);
+    showUserList();
     addHide(userForms);
     hideSpinner();
   }
