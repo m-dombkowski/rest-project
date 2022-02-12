@@ -35,7 +35,7 @@ const buildFormHeader = function (event) {
     "button",
     ["go-back-to-details"],
     {},
-    "Go Back"
+    "🠖"
   );
 
   goBackButton.addEventListener("click", function () {
@@ -92,7 +92,7 @@ const buildTitleInput = function () {
 
 const buildMessageInput = function () {
   const messageInput = createHtmlElement(
-    "input",
+    "textarea",
     ["add-post-message-input"],
     {
       placeholder: "Place for your message",
@@ -114,7 +114,7 @@ const buildMessageInput = function () {
 const formButtons = function () {
   const sendButton = createHtmlElement("input", ["submit-post-button"], {
     type: "submit",
-    value: "Submit",
+    value: "Add Post",
   });
 
   sendButton.addEventListener("click", function (event) {

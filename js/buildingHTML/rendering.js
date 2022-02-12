@@ -124,23 +124,23 @@ export const renderCreateUser = function () {
 
 export const renderEditUser = function (event) {
   let html = `
-  <button class='go-back-to-details'>Go Back</button>
   <form class="edit-form">  
+  <button class='go-back-to-details'>&#129046</button>
       <p class="edit-user-title">Current user: </p> 
       <h2 class="current-user-name">${getUserNameForEdit(
         event,
         "active-user-name"
       )}</h2>    
     <div class="name-input">
-      <label for="name">Name: </label></br>
+      <label class="edit-name-label" for="name">Name: </label></br>
       <input type="text" id="edit-name" name="name" required size="10"> 
     </div>
     <div class="email-input">
-      <label for="email">Email: </label></br>
+      <label class="edit-email-label" for="email">Email: </label></br>
       <input type="email" id="edit-email" required size="10"> 
     </div>
     <div class="gender-select">
-      <label for="gender">Gender: </label> </br>
+      <label class="edit-gender-label" for="gender">Gender: </label> </br>
       <select name="gender" id="edit-gender" required>
         <option value="">--Please choose an option--</option>
         <option value="female">Female &#9792</option>
@@ -148,7 +148,7 @@ export const renderEditUser = function (event) {
       </select>
     </div>
     <div class="status-select">
-      <label for="status">Status: </label> </br>
+      <label class="edit-status-label" for="status">Status: </label> </br>
       <select name="status" id="edit-status" required>
         <option value="">--Please choose an option--</option>
         <option value="active">Active</option>
@@ -156,7 +156,7 @@ export const renderEditUser = function (event) {
       </select>
     </div>
     <div class="submit-container">
-      <input type="submit" class="edit-submit" value="Edit Information">
+      <input type="submit" class="edit-submit" value="Edit">
     </div>
   </form>
   `;

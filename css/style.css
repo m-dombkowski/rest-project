@@ -8,7 +8,7 @@
  a. main: #ffd7d7 
  b. gradient: #ffe4e4, #ffc9c9 
  c. box-shadow:rgba(255, 121, 121, 1)
-6. EDIT #71c5e9
+6. EDIT #00a8ff
 
 */
 
@@ -60,7 +60,7 @@ body {
 }
 
 .create-user:hover {
-  background-color: #badc58;
+  background-color: #4cd137;
   padding-left: 16rem;
 }
 
@@ -168,7 +168,7 @@ body {
 }
 
 .delete-user:hover {
-  background-color: #eb2f06;
+  background-color: #f53b57;
   padding-left: 10rem;
 }
 
@@ -193,7 +193,7 @@ body {
   border-radius: 8px;
   padding: 6.5rem 10rem;
   background-color: #ffd7d7;
-  background-image: linear-gradient(45deg, #ffe4e4 0%, #ffc9c9 100%);
+  background-image: linear-gradient(45deg, #f8c291 0%, #ff5252 100%);
 
   box-shadow: 6px 8px 12px -2px rgba(255, 121, 121, 1);
 }
@@ -228,7 +228,7 @@ body {
 }
 
 .add-post:hover {
-  background-color: #badc58;
+  background-color: #4cd137;
   padding-right: 9rem;
   /* border: 2px solid #ffe6e6; */
   /* transform: scale(120%); */
@@ -284,7 +284,7 @@ body {
 }
 
 .edit-user:hover {
-  background-color: #71c5e9;
+  background-color: #00a8ff;
   padding-left: 14rem;
 }
 
@@ -357,6 +357,69 @@ body {
 }
 
 /*  --------------------- EDIT FORM -------------------- */
+
+.edit-form {
+  padding: 20rem 20rem 5rem 20rem;
+  position: relative;
+  border-radius: 10px;
+  background-image: url(/images/beach2.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+  margin-bottom: 10rem;
+  box-shadow: 0.6rem 0.6rem 2.4rem 0px rgba(66, 68, 90, 1);
+}
+
+.edit-user-title {
+  font-size: 2.2rem;
+  margin-bottom: 1.2rem;
+  color: #333;
+}
+
+.current-user-name {
+  font-size: 4rem;
+  margin-bottom: 10rem;
+  color: #333;
+}
+
+.edit-name-label,
+.edit-email-label,
+.edit-gender-label,
+.edit-status-label {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+#edit-name,
+#edit-email,
+#edit-gender,
+#edit-status {
+  width: 80%;
+  margin-bottom: 1.6rem;
+  margin-top: 1.2rem;
+  font-size: 1.6rem;
+  padding: 0.6rem 0.8rem;
+}
+
+.edit-submit {
+  padding: 0.8rem 2.4rem;
+  font-size: 2.4rem;
+  background: none;
+  border-radius: 10px;
+  border: 2px solid #333;
+  margin-top: 4rem;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.edit-submit:hover {
+  border: 2px solid #00a8ff;
+  background-color: #00a8ff;
+  color: #ffc9c9;
+}
 
 /*  -------------------- CREATE FORM --------------------*/
 
@@ -448,6 +511,7 @@ body {
   transition: all 0.3s ease-in;
   position: relative;
   cursor: pointer;
+  margin-bottom: 1rem;
 }
 
 .submit:hover {
@@ -455,6 +519,108 @@ body {
 }
 
 /*  ---------------------- ADD POST ---------------------*/
+
+.add-post-form-container {
+  padding: 20rem 20rem 10rem 20rem;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 12px 12px 12px 0px rgba(66, 68, 90, 1);
+  background-image: url(/images/books.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+}
+
+/* .add-post-form-container::before {
+  content: "";
+  position: absolute;
+  left: -5%;
+  right: 0;
+  top: -5%;
+  z-index: -1;
+  background-image: url(/images/books.jpg);
+   -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(2px); *
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 110%;
+  width: 110%;
+} */
+
+.go-back-to-details {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  padding: 0.2rem 1rem;
+  font-size: 4rem;
+  background: none;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  color: #fff;
+}
+
+.go-back-to-details:hover {
+  background-color: rgba(255, 255, 255, 0.65);
+  color: #000;
+  transform: rotate(180deg);
+}
+
+.form-title {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: #ffc9c9;
+}
+
+.form-buttons-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.submit-post-button,
+.clear-form-button {
+  padding: 0.8rem 1.6rem;
+  font-size: 2rem;
+  background: none;
+  text-transform: uppercase;
+  color: #ffc9c9;
+  border: 2px solid #ffc9c9;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.5s all ease;
+}
+
+.clear-form-button:hover {
+  background-color: #f53b57;
+  border: 2px solid #f53b57;
+  color: #333;
+}
+
+.submit-post-button:hover {
+  background-color: #4cd137;
+  border: 2px solid #4cd137;
+  color: #333;
+}
+
+.add-post-title-input,
+.add-post-message-input {
+  width: 35rem;
+  margin-bottom: 1.6rem;
+  font-size: 1.6rem;
+  padding: 1rem;
+}
+
+.add-post-message-input {
+  height: 15rem;
+  font-family: sans-serif;
+}
 
 /*  -------------------- ADD COMMENT --------------------*/
 
