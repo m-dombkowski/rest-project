@@ -33,7 +33,7 @@ export const getUserNameForEdit = function (event, className) {
 };
 
 export const getPostTitle = function (event) {
-  return loopForGettingUserName(singleParentChildren(event), "post-title");
+  return loopForGettingUserName(doubleParentChildren(event), "post-title");
 };
 
 export const getUserIDForDetailsAndDelete = function (event) {

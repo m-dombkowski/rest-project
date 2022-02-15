@@ -9,6 +9,15 @@ export const getUsers = async function (url) {
   return response.json();
 };
 
+export const getUserByID = async function (url, userID) {
+  const response = await fetch(`${url}/users/${userID}`, {
+    method: "GET",
+    headers: headers,
+  });
+
+  return response.json();
+};
+
 export const createUser = async function (url, userObject) {
   const response = await fetch(`${url}/users`, {
     method: "POST",
@@ -19,7 +28,7 @@ export const createUser = async function (url, userObject) {
   resolveResponse(
     response,
     "User Created Successfully!",
-    "Couldn't create user, please check information provided and try again (Remember, there can't be more than 1 user with the same email address, and all informations must be provided!)"
+    "Couldn't create user, please check information provided and try again (Remember, there can't be more than 1 user with the same email address, and all information must be provided!)"
   );
   return response.json();
 };
@@ -92,4 +101,3 @@ export const createUserComment = async function (url, postID, commentObject) {
   );
   return response.json();
 };
-

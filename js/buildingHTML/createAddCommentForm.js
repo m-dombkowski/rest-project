@@ -8,6 +8,7 @@ import {
   BASE_URL,
   postList,
   userForms,
+  userListSection,
 } from "../generalFunctions/variables.js";
 import { createUserCommentObject } from "../users/creatingUserObjects.js";
 import { showPostComments } from "../users/showingUserData.js";
@@ -53,6 +54,7 @@ const createButton = function (data) {
     addHide(userForms);
     removeHide(goBackToPosts);
     removeHide(addCommentButton);
+    removeHide(userListSection);
     showPostComments(data, event, allCommentsContainer);
   });
 

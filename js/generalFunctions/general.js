@@ -1,3 +1,5 @@
+import { userListSection } from "./variables.js";
+
 export const selectingTarget = function (event) {
   const target = event.target;
   return target.classList;
@@ -55,6 +57,22 @@ export const loopForGettingUserID = function (element, className) {
   for (let i = 0; i < element.length; i++) {
     if (element[i].classList.contains(className)) {
       return element[i].id;
+    }
+  }
+};
+
+export const checkPostHeader = function () {
+  const userListSectionChildren = userListSection.children;
+
+  for (let i = 0; i < userListSectionChildren.length; i++) {
+    if (
+      userListSectionChildren[i].classList.contains(
+        "post-list-header-container"
+      )
+    ) {
+      userListSectionChildren[i].parentNode.removeChild(
+        userListSectionChildren[i]
+      );
     }
   }
 };

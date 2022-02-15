@@ -5,6 +5,8 @@ import {
   userDetails,
   usersList,
   postList,
+  userListSection,
+  postListHeaderContainer,
 } from "./generalFunctions/variables.js";
 
 import { renderCreateUser } from "./buildingHTML/rendering.js";
@@ -17,25 +19,31 @@ import {
   responseModalHandler,
 } from "./eventHandlers/mutualAndGeneralHandlers.js";
 import { showUserList } from "./users/showingUserData.js";
-import { clearElement } from "./generalFunctions/general.js";
+import { checkPostHeader, clearElement } from "./generalFunctions/general.js";
 
 showUsers.addEventListener("click", function () {
-  usersList.innerHTML = " ";
+  // usersList.innerHTML = " ";
+  clearElement(usersList);
+  checkPostHeader();
+
   showUserList();
+  removeHide(userListSection);
   removeHide(usersList);
   addHide(userForms);
   addHide(postList);
+
   clearElement(userForms);
   clearElement(userDetails);
   clearElement(postList);
 });
 
 createUser.addEventListener("click", function () {
-  userForms.innerHTML = "";
+  clearElement(userForms);
   renderCreateUser();
   removeHide(userForms);
   addHide(usersList);
   clearElement(userDetails);
+  addHide(userListSection);
 });
 
 userForms.addEventListener("click", function (event) {

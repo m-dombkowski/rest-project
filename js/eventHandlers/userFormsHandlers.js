@@ -15,6 +15,7 @@ import {
   userDetails,
   userForms,
   usersList,
+  userListSection,
 } from "../generalFunctions/variables.js";
 
 export const userFormsHandler = function (event) {
@@ -48,7 +49,7 @@ export const userFormsHandler = function (event) {
   }
 
   if (selectingTarget(event).contains("go-back-to-details")) {
-    userForms.innerHTML = "";
+    clearElement(userForms);
     addHide(userForms);
     removeHide(userDetails);
   }

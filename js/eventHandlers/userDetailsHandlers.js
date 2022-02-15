@@ -1,4 +1,4 @@
-import { getUserPosts, getUsers } from "../async/asyncApiCalls.js";
+import { getUserPosts, getUsers, getUserByID } from "../async/asyncApiCalls.js";
 import { buildAddPostContainer } from "../buildingHTML/createPostForm.js";
 import { renderEditUser, renderUserPosts } from "../buildingHTML/rendering.js";
 import { selectingTarget } from "../generalFunctions/general.js";
@@ -39,10 +39,11 @@ export const userDetailsHandler = function (event) {
         BASE_URL,
         getUserIDForEdit(data, event, "active-user-name")
       ).then((data) => {
-        removeHide(userForms);
+        // removeHide(userForms);
         removeHide(postList);
-        renderUserPosts(data);
+        renderUserPosts(data, event);
         hideSpinner();
+        console.log(data);
       });
     });
   }

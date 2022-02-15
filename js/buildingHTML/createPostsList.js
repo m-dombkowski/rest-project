@@ -1,6 +1,9 @@
 import {
+  clearElement,
   commentsContainer,
   doubleParent,
+  doubleParentChildren,
+  loopForGettingUserName,
 } from "../generalFunctions/general.js";
 import {
   addHide,
@@ -26,7 +29,7 @@ export const buildPostList = function (data) {
   const postButton = buildCommentsButtons(data);
   const comments = buildCommentContainer();
 
-  const postContainer = createHtmlElement("div", ["post-container"]);
+  const postContainer = createHtmlElement("li", ["post-container"]);
 
   // userListSection.prepend(goBackToDetailsButton);
   postList.appendChild(postContainer);
@@ -36,22 +39,59 @@ export const buildPostList = function (data) {
   postContainer.appendChild(comments);
 };
 
-export const buildGoBackToDetailsButton = function () {
+export const buildPostListHeader = function (event) {
+  const postListTitle = buildPostListTitle(event);
+  const goBackButton = buildGoBackToDetailsButton();
+
+  const headerContainer = createHtmlElement("div", [
+    "post-list-header-container",
+  ]);
+
+  headerContainer.appendChild(postListTitle);
+  headerContainer.appendChild(goBackButton);
+
+  userListSection.prepend(headerContainer);
+};
+
+const buildPostListTitle = function (event) {
+  const name = loopForGettingUserName(
+    doubleParentChildren(event),
+    "active-user-name"
+  );
+
+  const headerTitle = createHtmlElement(
+    "p",
+    ["post-list-header-title"],
+    {},
+    `${name}'s posts`
+  );
+
+  return headerTitle;
+};
+
+const buildGoBackToDetailsButton = function () {
   const goBackToDetailsButton = createHtmlElement(
     "button",
-    ["go-back-to-details"],
-    {},
-    "Go Back"
+    ["go-back-to-details", "post"],
+    { title: "Go Back" },
+    "🠖"
   );
 
   goBackToDetailsButton.addEventListener("click", function () {
-    postList.innerHTML = "";
+    const postListHeader = document.querySelector(
+      ".post-list-header-container"
+    );
+    clearElement(postList);
     addHide(postList);
     removeHide(userDetails);
-    goBackToDetailsButton.parentNode.removeChild(goBackToDetailsButton);
+    postListHeader.parentNode.removeChild(postListHeader);
+    // goBackToDetailsButton.parentNode.removeChild(goBackToDetailsButton);
+    // userListSection.children[0].parentNode.removeChild(
+    //   userListSection.children[0]
+    // );
   });
 
-  userListSection.prepend(goBackToDetailsButton);
+  return goBackToDetailsButton;
 };
 
 const buildPostTitle = function (data) {
@@ -80,7 +120,7 @@ export const buildCommentsButtons = function (data) {
     "button",
     ["show-comments-button"],
     {},
-    "Show Comments"
+    "💬"
   );
 
   showCommentsButton.addEventListener("click", function (event) {
@@ -93,11 +133,15 @@ export const buildCommentsButtons = function (data) {
       addHide(showCommentsButton);
     });
 
+    const buttonsContainer = createHtmlElement("div", [
+      "comments-buttons-container",
+    ]);
+
     const goBackButton = createHtmlElement(
       "button",
       ["go-back-to-posts"],
       {},
-      "Go Back"
+      "🠖"
     );
 
     goBackButton.addEventListener("click", function (event) {
@@ -116,25 +160,26 @@ export const buildCommentsButtons = function (data) {
         removeHide(postContainer);
       });
 
-      goBackButton.parentNode.removeChild(goBackButton);
-      addCommentButton.parentNode.removeChild(addCommentButton);
+      buttonsContainer.parentNode.removeChild(buttonsContainer);
     });
 
     const addCommentButton = createHtmlElement(
       "button",
       ["add-comment-button"],
       {},
-      "Add Comment"
+      "📝"
     );
 
+    console.log(userListSection);
     addCommentButton.addEventListener("click", function (event) {
       const commentsContainers =
         document.querySelectorAll(".comment-container");
+      console.log(data);
       if (getPostTitle(event) === data.title) {
         commentsContainers.forEach((commentContainer) => {
           addHide(commentContainer);
         });
-
+        addHide(userListSection);
         buildAddCommentForm(data);
         addHide(postList);
         removeHide(userForms);
@@ -144,8 +189,10 @@ export const buildCommentsButtons = function (data) {
     });
 
     showPostComments(data, event, commentsContainer(event));
-    doubleParent(event).appendChild(goBackButton);
-    doubleParent(event).appendChild(addCommentButton);
+    buttonsContainer.appendChild(goBackButton);
+    buttonsContainer.appendChild(addCommentButton);
+
+    doubleParent(event).appendChild(buttonsContainer);
   });
 
   const buttonContainer = createHtmlElement("div", ["button-container"]);

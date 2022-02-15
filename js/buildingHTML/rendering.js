@@ -11,8 +11,10 @@ import {
   postList,
 } from "../generalFunctions/variables.js";
 import {
-  buildGoBackToDetailsButton,
+  // buildGoBackToDetailsButton,
   buildPostList,
+  buildPostListHeader,
+  // buildPostListTitle,
 } from "./createPostsList.js";
 
 export const createHtmlElement = function (
@@ -164,11 +166,14 @@ export const renderEditUser = function (event) {
   userForms.insertAdjacentHTML("afterbegin", html);
 };
 
-export const renderUserPosts = function (data) {
+export const renderUserPosts = function (data, event) {
   getUserPostObjects(data).forEach((postObject) => {
     buildPostList(postObject);
   });
-  buildGoBackToDetailsButton();
+  console.log(data);
+  // buildGoBackToDetailsButton();
+  // buildPostListTitle(event);
+  buildPostListHeader(event);
 };
 
 export const displayResponseMessage = function (message) {

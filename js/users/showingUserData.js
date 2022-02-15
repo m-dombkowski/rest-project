@@ -20,12 +20,14 @@ export const showUserList = function () {
   showSpinner();
   getUsers(BASE_URL).then((data) => {
     clearElement(usersList);
+    console.log(data);
     printUsers(data);
     hideSpinner();
   });
 };
 
 export const showPostComments = function (data, event, container) {
+  showSpinner();
   getPostComments(BASE_URL, data.id).then((data) => {
     const commentObjectArray = data.data;
     commentObjectArray.forEach((commentObject) => {

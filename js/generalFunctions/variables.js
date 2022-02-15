@@ -27,3 +27,6 @@ export const postList = document.querySelector(".user-posts-list");
 export const responseMessageModal = document.querySelector(
   ".response-message-modal"
 );
+export const postListHeaderContainer = document.querySelector(
+  ".post-list-header-container"
+);
