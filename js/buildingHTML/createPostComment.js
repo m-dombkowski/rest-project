@@ -11,7 +11,7 @@ export const buildCommentContainer = function (data, event, container) {
   commentContainer.appendChild(commentText);
 
   const allCommentsContainer = container;
-  allCommentsContainer.appendChild(commentContainer);
+  allCommentsContainer.prepend(commentContainer);
 };
 
 const buildCommentName = function (data) {

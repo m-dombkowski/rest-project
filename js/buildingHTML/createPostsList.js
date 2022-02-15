@@ -147,6 +147,9 @@ export const buildCommentsButtons = function (data) {
     goBackButton.addEventListener("click", function (event) {
       const commentsContainers =
         document.querySelectorAll(".comment-container");
+
+      const noCommentMessage = document.querySelector(".no-comment-message");
+
       event.preventDefault();
       addHide(goBackButton);
       removeHide(showCommentsButton);
@@ -159,6 +162,9 @@ export const buildCommentsButtons = function (data) {
       postContainers.forEach((postContainer) => {
         removeHide(postContainer);
       });
+      if (noCommentMessage) {
+        noCommentMessage.parentNode.removeChild(noCommentMessage);
+      }
 
       buttonsContainer.parentNode.removeChild(buttonsContainer);
     });
@@ -174,6 +180,7 @@ export const buildCommentsButtons = function (data) {
     addCommentButton.addEventListener("click", function (event) {
       const commentsContainers =
         document.querySelectorAll(".comment-container");
+      const noCommentMessage = document.querySelector(".no-comment-message");
       console.log(data);
       if (getPostTitle(event) === data.title) {
         commentsContainers.forEach((commentContainer) => {
@@ -185,6 +192,9 @@ export const buildCommentsButtons = function (data) {
         removeHide(userForms);
         addHide(addCommentButton);
         addHide(goBackButton);
+        if (noCommentMessage) {
+          noCommentMessage.parentNode.removeChild(noCommentMessage);
+        }
       }
     });
 
@@ -206,4 +216,19 @@ const buildCommentContainer = function () {
   const commentContainer = createHtmlElement("div", ["all-comments-container"]);
 
   return commentContainer;
+};
+
+export const buildNoCommentsMessage = function () {
+  const allCommentsContainer = document.querySelector(
+    ".all-comments-container"
+  );
+
+  const noCommentMessage = createHtmlElement(
+    "p",
+    ["no-comment-message"],
+    {},
+    "There are no comments yet! Click button bellow to add one 😉 !"
+  );
+
+  allCommentsContainer.appendChild(noCommentMessage);
 };

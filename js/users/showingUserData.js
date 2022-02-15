@@ -1,5 +1,6 @@
 import { getPostComments, getUsers } from "../async/asyncApiCalls.js";
 import { buildCommentContainer } from "../buildingHTML/createPostComment.js";
+import { buildNoCommentsMessage } from "../buildingHTML/createPostsList.js";
 import { printUsers, renderUserDetails } from "../buildingHTML/rendering.js";
 import { clearElement } from "../generalFunctions/general.js";
 import { hideSpinner, showSpinner } from "../generalFunctions/styleChanges.js";
@@ -30,6 +31,9 @@ export const showPostComments = function (data, event, container) {
   showSpinner();
   getPostComments(BASE_URL, data.id).then((data) => {
     const commentObjectArray = data.data;
+    if (commentObjectArray.length === 0) {
+      buildNoCommentsMessage();
+    }
     commentObjectArray.forEach((commentObject) => {
       buildCommentContainer(commentObject, event, container);
     });
