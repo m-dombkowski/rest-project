@@ -16,14 +16,18 @@ import { showPostComments } from "../users/showingUserData.js";
 import { createHtmlElement } from "./rendering.js";
 
 export const buildAddCommentForm = function (data) {
+  const formTitle = createFormTitle();
   const goBackButton = createButton(data);
   const nameInput = createCommentNameInput();
   const emailInput = createCommentEmailInput();
   const messageInput = createCommentMessageInput();
   const submitButton = createCommentSubmitButton(data);
 
-  const addCommentForm = createHtmlElement("form", ["add-comment-form"]);
+  const addCommentForm = createHtmlElement("form", ["add-comment-form"], {
+    alt: "background image of a mountain with forrest at it's feet",
+  });
 
+  addCommentForm.appendChild(formTitle);
   addCommentForm.appendChild(goBackButton);
   addCommentForm.appendChild(nameInput);
   addCommentForm.appendChild(emailInput);
@@ -31,6 +35,29 @@ export const buildAddCommentForm = function (data) {
   addCommentForm.appendChild(submitButton);
 
   userForms.appendChild(addCommentForm);
+};
+
+const createFormTitle = function () {
+  const title = createHtmlElement(
+    "h1",
+    ["create-comment-form-title"],
+    {},
+    `Create Comment!`
+  );
+  const instruction = createHtmlElement(
+    "p",
+    ["create-comment-form-title-instruction"],
+    {},
+    "Please fill all of the boxes."
+  );
+  const titleContainer = createHtmlElement("div", [
+    "create-comment-form-title-container",
+  ]);
+
+  titleContainer.appendChild(title);
+  titleContainer.appendChild(instruction);
+
+  return titleContainer;
 };
 
 const createButton = function (data) {
@@ -43,7 +70,7 @@ const createButton = function (data) {
     "button",
     ["go-back-comment"],
     {},
-    "Go Back"
+    "🠖"
   );
 
   goBackButton.addEventListener("click", function (event) {
@@ -96,7 +123,7 @@ const createCommentEmailInput = function () {
 
 const createCommentMessageInput = function () {
   const userMessageInput = createHtmlElement(
-    "input",
+    "textarea",
     ["add-comment-message-input"],
     { placeholder: "Your message", type: "text" }
   );
@@ -117,7 +144,7 @@ const createCommentSubmitButton = function (data) {
   );
   const submitButton = createHtmlElement("input", ["add-comment-submit"], {
     type: "submit",
-    value: "Submit",
+    value: "Add Comment!",
   });
 
   submitButton.addEventListener("click", function (event) {
