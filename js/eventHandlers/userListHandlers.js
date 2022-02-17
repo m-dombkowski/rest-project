@@ -15,6 +15,9 @@ import {
   userForms,
   userDetails,
   postList,
+  detailsContainer,
+  detailsSection,
+  footer,
 } from "../generalFunctions/variables.js";
 import {
   createHtmlElement,
@@ -24,6 +27,7 @@ import {
 export const userListHandler = function (event) {
   if (selectingTarget(event).contains("details-icon")) {
     addHide(usersList);
+    addHide(footer);
     showSpinner();
     getUsers(BASE_URL).then((data) => {
       spinner.setAttribute("hidden", "");
@@ -32,6 +36,8 @@ export const userListHandler = function (event) {
       addHide(userForms);
       removeHide(userDetails);
       addHide(postList);
+      removeHide(detailsContainer);
+      removeHide(detailsSection);
     });
   }
 

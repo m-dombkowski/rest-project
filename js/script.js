@@ -6,7 +6,10 @@ import {
   usersList,
   postList,
   userListSection,
-  postListHeaderContainer,
+  helloMessageSection,
+  detailsSection,
+  detailsContainer,
+  footer,
 } from "./generalFunctions/variables.js";
 
 import { renderCreateUser } from "./buildingHTML/rendering.js";
@@ -25,13 +28,14 @@ showUsers.addEventListener("click", function () {
   // usersList.innerHTML = " ";
   clearElement(usersList);
   checkPostHeader();
-
+  addHide(helloMessageSection);
   showUserList();
   removeHide(userListSection);
   removeHide(usersList);
   addHide(userForms);
   addHide(postList);
-
+  addHide(detailsSection);
+  addHide(detailsContainer);
   clearElement(userForms);
   clearElement(userDetails);
   clearElement(postList);
@@ -39,11 +43,15 @@ showUsers.addEventListener("click", function () {
 
 createUser.addEventListener("click", function () {
   clearElement(userForms);
+  addHide(detailsSection);
+  addHide(detailsContainer);
+  addHide(helloMessageSection);
   renderCreateUser();
   removeHide(userForms);
   addHide(usersList);
   clearElement(userDetails);
   addHide(userListSection);
+  addHide(footer);
 });
 
 userForms.addEventListener("click", function (event) {

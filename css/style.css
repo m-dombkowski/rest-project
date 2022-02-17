@@ -27,6 +27,20 @@ body {
   font-family: sans-serif;
 }
 
+/* --------------------- HELLO-MESSAGE ----------------- */
+
+.hello-section {
+  margin: 16rem 16rem 0 16rem;
+
+  /* height: 33vh; */
+}
+
+.hello-message {
+  font-size: 2.6rem;
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+}
+
 /* ---------------------- NAVIGATION ------------------- */
 
 .buttons {
@@ -193,6 +207,11 @@ body {
 }
 
 /*  ---------------------- DETAILS --------------------- */
+
+.details-section {
+  margin-bottom: 4rem;
+}
+
 .detailed-user-info {
   border-radius: 8px;
   padding: 6.5rem 10rem;
@@ -363,7 +382,7 @@ body {
   padding: 2rem 4rem;
   border: 1px solid #000;
   display: inline-block;
-  margin-bottom: 10rem;
+  margin-bottom: 2rem;
 }
 
 /*  --------------------- EDIT FORM -------------------- */
@@ -452,6 +471,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: 1.4rem 1.4rem 2.4rem 0px rgba(66, 68, 90, 1);
+  margin-bottom: 10rem;
 }
 
 .go-back-create {
@@ -871,6 +891,47 @@ body {
 
 .comment-text {
   font-size: 1.6rem;
+}
+
+/* ---------------------- FOOTER ----------------------- */
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 5rem;
+}
+
+.footer-container {
+  /* display: block; */
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.footer-message {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 1.2rem;
+}
+
+.go-rest-anchor:link,
+.go-rest-anchor:visited {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.5s ease;
+  font-weight: bold;
+}
+
+.go-rest-anchor:hover,
+.go-rest-anchor:active {
+  color: #d35400;
+}
+
+.homepage-icon {
+  font-size: 3.2rem;
 }
 
 /*  ---------------------- GENERAL --------------------- */

@@ -10,6 +10,7 @@ import {
   responseMessageModal,
   userDetails,
   userForms,
+  userListSection,
   usersList,
 } from "../generalFunctions/variables.js";
 
@@ -27,6 +28,7 @@ export const mutualHandler = function (event) {
   if (selectingTarget(event).contains("go-back-create")) {
     clearElement(userForms);
     removeHide(usersList);
+    removeHide(userListSection);
     showUserList();
     addHide(userForms);
     hideSpinner();

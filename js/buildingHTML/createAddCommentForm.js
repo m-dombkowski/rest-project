@@ -1,9 +1,6 @@
 import { createUserComment } from "../async/asyncApiCalls.js";
-import {
-  addHide,
-  removeHide,
-  showSpinner,
-} from "../generalFunctions/styleChanges.js";
+import { clearElement } from "../generalFunctions/general.js";
+import { addHide, removeHide } from "../generalFunctions/styleChanges.js";
 import {
   BASE_URL,
   postList,
@@ -74,9 +71,8 @@ const createButton = function (data) {
   );
 
   goBackButton.addEventListener("click", function (event) {
-    showSpinner();
-    userForms.innerHTML = "";
     event.preventDefault();
+    clearElement(userForms);
     removeHide(postList);
     addHide(userForms);
     removeHide(goBackToPosts);
@@ -148,12 +144,11 @@ const createCommentSubmitButton = function (data) {
   });
 
   submitButton.addEventListener("click", function (event) {
-    showSpinner();
     event.preventDefault();
-
     createUserComment(BASE_URL, data.id, createUserCommentObject()).then(() => {
-      userForms.innerHTML = "";
+      clearElement(userForms);
       removeHide(postList);
+      // removeHide();
       addHide(userForms);
       removeHide(goBackToPosts);
       removeHide(addCommentButton);

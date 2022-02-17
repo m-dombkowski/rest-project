@@ -16,6 +16,7 @@ import {
   userForms,
   usersList,
   userListSection,
+  main,
 } from "../generalFunctions/variables.js";
 
 export const userFormsHandler = function (event) {

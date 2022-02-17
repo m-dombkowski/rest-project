@@ -9,13 +9,9 @@ import {
   usersList,
   responseMessageModal,
   postList,
+  footer,
 } from "../generalFunctions/variables.js";
-import {
-  // buildGoBackToDetailsButton,
-  buildPostList,
-  buildPostListHeader,
-  // buildPostListTitle,
-} from "./createPostsList.js";
+import { buildPostList, buildPostListHeader } from "./createPostsList.js";
 
 export const createHtmlElement = function (
   type,
@@ -171,8 +167,6 @@ export const renderUserPosts = function (data, event) {
     buildPostList(postObject);
   });
   console.log(data);
-  // buildGoBackToDetailsButton();
-  // buildPostListTitle(event);
   buildPostListHeader(event);
 };
 

@@ -125,7 +125,8 @@ export const buildCommentsButtons = function (data) {
 
   showCommentsButton.addEventListener("click", function (event) {
     const postContainers = document.querySelectorAll(".post-container");
-    showSpinner();
+    const commentsButtons = document.querySelector(".button-container");
+    showSpinner(commentsButtons);
 
     postContainers.forEach((postContainer) => {
       addHide(postContainer);
