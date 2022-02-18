@@ -1,11 +1,11 @@
 export const token =
   "c397113043321c1304d7fb3a759310dcc61e8ef3fd4b0040dad3eb74b185192f";
 
-export const headers = {
-  Accept: "application/json",
-  "Content-Type": "application/json",
-  Authorization: `Bearer ` + token,
-};
+// export const headers = {
+//   Accept: "application/json",
+//   "Content-Type": "application/json",
+//   Authorization: `Bearer ` + token,
+// };
 
 export const showUsers = document.querySelector(".show-all-users");
 export const deleteU = document.querySelector(".btn-deleteU");

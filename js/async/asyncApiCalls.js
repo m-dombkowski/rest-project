@@ -1,10 +1,14 @@
-import { headers } from "../generalFunctions/variables.js";
+import { token } from "../generalFunctions/variables.js";
 import { resolveResponse } from "./resolvingResponse.js";
 
 export const getUsers = async function (url) {
   const response = await fetch(`${url}/users`, {
     method: "GET",
-    headers: headers,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ` + token,
+    },
   });
   return response.json();
 };
@@ -12,7 +16,11 @@ export const getUsers = async function (url) {
 export const getUserByID = async function (url, userID) {
   const response = await fetch(`${url}/users/${userID}`, {
     method: "GET",
-    headers: headers,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ` + token,
+    },
   });
 
   return response.json();
@@ -21,7 +29,11 @@ export const getUserByID = async function (url, userID) {
 export const createUser = async function (url, userObject) {
   const response = await fetch(`${url}/users`, {
     method: "POST",
-    headers: headers,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ` + token,
+    },
     body: JSON.stringify(userObject),
   });
 
@@ -36,7 +48,11 @@ export const createUser = async function (url, userObject) {
 export const deleteUserREST = async function (url, id) {
   const response = await fetch(`${url}/users/${id}`, {
     method: "DELETE",
-    headers: headers,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ` + token,
+    },
   });
   resolveResponse(
     response,
@@ -48,7 +64,11 @@ export const deleteUserREST = async function (url, id) {
 export const editUser = async function (url, id, userObject) {
   const response = await fetch(`${url}/users/${id}`, {
     method: "PUT",
-    headers: headers,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ` + token,
+    },
     body: JSON.stringify(userObject),
   });
   resolveResponse(
@@ -61,7 +81,11 @@ export const editUser = async function (url, id, userObject) {
 export const getUserPosts = async function (url, userID) {
   const response = await fetch(`${url}/users/${userID}/posts`, {
     method: "GET",
-    headers: headers,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ` + token,
+    },
   });
   return response.json();
 };
@@ -69,7 +93,11 @@ export const getUserPosts = async function (url, userID) {
 export const getPostComments = async function (url, postID) {
   const response = await fetch(`${url}/posts/${postID}/comments`, {
     method: "GET",
-    headers: headers,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ` + token,
+    },
   });
   return response.json();
 };
@@ -77,7 +105,11 @@ export const getPostComments = async function (url, postID) {
 export const createUserPost = async function (url, userID, userPostObject) {
   const response = await fetch(`${url}/users/${userID}/posts`, {
     method: "POST",
-    headers: headers,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ` + token,
+    },
     body: JSON.stringify(userPostObject),
   });
   resolveResponse(
@@ -91,7 +123,11 @@ export const createUserPost = async function (url, userID, userPostObject) {
 export const createUserComment = async function (url, postID, commentObject) {
   const response = await fetch(`${url}/posts/${postID}/comments`, {
     method: "POST",
-    headers: headers,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ` + token,
+    },
     body: JSON.stringify(commentObject),
   });
   resolveResponse(
