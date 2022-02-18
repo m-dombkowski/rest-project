@@ -1,0 +1,469 @@
+@media (max-width: 82rem) {
+  .hello-section {
+    margin-top: 8rem;
+  }
+  .hello-message {
+    font-size: 2.2rem;
+    line-height: 1.6;
+  }
+
+  .footer {
+    position: relative;
+  }
+
+  .users-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 77rem) {
+  .users-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 63rem) {
+  .hello-message {
+    font-size: 2rem;
+    line-height: 1.4;
+  }
+  .footer {
+    width: 100%;
+  }
+
+  .edit-form {
+    padding: 15rem 15rem 5rem 15rem;
+  }
+
+  .add-post-form-container {
+    padding: 15rem 15rem 10rem 15rem;
+  }
+}
+
+@media (max-width: 58rem) {
+  .users-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .detailed-user-info {
+    padding: 6rem 8rem;
+  }
+
+  .edit-form {
+    padding: 12rem 10rem 5rem 10rem;
+  }
+
+  .current-user-name {
+    font-size: 3.2rem;
+    margin-bottom: 4rem;
+  }
+
+  .add-post-form-container {
+    padding: 10rem 7rem;
+  }
+
+  .post {
+    left: 5%;
+  }
+}
+
+@media (max-width: 47rem) {
+  .hello-section {
+    margin-left: 8rem;
+    margin-right: 8rem;
+  }
+  .hello-message {
+    font-size: 1.8rem;
+  }
+  .footer {
+    width: 80%;
+  }
+
+  .create-form {
+    padding: 20rem 15rem 3rem 15rem;
+  }
+
+  .create-form-title-container {
+    top: 16%;
+    left: 22%;
+  }
+
+  .create-name-label,
+  .create-email-label {
+    color: #333;
+  }
+
+  .create-name-label,
+  .create-email-label,
+  .create-gender-label,
+  .create-status-label {
+    font-size: 1.6rem;
+  }
+
+  .submit {
+    padding: 0.8rem 1.6rem;
+    font-size: 2rem;
+  }
+
+  .detailed-user-info {
+    padding: 5rem 5rem 1rem 5rem;
+  }
+
+  .active-user-name {
+    font-size: 3.6rem;
+  }
+
+  .active-user-email,
+  .active-user-gender,
+  .active-user-status {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .add-post-form-container {
+    padding: 8rem 4rem 6rem 4rem;
+  }
+
+  .form-title {
+    font-size: 2.4rem;
+  }
+
+  .add-post-title-input,
+  .add-post-message-input {
+    width: 25rem;
+    padding: 0.8rem;
+  }
+
+  .add-post-message-input {
+    height: 12rem;
+  }
+
+  .submit-post-button,
+  .clear-form-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 1.8rem;
+  }
+
+  .post-list-header-title {
+    font-size: 4rem;
+  }
+
+  .post-container {
+    padding: 4rem 3rem;
+    width: 50rem;
+  }
+}
+
+@media (max-width: 40rem) {
+  .users-list {
+    grid-template-columns: 1fr;
+  }
+
+  .edit-form {
+    padding: 8rem 8rem 3rem 8rem;
+    margin: 0 4rem;
+  }
+
+  .add-comment-form {
+    padding: 15rem 10rem 7rem 10rem;
+  }
+}
+
+@media (max-width: 37.5rem) {
+  .create-form {
+    padding: 15rem 10rem 3rem 10rem;
+  }
+
+  .create-form-title {
+    font-size: 1.6rem;
+  }
+
+  .create-form-title-container {
+    top: 14%;
+    left: 25%;
+  }
+
+  .create-name-label,
+  .create-email-label,
+  .create-gender-label,
+  .create-status-label {
+    font-size: 1.5rem;
+  }
+
+  #create-name,
+  #create-email,
+  #create-gender,
+  #create-status {
+    font-size: 1.5rem;
+    padding: 0.6rem;
+    width: 80%;
+  }
+
+  .go-back-create {
+    padding: 0.2rem 0.6rem;
+    font-size: 2rem;
+  }
+
+  .active-user-name {
+    font-size: 3rem;
+  }
+
+  .active-user-email,
+  .active-user-gender,
+  .active-user-status {
+    font-size: 2rem;
+  }
+
+  .detailed-user-info {
+    margin: 0 3rem;
+  }
+
+  .form-title {
+    font-size: 2.2rem;
+  }
+
+  .submit-post-button,
+  .clear-form-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 1.6rem;
+  }
+
+  .post-container {
+    width: 40rem;
+  }
+
+  .post-title {
+    font-size: 2.8rem;
+  }
+
+  .post-body {
+    font-size: 2rem;
+  }
+
+  .comment-name {
+    font-size: 1.8rem;
+  }
+  .post-list-header-title {
+    margin-bottom: 4rem;
+  }
+}
+
+@media (max-width: 32rem) {
+  .hello-section {
+    margin-top: 4rem;
+    margin-left: 6rem;
+    margin-right: 6rem;
+  }
+  .hello-message {
+    font-size: 1.6rem;
+    line-height: 1.5;
+  }
+
+  .create-form {
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+
+  .detailed-user-info {
+    padding: 2rem;
+  }
+
+  .details-buttons {
+    margin: 0 0 4rem 0;
+  }
+
+  .posts {
+    margin: 4rem 0 0 0;
+  }
+
+  .active-user-name {
+    font-size: 2.4rem;
+  }
+  .active-user-email,
+  .active-user-gender,
+  .active-user-status {
+    font-size: 1.6rem;
+  }
+
+  .edit-form {
+    padding: 5rem 5rem 1.5rem 5rem;
+  }
+
+  .add-post-form-container {
+    padding: 5rem 2.5rem 3rem 2.5rem;
+  }
+
+  .form-title {
+    font-size: 1.8rem;
+  }
+
+  .add-comment-form {
+    padding: 7rem 4rem 3rem 4rem;
+  }
+
+  .create-comment-form-title-container {
+    margin-bottom: 6rem !important;
+  }
+
+  .create-comment-form-title,
+  .create-comment-form-title-instruction {
+    font-size: 2rem;
+  }
+
+  .add-comment-name-input,
+  .add-comment-email-input,
+  .add-comment-message-input {
+    width: 20rem;
+  }
+
+  .add-comment-message-input {
+    height: 12rem;
+  }
+
+  .add-comment-submit {
+    margin-top: 2.5rem;
+    font-size: 2rem;
+    padding: 0.8rem 1.6rem;
+  }
+}
+
+@media (max-width: 26.5rem) {
+  .hello-section {
+    margin-top: 2rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+  }
+
+  .hello-message {
+    line-height: 1.6;
+    font-size: 1.5rem;
+  }
+  .footer-message {
+    font-size: 1.6rem;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 6rem;
+  }
+
+  .create-user::before {
+    font-size: 1.8rem;
+    left: -50px;
+  }
+
+  .create-user:hover::before {
+    left: 50px;
+  }
+
+  .create-form {
+    padding: 15rem 5rem 3rem 5rem;
+  }
+
+  .create-form-title {
+    font-size: 1.5rem;
+  }
+  .create-form-title-container {
+    top: 15%;
+    left: 20%;
+  }
+  .edit-form {
+    padding: 5rem 2.5rem 1.5rem 2.5rem;
+  }
+  .current-user-name {
+    font-size: 2.4rem;
+  }
+
+  .current-user-title {
+    font-size: 1.8rem;
+  }
+
+  .edit-submit {
+    margin-top: 2rem;
+  }
+
+  .form-title {
+    margin-bottom: 3rem;
+  }
+  .add-post-form-container {
+    padding: 5rem 1rem 3rem 1rem;
+  }
+
+  .add-comment-form {
+    padding: 7rem 2rem 1.5rem 2rem;
+  }
+
+  .create-comment-form-title-container {
+    margin-top: 2rem;
+  }
+
+  .post-container {
+    width: 30rem;
+  }
+
+  .post-title {
+    font-size: 2.4rem;
+  }
+
+  .post-body {
+    font-size: 1.6rem;
+  }
+
+  .post {
+    top: -150%;
+  }
+
+  .post-list-header-title {
+    font-size: 3.2rem;
+  }
+}
+
+@media (max-width: 22rem) {
+  .detailed-user-info {
+    padding: 1.5rem;
+    margin-right: 3rem;
+    margin-left: 3rem;
+  }
+
+  .edit-form {
+    padding: 5rem 1rem 1.5rem 1rem;
+  }
+
+  #edit-name,
+  #edit-email,
+  #edit-gender,
+  #edit-status {
+    width: 18rem;
+  }
+
+  .go-back-to-details {
+    font-size: 2.8rem;
+  }
+
+  .create-comment-form-title,
+  .create-comment-form-title-instruction {
+    font-size: 1.8rem;
+  }
+
+  .create-comment-form-title-container {
+    margin-top: 1rem;
+    margin-bottom: 3rem !important;
+  }
+
+  .add-comment-name-input,
+  .add-comment-email-input,
+  .add-comment-message-input {
+    width: 18rem;
+  }
+
+  .add-comment-form {
+    padding: 7rem 1rem 1.5rem 1rem;
+  }
+
+  .add-comment-submit {
+    margin-top: 0.5rem;
+  }
+}
+
+/*# sourceMappingURL=index.a87231c7.css.map */
