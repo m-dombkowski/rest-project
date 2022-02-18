@@ -15,7 +15,8 @@
   "license": "ISC",
   "devDependencies": {
     "lite-server": "^2.6.1",
-    "parcel": "^2.2.1"
+    "parcel": "^2.2.1",
+    "dotenv": "^16.0.0"
   },
   "keywords": [],
   "description": ""

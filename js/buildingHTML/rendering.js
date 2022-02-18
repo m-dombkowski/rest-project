@@ -1,5 +1,4 @@
 import {
-  getComments,
   getUserNameForEdit,
   getUserPostObjects,
 } from "../users/gettingUserData.js";
@@ -8,8 +7,6 @@ import {
   userDetails,
   usersList,
   responseMessageModal,
-  postList,
-  footer,
 } from "../generalFunctions/variables.js";
 import { buildPostList, buildPostListHeader } from "./createPostsList.js";
 
