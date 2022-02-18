@@ -163,7 +163,6 @@ export const renderUserPosts = function (data, event) {
   getUserPostObjects(data).forEach((postObject) => {
     buildPostList(postObject);
   });
-  console.log(data);
   buildPostListHeader(event);
 };
 

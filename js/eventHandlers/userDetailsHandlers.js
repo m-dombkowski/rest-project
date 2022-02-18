@@ -45,7 +45,6 @@ export const userDetailsHandler = function (event) {
         // removeHide(userForms);
         renderUserPosts(data, event);
         hideSpinner();
-        console.log(data);
       });
     });
   }

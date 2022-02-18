@@ -177,12 +177,10 @@ export const buildCommentsButtons = function (data) {
       "📝"
     );
 
-    console.log(userListSection);
     addCommentButton.addEventListener("click", function (event) {
       const commentsContainers =
         document.querySelectorAll(".comment-container");
       const noCommentMessage = document.querySelector(".no-comment-message");
-      console.log(data);
       if (getPostTitle(event) === data.title) {
         commentsContainers.forEach((commentContainer) => {
           addHide(commentContainer);

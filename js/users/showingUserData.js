@@ -35,7 +35,6 @@ export const showUserList = function () {
   getUsers(BASE_URL).then((data) => {
     removeHide(userListSection);
     clearElement(usersList);
-    console.log(data);
     printUsers(data);
     removeHide(footer);
     hideSpinner();
