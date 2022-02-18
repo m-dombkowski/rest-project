@@ -36,7 +36,7 @@ const renderUser = function (userObject) {
         <div class=user-id id=${userObject.id}></div>
         <div class="user-buttons">
           <button class="user-details" id=${userObject.id}" title="Check user details">
-            <img class="details-icon" src="../svg/search-svg.svg"/>
+            <p class="details-icon">📖</p>
           </button>
           <button class="delete-user" title="Delete user">&#10008;</button>
         </div>
