@@ -1,9 +1,10 @@
 import { createUserComment } from "../async/asyncApiCalls.js";
-import { clearElement } from "../generalFunctions/general.js";
+import { checkPostHeader, clearElement } from "../generalFunctions/general.js";
 import { addHide, removeHide } from "../generalFunctions/styleChanges.js";
 import {
   BASE_URL,
   postList,
+  userDetails,
   userForms,
   userListSection,
 } from "../generalFunctions/variables.js";
@@ -147,12 +148,10 @@ const createCommentSubmitButton = function (data) {
     event.preventDefault();
     createUserComment(BASE_URL, data.id, createUserCommentObject()).then(() => {
       clearElement(userForms);
-      removeHide(postList);
-      // removeHide();
+      clearElement(postList);
+      checkPostHeader();
+      removeHide(userDetails);
       addHide(userForms);
-      removeHide(goBackToPosts);
-      removeHide(addCommentButton);
-      showPostComments(data, event, allCommentsContainer);
     });
   });
 

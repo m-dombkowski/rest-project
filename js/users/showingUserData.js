@@ -4,6 +4,7 @@ import { buildNoCommentsMessage } from "../buildingHTML/createPostsList.js";
 import { printUsers, renderUserDetails } from "../buildingHTML/rendering.js";
 import { clearElement } from "../generalFunctions/general.js";
 import {
+  addHide,
   hideSpinner,
   removeHide,
   showSpinner,
@@ -28,12 +29,15 @@ export const showUserDetails = function (data, event) {
 
 export const showUserList = function () {
   showSpinner();
-  removeHide(footer);
+  if (footer) {
+    addHide(footer);
+  }
   getUsers(BASE_URL).then((data) => {
     removeHide(userListSection);
     clearElement(usersList);
     console.log(data);
     printUsers(data);
+    removeHide(footer);
     hideSpinner();
   });
 };

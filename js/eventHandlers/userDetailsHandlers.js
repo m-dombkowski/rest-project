@@ -15,6 +15,7 @@ import {
   postList,
   userDetails,
   userForms,
+  userListSection,
 } from "../generalFunctions/variables.js";
 
 export const userDetailsHandler = function (event) {
@@ -34,6 +35,7 @@ export const userDetailsHandler = function (event) {
   if (selectingTarget(event).contains("get-user-posts")) {
     addHide(userDetails);
     removeHide(postList);
+    removeHide(userListSection);
     showSpinner();
     getUsers(BASE_URL).then((data) => {
       getUserPosts(
