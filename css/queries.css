@@ -61,6 +61,10 @@
   .add-post-form-container {
     padding: 10rem 7rem;
   }
+
+  .post {
+    left: 5%;
+  }
 }
 
 @media (max-width: 47rem) {
@@ -139,6 +143,15 @@
     padding: 0.6rem 1.2rem;
     font-size: 1.8rem;
   }
+
+  .post-list-header-title {
+    font-size: 4rem;
+  }
+
+  .post-container {
+    padding: 4rem 3rem;
+    width: 50rem;
+  }
 }
 
 @media (max-width: 40rem) {
@@ -149,6 +162,10 @@
   .edit-form {
     padding: 8rem 8rem 3rem 8rem;
     margin: 0 4rem;
+  }
+
+  .add-comment-form {
+    padding: 15rem 10rem 7rem 10rem;
   }
 }
 
@@ -210,6 +227,25 @@
     padding: 0.4rem 0.8rem;
     font-size: 1.6rem;
   }
+
+  .post-container {
+    width: 40rem;
+  }
+
+  .post-title {
+    font-size: 2.8rem;
+  }
+
+  .post-body {
+    font-size: 2rem;
+  }
+
+  .comment-name {
+    font-size: 1.8rem;
+  }
+  .post-list-header-title {
+    margin-bottom: 4rem;
+  }
 }
 
 @media (max-width: 32rem) {
@@ -259,6 +295,35 @@
 
   .form-title {
     font-size: 1.8rem;
+  }
+
+  .add-comment-form {
+    padding: 7rem 4rem 3rem 4rem;
+  }
+
+  .create-comment-form-title-container {
+    margin-bottom: 6rem !important;
+  }
+
+  .create-comment-form-title,
+  .create-comment-form-title-instruction {
+    font-size: 2rem;
+  }
+
+  .add-comment-name-input,
+  .add-comment-email-input,
+  .add-comment-message-input {
+    width: 20rem;
+  }
+
+  .add-comment-message-input {
+    height: 12rem;
+  }
+
+  .add-comment-submit {
+    margin-top: 2.5rem;
+    font-size: 2rem;
+    padding: 0.8rem 1.6rem;
   }
 }
 
@@ -324,6 +389,34 @@
   .add-post-form-container {
     padding: 5rem 1rem 3rem 1rem;
   }
+
+  .add-comment-form {
+    padding: 7rem 2rem 1.5rem 2rem;
+  }
+
+  .create-comment-form-title-container {
+    margin-top: 2rem;
+  }
+
+  .post-container {
+    width: 30rem;
+  }
+
+  .post-title {
+    font-size: 2.4rem;
+  }
+
+  .post-body {
+    font-size: 1.6rem;
+  }
+
+  .post {
+    top: -150%;
+  }
+
+  .post-list-header-title {
+    font-size: 3.2rem;
+  }
 }
 
 @media (max-width: 22rem) {
@@ -346,5 +439,29 @@
 
   .go-back-to-details {
     font-size: 2.8rem;
+  }
+
+  .create-comment-form-title,
+  .create-comment-form-title-instruction {
+    font-size: 1.8rem;
+  }
+
+  .create-comment-form-title-container {
+    margin-top: 1rem;
+    margin-bottom: 3rem !important;
+  }
+
+  .add-comment-name-input,
+  .add-comment-email-input,
+  .add-comment-message-input {
+    width: 18rem;
+  }
+
+  .add-comment-form {
+    padding: 7rem 1rem 1.5rem 1rem;
+  }
+
+  .add-comment-submit {
+    margin-top: 0.5rem;
   }
 }

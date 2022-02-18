@@ -2,9 +2,7 @@
   "name": "go-rest",
   "version": "1.0.0",
   "main": "index.js",
-  "dependencies": {
-    "parcel": "^2.2.1"
-  },
+  "dependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "lite-server",
@@ -14,9 +12,9 @@
   "author": "Mateusz Dombkowski",
   "license": "ISC",
   "devDependencies": {
+    "dotenv": "^16.0.0",
     "lite-server": "^2.6.1",
-    "parcel": "^2.2.1",
-    "dotenv": "^16.0.0"
+    "parcel": "^2.3.1"
   },
   "keywords": [],
   "description": ""

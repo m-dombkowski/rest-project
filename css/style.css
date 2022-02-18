@@ -729,7 +729,8 @@ body {
 }
 
 .post-list-header-container {
-  margin-top: 10rem;
+  position: relative;
+  margin-top: 14rem;
 }
 
 .post-container:last-child {
@@ -746,7 +747,7 @@ body {
   padding: 6rem 5rem;
   border-radius: 6px;
   border: 2px solid #000;
-  width: 50rem;
+  width: 65rem;
   background-color: #e0c9a6;
   box-shadow: 0.8rem 0.8rem 1.2rem 0rem rgb(66 68 90);
 }
@@ -803,7 +804,7 @@ body {
 
 .post {
   position: absolute;
-  top: 15%;
+  top: -120%;
   left: 10%;
   color: #000;
 }
@@ -898,7 +899,7 @@ body {
 .footer {
   display: flex;
   flex-direction: column;
-  position: fixed;
+  position: relative;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
