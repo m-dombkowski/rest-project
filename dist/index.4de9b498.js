@@ -575,8 +575,6 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "token", ()=>token
 );
-parcelHelpers.export(exports, "headers", ()=>headers
-);
 parcelHelpers.export(exports, "showUsers", ()=>showUsers
 );
 parcelHelpers.export(exports, "deleteU", ()=>deleteU
@@ -618,11 +616,6 @@ parcelHelpers.export(exports, "postListHeaderContainer", ()=>postListHeaderConta
 parcelHelpers.export(exports, "footer", ()=>footer
 );
 const token = "c397113043321c1304d7fb3a759310dcc61e8ef3fd4b0040dad3eb74b185192f";
-const headers = {
-    Accept: "application/json",
-    "Content-Type": "application/json",
-    Authorization: `Bearer ` + token
-};
 const showUsers = document.querySelector(".show-all-users");
 const deleteU = document.querySelector(".btn-deleteU");
 const createUser = document.querySelector(".create-user");
@@ -790,11 +783,11 @@ const renderEditUser = function(event) {
       <h2 class="current-user-name">${_gettingUserDataJs.getUserNameForEdit(event, "active-user-name")}</h2>    
     <div class="name-input">
       <label class="edit-name-label" for="name">Name: </label></br>
-      <input type="text" id="edit-name" name="name" required size="10"> 
+      <input type="text" placeholder="Your username" id="edit-name" name="name" required size="10"> 
     </div>
     <div class="email-input">
       <label class="edit-email-label" for="email">Email: </label></br>
-      <input type="email" id="edit-email" required size="10"> 
+      <input type="email" placeholder="Your email" id="edit-email" required size="10"> 
     </div>
     <div class="gender-select">
       <label class="edit-gender-label" for="gender">Gender: </label> </br>
@@ -823,7 +816,6 @@ const renderUserPosts = function(data, event) {
     _gettingUserDataJs.getUserPostObjects(data).forEach((postObject)=>{
         _createPostsListJs.buildPostList(postObject);
     });
-    console.log(data);
     _createPostsListJs.buildPostListHeader(event);
 };
 const displayResponseMessage = function(message) {
@@ -1117,11 +1109,9 @@ const buildCommentsButtons = function(data) {
             "add-comment-button"
         ], {
         }, "📝");
-        console.log(_variablesJs.userListSection);
         addCommentButton.addEventListener("click", function(event) {
             const commentsContainers = document.querySelectorAll(".comment-container");
             const noCommentMessage = document.querySelector(".no-comment-message");
-            console.log(data);
             if (_gettingUserDataJs.getPostTitle(event) === data.title) {
                 commentsContainers.forEach((commentContainer)=>{
                     _styleChangesJs.addHide(commentContainer);
@@ -1221,7 +1211,6 @@ const showUserList = function() {
     _asyncApiCallsJs.getUsers(_variablesJs.BASE_URL).then((data)=>{
         _styleChangesJs.removeHide(_variablesJs.userListSection);
         _generalJs.clearElement(_variablesJs.usersList);
-        console.log(data);
         _renderingJs.printUsers(data);
         _styleChangesJs.removeHide(_variablesJs.footer);
         _styleChangesJs.hideSpinner();
@@ -1265,21 +1254,33 @@ var _resolvingResponseJs = require("./resolvingResponse.js");
 const getUsers = async function(url) {
     const response = await fetch(`${url}/users`, {
         method: "GET",
-        headers: _variablesJs.headers
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ` + _variablesJs.token
+        }
     });
     return response.json();
 };
 const getUserByID = async function(url, userID) {
     const response = await fetch(`${url}/users/${userID}`, {
         method: "GET",
-        headers: _variablesJs.headers
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ` + _variablesJs.token
+        }
     });
     return response.json();
 };
 const createUser = async function(url, userObject) {
     const response = await fetch(`${url}/users`, {
         method: "POST",
-        headers: _variablesJs.headers,
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ` + _variablesJs.token
+        },
         body: JSON.stringify(userObject)
     });
     _resolvingResponseJs.resolveResponse(response, "User Created Successfully!", "Couldn't create user, please check information provided and try again (Remember, there can't be more than 1 user with the same email address, and all information must be provided!)");
@@ -1288,14 +1289,22 @@ const createUser = async function(url, userObject) {
 const deleteUserREST = async function(url, id) {
     const response = await fetch(`${url}/users/${id}`, {
         method: "DELETE",
-        headers: _variablesJs.headers
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ` + _variablesJs.token
+        }
     });
     _resolvingResponseJs.resolveResponse(response, "User deleted successfully", "Couldn't delete user, please try again");
 };
 const editUser = async function(url, id, userObject) {
     const response = await fetch(`${url}/users/${id}`, {
         method: "PUT",
-        headers: _variablesJs.headers,
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ` + _variablesJs.token
+        },
         body: JSON.stringify(userObject)
     });
     _resolvingResponseJs.resolveResponse(response, "User details edited successfully!", "There was an error, please check information provided and try again (Remember, there can't be more than 1 user with the same email address!)");
@@ -1304,21 +1313,33 @@ const editUser = async function(url, id, userObject) {
 const getUserPosts = async function(url, userID) {
     const response = await fetch(`${url}/users/${userID}/posts`, {
         method: "GET",
-        headers: _variablesJs.headers
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ` + _variablesJs.token
+        }
     });
     return response.json();
 };
 const getPostComments = async function(url, postID) {
     const response = await fetch(`${url}/posts/${postID}/comments`, {
         method: "GET",
-        headers: _variablesJs.headers
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ` + _variablesJs.token
+        }
     });
     return response.json();
 };
 const createUserPost = async function(url, userID, userPostObject) {
     const response = await fetch(`${url}/users/${userID}/posts`, {
         method: "POST",
-        headers: _variablesJs.headers,
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ` + _variablesJs.token
+        },
         body: JSON.stringify(userPostObject)
     });
     _resolvingResponseJs.resolveResponse(response, "Post created!", "There was an error, please try again.");
@@ -1327,7 +1348,11 @@ const createUserPost = async function(url, userID, userPostObject) {
 const createUserComment = async function(url, postID, commentObject) {
     const response = await fetch(`${url}/posts/${postID}/comments`, {
         method: "POST",
-        headers: _variablesJs.headers,
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ` + _variablesJs.token
+        },
         body: JSON.stringify(commentObject)
     });
     _resolvingResponseJs.resolveResponse(response, "Comment added!", "There was an error, please try again.");
@@ -1712,7 +1737,6 @@ const userDetailsHandler = function(event) {
                 // removeHide(userForms);
                 _renderingJs.renderUserPosts(data, event);
                 _styleChangesJs.hideSpinner();
-                console.log(data);
             });
         });
     }

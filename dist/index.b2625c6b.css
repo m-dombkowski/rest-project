@@ -897,7 +897,7 @@ body {
 .footer {
   display: flex;
   flex-direction: column;
-  position: relative;
+  position: fixed;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);

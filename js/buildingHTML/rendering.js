@@ -128,11 +128,11 @@ export const renderEditUser = function (event) {
       )}</h2>    
     <div class="name-input">
       <label class="edit-name-label" for="name">Name: </label></br>
-      <input type="text" id="edit-name" name="name" required size="10"> 
+      <input type="text" placeholder="Your username" id="edit-name" name="name" required size="10"> 
     </div>
     <div class="email-input">
       <label class="edit-email-label" for="email">Email: </label></br>
-      <input type="email" id="edit-email" required size="10"> 
+      <input type="email" placeholder="Your email" id="edit-email" required size="10"> 
     </div>
     <div class="gender-select">
       <label class="edit-gender-label" for="gender">Gender: </label> </br>
