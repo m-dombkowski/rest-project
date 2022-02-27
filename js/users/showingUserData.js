@@ -15,13 +15,23 @@ import {
   footer,
   userListSection,
 } from "../generalFunctions/variables.js";
-import { getUserIDForDetailsAndDelete } from "./gettingUserData.js";
+import { getUserIDForDelete, getUserIDForDetails } from "./gettingUserData.js";
 
 export const showUserDetails = function (data, event) {
   const usersArray = data.data;
 
   usersArray.forEach((userObject) => {
-    if (userObject.id == getUserIDForDetailsAndDelete(event)) {
+    if (userObject.id == getUserIDForDetails(event)) {
+      renderUserDetails(userObject);
+    }
+  });
+};
+
+export const showUserDetails2 = function (data, event) {
+  const usersArray = data.data;
+
+  usersArray.forEach((userObject) => {
+    if (userObject.id == getUserIDForDelete(event)) {
       renderUserDetails(userObject);
     }
   });

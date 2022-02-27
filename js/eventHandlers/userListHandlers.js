@@ -1,12 +1,12 @@
 import { getUsers } from "../async/asyncApiCalls.js";
-import { selectingTarget } from "../generalFunctions/general.js";
+import { clearElement, selectingTarget } from "../generalFunctions/general.js";
 import {
   addHide,
   hideSpinner,
   removeHide,
   showSpinner,
 } from "../generalFunctions/styleChanges.js";
-import { showUserDetails } from "../users/showingUserData.js";
+import { showUserDetails, showUserDetails2 } from "../users/showingUserData.js";
 import { deleteUser } from "../users/deletingUser.js";
 
 import {
@@ -29,9 +29,27 @@ export const userListHandler = function (event) {
     addHide(usersList);
     addHide(footer);
     showSpinner();
+    clearElement(userDetails);
     getUsers(BASE_URL).then((data) => {
       spinner.setAttribute("hidden", "");
       showUserDetails(data, event);
+      hideSpinner();
+      addHide(userForms);
+      removeHide(userDetails);
+      addHide(postList);
+      removeHide(detailsContainer);
+      removeHide(detailsSection);
+    });
+  }
+
+  if (selectingTarget(event).contains("user-details")) {
+    addHide(usersList);
+    addHide(footer);
+    showSpinner();
+    clearElement(userDetails);
+    getUsers(BASE_URL).then((data) => {
+      spinner.setAttribute("hidden", "");
+      showUserDetails2(data, event);
       hideSpinner();
       addHide(userForms);
       removeHide(userDetails);

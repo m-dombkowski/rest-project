@@ -35,7 +35,7 @@ export const getPostTitle = function (event) {
   return loopForGettingUserName(doubleParentChildren(event), "post-title");
 };
 
-export const getUserIDForDetailsAndDelete = function (event) {
+export const getUserIDForDetails = function (event) {
   return loopForGettingUserID(tripleParentChildren(event), "user-id");
 };
 

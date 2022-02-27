@@ -1,5 +1,10 @@
 import { createUser, editUser, getUsers } from "../async/asyncApiCalls.js";
-import { selectingTarget, clearElement } from "../generalFunctions/general.js";
+import {
+  selectingTarget,
+  clearElement,
+  validateCreateEmailInput,
+  validateUsernameInput,
+} from "../generalFunctions/general.js";
 import {
   addHide,
   hideSpinner,
@@ -15,14 +20,14 @@ import {
   userDetails,
   userForms,
   usersList,
-  userListSection,
-  main,
 } from "../generalFunctions/variables.js";
 
 export const userFormsHandler = function (event) {
   if (selectingTarget(event).contains("submit")) {
     event.preventDefault();
     showSpinner();
+    // // validateCreateEmailInput();
+    // validateUsernameInput();
     createUser(BASE_URL, createUserObject("create")).then(() => {
       hideSpinner();
       showUserList();

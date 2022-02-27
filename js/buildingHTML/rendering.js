@@ -75,8 +75,6 @@ export const renderUserDetails = function (data) {
 
 export const renderCreateUser = function () {
   let html = `
-      
-     
       <form class="create-form"> 
         <button class="go-back-create" title="Go Back">&#129046</button>  
         <div class="create-form-title-container">
@@ -84,11 +82,11 @@ export const renderCreateUser = function () {
         </div> 
         <div class="name-input">        
           <label for="name" class="create-name-label">Name: </label>
-          <input type="text" id="create-name" name="name" placeholder="Your username" required size="10"> 
+          <input type="text" id="create-name" name="name" placeholder="Your username" patter="" maxlength="12" required > 
         </div>
         <div class="email-input">
           <label for="email" class='create-email-label'>Email: </label>       
-          <input type="email" id="create-email" placeholder="Your email address" required size="10"> 
+          <input type="email" id="create-email" placeholder="Your email address" required > 
         </div>
         <div class="gender-select"> 
           <label for="gender" class='create-gender-label'>Gender: </label>      
@@ -107,8 +105,7 @@ export const renderCreateUser = function () {
           </select>
         </div>
         <input type="submit" class="submit" value="Create User">
-      </form>
-   
+      </form> 
   `;
   //
   //

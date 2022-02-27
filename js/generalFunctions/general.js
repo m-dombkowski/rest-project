@@ -80,3 +80,30 @@ export const checkPostHeader = function () {
 export const clearElement = function (parentElement) {
   parentElement.innerHTML = "";
 };
+
+export const validateCreateEmailInput = function () {
+  const email = document.getElementById("create-email").value;
+  const email2 = document.getElementById("create-email");
+  const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  if (regex.test(email)) {
+    alert("done");
+    return true;
+  } else {
+    email2.style.border = "red solid 3px";
+    return false;
+  }
+};
+
+export const validateUsernameInput = function () {
+  const userName = document.getElementById("create-name").value;
+
+  const regex = /[a-zA-Z][a-zA-Z0-9-_]/;
+
+  if (regex.test(userName)) {
+    alert("git gud");
+    return true;
+  } else {
+    alert("Username not valid");
+    return false;
+  }
+};
